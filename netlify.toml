@@ -85,3 +85,5 @@
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
     X-Content-Type-Options = "nosniff"
+[build]
+  publish = "."
