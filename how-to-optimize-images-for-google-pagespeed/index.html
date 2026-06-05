@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optimize Images for Google PageSpeed — 2026 Guide | ImgSwift</title>
+  <meta name="description" content="Improve your Google PageSpeed score by optimizing images. Convert to WebP/AVIF, add lazy loading, preload LCP, and fix CLS. Step-by-step 2026 guide.">
+  <meta name="keywords" content="optimize images google pagespeed,pagespeed images,webp pagespeed,image optimization pagespeed insights,improve pagespeed score images">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="https://imgswift.xyz/how-to-optimize-images-for-google-pagespeed/">
+  <link rel="alternate" hreflang="en" href="https://imgswift.xyz/how-to-optimize-images-for-google-pagespeed/">
+<link rel="alternate" hreflang="x-default" href="https://imgswift.xyz/how-to-optimize-images-for-google-pagespeed/">
+
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://imgswift.xyz/how-to-optimize-images-for-google-pagespeed/">
+  <meta property="og:title" content="How to Optimize Images for Google PageSpeed (2026 Guide)">
+  <meta property="og:description" content="Step-by-step guide to fixing image-related PageSpeed warnings: next-gen formats, proper sizing, lazy loading, LCP preload, and CLS prevention.">
+  <meta property="og:image" content="https://imgswift.xyz/og/compress-image-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+  <meta property="og:site_name" content="ImgSwift">
+
+  <meta name="twitter:site" content="@imgswift">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Optimize Images for Google PageSpeed (2026 Guide)">
+  <meta name="twitter:image" content="https://imgswift.xyz/og/how-image-compression-works-og.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://imgswift.xyz/"},
+      {"@type":"ListItem","position":2,"name":"How to Optimize Images for Google PageSpeed","item":"https://imgswift.xyz/how-to-optimize-images-for-google-pagespeed/"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Optimize Images for Google PageSpeed (2026 Guide)",
+    "description": "Complete step-by-step guide to fixing every image-related PageSpeed Insights warning in 2026.",
+    "url": "https://imgswift.xyz/how-to-optimize-images-for-google-pagespeed/",
+    "publisher": {"@type":"Organization","name":"ImgSwift","url":"https://imgswift.xyz"},
+    "author": {"@type": "Person", "name": "ImgSwift Team", "url": "https://imgswift.xyz/about/"},
+    "datePublished": "2026-05-30",
+    "dateModified": "2026-05-31"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"What image format does Google PageSpeed recommend?","acceptedAnswer":{"@type":"Answer","text":"Google PageSpeed Insights explicitly recommends WebP and AVIF under the 'Serve images in next-gen formats' audit. WebP files are typically 25–35% smaller than JPG at the same quality. AVIF files are typically 40–55% smaller. Either format will reduce image payload and improve LCP and overall performance scores."}},
+      {"@type":"Question","name":"How much can image optimization improve my PageSpeed score?","acceptedAnswer":{"@type":"Answer","text":"For image-heavy pages, converting to WebP and resizing images to their display dimensions can improve PageSpeed scores by 15–40 points. The exact gain depends on how many images the page has, their current sizes, and whether any LCP or CLS issues are being triggered by images."}},
+      {"@type":"Question","name":"What does 'Properly size images' mean in PageSpeed?","acceptedAnswer":{"@type":"Answer","text":"'Properly size images' means you are serving an image larger than it is displayed on screen. For example, uploading a 3000×2000 photo for an 800×533 display slot wastes bandwidth — the browser downloads 14x more pixels than it needs. Fix this by exporting the image at its actual display dimensions (or 2x for retina displays with srcset)."}},
+      {"@type":"Question","name":"How do I fix the 'Serve images in next-gen formats' PageSpeed warning?","acceptedAnswer":{"@type":"Answer","text":"Convert your JPG and PNG images to WebP or AVIF using a tool like ImgSwift. Then update your HTML to use the picture element with AVIF and WebP sources and a JPG fallback, or configure your server/CDN to automatically convert and serve next-gen formats."}},
+      {"@type":"Question","name":"Does lazy loading improve PageSpeed score?","acceptedAnswer":{"@type":"Answer","text":"Yes, for below-the-fold images. Lazy loading defers the download of images not visible in the viewport, reducing initial page payload and improving the time to first byte and First Contentful Paint. However, never apply lazy loading to the LCP (hero) image — this delays the Largest Contentful Paint and directly hurts your score."}},
+      {"@type":"Question","name":"What is the LCP image and why does it matter for PageSpeed?","acceptedAnswer":{"@type":"Answer","text":"The Largest Contentful Paint (LCP) element is typically the hero/banner image — the largest visible element when the page first loads. LCP is a direct Core Web Vitals ranking signal. A slow LCP (above 2.5 seconds) results in a 'Poor' Core Web Vitals score and hurts both rankings and PageSpeed score. Preloading the LCP image is one of the highest-impact optimizations available."}}
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="/icon-192.png" type="image/png">
+
+  <style>
+    .article-hero { max-width: 800px; margin: 0 auto 40px; padding: 48px 20px 0; }
+    .article-hero h1 { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+    .article-hero .subtitle { color: var(--text-2, #94a3b8); font-size: 1.1rem; line-height: 1.7; }
+    .article-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; font-size: 0.85rem; color: var(--text-2, #94a3b8); }
+    .article-body { max-width: 800px; margin: 0 auto; padding: 0 20px 80px; }
+    .toc { background: var(--card, rgba(255,255,255,0.04)); border: 1px solid var(--border, rgba(255,255,255,0.1)); border-radius: 14px; padding: 22px 26px; margin-bottom: 40px; }
+    .toc h2 { font-size: 0.85rem; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent, #6366f1); }
+    .toc ol { margin: 0; padding-left: 20px; }
+    .toc li { margin-bottom: 8px; }
+    .toc a { color: var(--text-2, #94a3b8); text-decoration: none; font-size: 0.93rem; }
+    .toc a:hover { color: var(--accent, #6366f1); }
+    .article-section { margin-bottom: 48px; }
+    .article-section h2 { font-size: 1.45rem; font-weight: 800; margin-bottom: 16px; border-bottom: 2px solid var(--border, rgba(255,255,255,0.08)); padding-bottom: 10px; }
+    .article-section h3 { font-size: 1.1rem; font-weight: 700; margin: 28px 0 10px; }
+    .article-section p { color: var(--text-2, #94a3b8); line-height: 1.8; margin-bottom: 14px; }
+    .article-section ul, .article-section ol { color: var(--text-2, #94a3b8); padding-left: 22px; line-height: 1.8; }
+    .article-section li { margin-bottom: 8px; }
+    .tip-box { background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); border-radius: 12px; padding: 16px 20px; margin: 20px 0; color: var(--text-2, #94a3b8); font-size: 0.93rem; line-height: 1.75; }
+    .tip-box strong { color: var(--accent, #6366f1); }
+    .warning-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25); border-radius: 12px; padding: 16px 20px; margin: 20px 0; color: var(--text-2, #94a3b8); font-size: 0.93rem; line-height: 1.75; }
+    .warning-box strong { color: #f87171; }
+    .audit-card { background: var(--card, rgba(255,255,255,0.04)); border: 1px solid var(--border, rgba(255,255,255,0.1)); border-radius: 14px; padding: 22px; margin-bottom: 20px; }
+    .audit-card .audit-label { display: inline-block; background: rgba(239,68,68,0.12); color: #f87171; border-radius: 6px; padding: 3px 10px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+    .audit-card .audit-label.warn { background: rgba(251,191,36,0.12); color: #fbbf24; }
+    .audit-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+    .audit-card p { font-size: 0.9rem; color: var(--text-2, #94a3b8); line-height: 1.75; margin: 0 0 10px; }
+    .audit-card .fix { font-size: 0.88rem; color: var(--text-2, #94a3b8); padding: 12px 14px; background: rgba(99,102,241,0.08); border-radius: 8px; border-left: 3px solid var(--accent, #6366f1); }
+    .audit-card .fix strong { color: var(--accent, #6366f1); }
+    code { background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; font-size: 0.88em; font-family: monospace; color: #e2e8f0; }
+    pre { background: rgba(0,0,0,0.3); border: 1px solid var(--border, rgba(255,255,255,0.1)); border-radius: 10px; padding: 16px 20px; overflow-x: auto; margin: 16px 0; font-size: 0.85rem; line-height: 1.6; color: #e2e8f0; }
+    .score-bar { display: flex; align-items: center; gap: 12px; margin: 14px 0; }
+    .score-circle { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem; flex-shrink: 0; }
+    .score-circle.poor { background: rgba(248,113,113,0.15); color: #f87171; border: 2px solid #f87171; }
+    .score-circle.good { background: rgba(74,222,128,0.15); color: #4ade80; border: 2px solid #4ade80; }
+    .score-desc { font-size: 0.88rem; color: var(--text-2, #94a3b8); line-height: 1.6; }
+    .cta-banner { background: linear-gradient(135deg, rgba(79,142,247,0.1), rgba(123,91,246,0.1)); border: 1px solid rgba(79,142,247,0.3); border-radius: 16px; padding: 28px; text-align: center; margin: 40px 0; }
+    .cta-banner h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; }
+    .cta-banner p { color: var(--text-2, #94a3b8); margin-bottom: 18px; font-size: 0.93rem; }
+    .cta-btn { display: inline-block; background: linear-gradient(135deg, #4f8ef7, #7b5bf6); color: #fff; font-weight: 700; font-size: 1rem; padding: 12px 32px; border-radius: 12px; text-decoration: none; transition: opacity 0.2s; }
+    .cta-btn:hover { opacity: 0.9; text-decoration: none; }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { background: var(--card, rgba(255,255,255,0.04)); border: 1px solid var(--border, rgba(255,255,255,0.1)); border-radius: 12px; overflow: hidden; }
+    .faq-q { padding: 16px 20px; font-size: 0.97rem; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-q::after { content: "+"; font-size: 1.2rem; color: var(--accent, #6366f1); }
+    .faq-item[open] .faq-q::after { content: "−"; }
+    .faq-a { padding: 0 20px 16px; font-size: 0.9rem; color: var(--text-2, #94a3b8); line-height: 1.7; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+    .related-link { display: block; padding: 12px 14px; background: rgba(255,255,255,0.04); border: 1px solid var(--border, rgba(255,255,255,0.1)); border-radius: 10px; color: var(--accent, #6366f1); font-size: 0.875rem; font-weight: 600; text-align: center; transition: all 0.2s; }
+    .related-link:hover { background: rgba(79,142,247,0.1); text-decoration: none; }
+  </style>
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+
+<nav>
+  <a href="/" style="font-size:1.2rem;font-weight:800;text-decoration:none;color:var(--text);">Img<span style="background:linear-gradient(135deg,#4f8ef7,#7b5bf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Swift</span></a>
+  <a href="/" style="font-size:0.875rem;color:var(--muted,#607080);text-decoration:none;padding:6px 12px;border:1px solid var(--border);border-radius:8px;">← All Tools</a>
+</nav>
+
+<nav aria-label="Breadcrumb" style="max-width:800px;margin:16px auto 0;padding:0 20px;">
+  <ol style="list-style:none;display:flex;gap:8px;font-size:0.82rem;color:var(--muted,#607080);">
+    <li><a href="/" style="color:var(--muted,#607080);">Home</a></li>
+    <li style="color:var(--border);">/</li>
+    <li style="color:var(--text-2);">How to Optimize Images for Google PageSpeed</li>
+  </ol>
+</nav>
+
+<header class="article-hero">
+  <h1>How to Optimize Images for Google PageSpeed (2026 Guide)</h1>
+  <p class="subtitle">Fix every image-related PageSpeed Insights warning — next-gen formats, proper sizing, lazy loading, LCP preload, and CLS prevention — with step-by-step instructions.</p>
+  <div class="article-meta">
+    <span>🕒 6 min read</span>
+    <span>📅 Updated May 2026</span>
+    <span>🎯 Actionable fixes</span>
+  </div>
+</header>
+
+<main class="article-body">
+
+  <nav class="toc" aria-label="Table of contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#audits">The 5 Image Audits PageSpeed Flags</a></li>
+      <li><a href="#next-gen-formats">Fix: Serve Next-Gen Formats (WebP/AVIF)</a></li>
+      <li><a href="#properly-size">Fix: Properly Size Images</a></li>
+      <li><a href="#lazy-loading">Fix: Defer Offscreen Images</a></li>
+      <li><a href="#lcp-preload">Fix: Slow LCP Image</a></li>
+      <li><a href="#cls">Fix: Image-Caused Layout Shift (CLS)</a></li>
+      <li><a href="#impact">Expected Score Improvement</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </nav>
+
+  <section class="article-section" id="audits">
+    <h2>The 5 Image Audits PageSpeed Flags</h2>
+    <p>Google PageSpeed Insights (powered by Lighthouse) runs several image-specific audits. These are the ones that most commonly reduce scores on real-world sites:</p>
+    <ol>
+      <li><strong>Serve images in next-gen formats</strong> — JPG and PNG are being served where WebP or AVIF should be used.</li>
+      <li><strong>Properly size images</strong> — Images are larger (in pixels) than they are displayed on screen.</li>
+      <li><strong>Defer offscreen images</strong> — Images below the fold are loaded eagerly, delaying the initial page load.</li>
+      <li><strong>Largest Contentful Paint (LCP) image is slow</strong> — The hero image is discovered or downloaded too late.</li>
+      <li><strong>Avoid large layout shifts (CLS) from images</strong> — Images without dimensions cause the page to reflow when they load.</li>
+    </ol>
+    <p>Each of these has a specific, actionable fix. Work through them in order for maximum impact.</p>
+  </section>
+
+  <section class="article-section" id="next-gen-formats">
+    <h2>Fix: Serve Images in Next-Gen Formats (WebP / AVIF)</h2>
+
+    <div class="audit-card">
+      <span class="audit-label">Audit: Serve images in next-gen formats</span>
+      <h3>Why it fires</h3>
+      <p>Your page serves JPG or PNG images. WebP achieves the same perceptual quality at ~30% smaller file size; AVIF achieves ~50% smaller. Google flags this because smaller images = less bandwidth = faster LCP and lower total page weight.</p>
+      <div class="fix"><strong>Fix:</strong> Convert your JPG/PNG images to WebP using <a href="/jpg-to-webp/">ImgSwift's JPG→WebP converter</a>, then serve them with a <code>&lt;picture&gt;</code> element fallback.</div>
+    </div>
+
+    <h3>HTML implementation</h3>
+    <pre>&lt;picture&gt;
+  &lt;source srcset="hero.avif" type="image/avif"&gt;
+  &lt;source srcset="hero.webp" type="image/webp"&gt;
+  &lt;img src="hero.jpg" alt="Hero image" width="1200" height="630"&gt;
+&lt;/picture&gt;</pre>
+    <p>Browsers that support AVIF use <code>hero.avif</code>. Browsers that support WebP but not AVIF use <code>hero.webp</code>. All others fall back to <code>hero.jpg</code>. All major browsers have supported WebP since 2020 and AVIF since 2023.</p>
+
+    <h3>Server-side conversion (recommended for CMS sites)</h3>
+    <p>If you use WordPress, Cloudflare, or a CDN, you can enable automatic WebP/AVIF conversion at the server level. This avoids maintaining multiple file versions manually:</p>
+    <ul>
+      <li><strong>Cloudflare:</strong> Enable "Polish" in the Speed → Optimization panel. It auto-converts images to WebP on the CDN edge.</li>
+      <li><strong>WordPress:</strong> Plugins like ShortPixel, Imagify, or Smush convert and serve WebP automatically.</li>
+      <li><strong>Netlify/Vercel:</strong> Use image transformation APIs or edge functions to convert on request.</li>
+    </ul>
+
+    <div class="tip-box">
+      <strong>💡 Quick win:</strong> If you can't change your server setup, converting images manually with ImgSwift and re-uploading them as WebP files (while keeping JPG fallbacks in <code>&lt;picture&gt;</code> elements) achieves the same result.
+    </div>
+  </section>
+
+  <section class="article-section" id="properly-size">
+    <h2>Fix: Properly Size Images</h2>
+
+    <div class="audit-card">
+      <span class="audit-label">Audit: Properly size images</span>
+      <h3>Why it fires</h3>
+      <p>You're serving a 4000×3000 image in a 800×600 display slot. The browser downloads 25x more pixels than it renders, wasting bandwidth and slowing the page load.</p>
+      <div class="fix"><strong>Fix:</strong> Resize your images to match their display dimensions before uploading. Use the <a href="/resize-image/">ImgSwift resize tool</a> to set exact pixel dimensions.</div>
+    </div>
+
+    <h3>How to find the correct dimensions</h3>
+    <ol>
+      <li>Open Chrome DevTools (F12) and go to the Elements panel</li>
+      <li>Hover over the <code>&lt;img&gt;</code> element — the tooltip shows rendered size vs intrinsic size</li>
+      <li>Export the image at rendered size × 2 (for retina/HiDPI displays) using <a href="/resize-image/">ImgSwift Resize</a></li>
+    </ol>
+
+    <h3>Use srcset for responsive images</h3>
+    <pre>&lt;img
+  src="photo-800.webp"
+  srcset="photo-400.webp 400w, photo-800.webp 800w, photo-1600.webp 1600w"
+  sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
+  alt="Photo description"
+  width="800" height="533"
+&gt;</pre>
+    <p>This serves a 400px image to mobile users and a 1600px image to large desktop retina displays — each user gets exactly the resolution they need.</p>
+  </section>
+
+  <section class="article-section" id="lazy-loading">
+    <h2>Fix: Defer Offscreen Images (Lazy Loading)</h2>
+
+    <div class="audit-card">
+      <span class="audit-label warn">Audit: Defer offscreen images</span>
+      <h3>Why it fires</h3>
+      <p>Images below the visible viewport are downloaded immediately on page load, competing for bandwidth with above-the-fold content and delaying the LCP image.</p>
+      <div class="fix"><strong>Fix:</strong> Add <code>loading="lazy"</code> to all images that appear below the fold.</div>
+    </div>
+
+    <pre>&lt;!-- Above the fold (hero) — do NOT lazy load --&gt;
+&lt;img src="hero.webp" alt="Hero" width="1200" height="630" fetchpriority="high"&gt;
+
+&lt;!-- Below the fold — lazy load these --&gt;
+&lt;img src="card.webp" alt="Card image" width="400" height="300" loading="lazy"&gt;</pre>
+
+    <div class="warning-box">
+      <strong>⚠️ Critical:</strong> Never add <code>loading="lazy"</code> to your hero/LCP image. Lazy loading delays when the browser starts downloading the image, which directly worsens your LCP score. Apply it only to images that appear below the fold.
+    </div>
+  </section>
+
+  <section class="article-section" id="lcp-preload">
+    <h2>Fix: Slow LCP Image</h2>
+    <p>The Largest Contentful Paint (LCP) is usually the hero/banner image — the largest element visible when the page first loads. A slow LCP score (above 2.5 seconds) is the most common Core Web Vitals failure.</p>
+
+    <h3>Preload the LCP image</h3>
+    <p>Add a <code>&lt;link rel="preload"&gt;</code> in the <code>&lt;head&gt;</code> to tell the browser to start downloading the LCP image immediately, before it parses the rest of the page:</p>
+    <pre>&lt;link rel="preload" as="image" href="/hero.webp"
+  imagesrcset="/hero-400.webp 400w, /hero-800.webp 800w, /hero-1600.webp 1600w"
+  imagesizes="(max-width:600px) 400px, (max-width:1200px) 800px, 1600px"
+&gt;</pre>
+
+    <h3>Add fetchpriority="high"</h3>
+    <pre>&lt;img src="/hero.webp" alt="Hero" width="1200" height="630" fetchpriority="high"&gt;</pre>
+    <p>This signals to the browser that this image is the most important resource on the page. Use it on the LCP image only — applying it to multiple images reduces its effect.</p>
+
+    <div class="tip-box">
+      <strong>✅ Result:</strong> Preloading the LCP image and setting <code>fetchpriority="high"</code> typically reduces LCP by 0.3–1.5 seconds on image-heavy pages, which is often enough to move from "Needs improvement" to "Good".
+    </div>
+  </section>
+
+  <section class="article-section" id="cls">
+    <h2>Fix: Image-Caused Layout Shift (CLS)</h2>
+    <p>When a browser doesn't know an image's dimensions before it loads, the page reserves no space for it. When the image loads, the page jumps — this is a Cumulative Layout Shift (CLS) event, which harms both user experience and PageSpeed score.</p>
+
+    <h3>Always specify width and height</h3>
+    <pre>&lt;!-- Bad: no dimensions, page jumps when image loads --&gt;
+&lt;img src="photo.webp" alt="Photo"&gt;
+
+&lt;!-- Good: dimensions declared, browser reserves space --&gt;
+&lt;img src="photo.webp" alt="Photo" width="800" height="533"&gt;</pre>
+
+    <h3>Use CSS aspect-ratio as a fallback</h3>
+    <pre>img {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  height: auto;
+}</pre>
+    <p>The <code>aspect-ratio</code> property achieves the same space-reservation effect and works for responsive images where you can't hardcode pixel dimensions.</p>
+  </section>
+
+  <section class="article-section" id="impact">
+    <h2>Expected Score Improvement</h2>
+    <p>Here's a realistic breakdown of PageSpeed score gains from each image optimization on a typical blog or landing page:</p>
+    <ul>
+      <li><strong>Convert JPG → WebP:</strong> +5 to +15 points (proportional to image payload on the page)</li>
+      <li><strong>Resize to display dimensions:</strong> +5 to +20 points (biggest gain if images are severely oversized)</li>
+      <li><strong>Lazy loading below-fold images:</strong> +3 to +10 points</li>
+      <li><strong>Preload LCP image:</strong> +5 to +20 points (highest impact for LCP score specifically)</li>
+      <li><strong>Add width/height (fix CLS):</strong> +5 to +15 points (if CLS was the main failure)</li>
+    </ul>
+    <p>Combined, these optimizations regularly move pages from scores in the 40–60 range to 85–100 on mobile PageSpeed, where images are the primary bottleneck.</p>
+  </section>
+
+  <div class="cta-banner">
+    <h3>Start Optimizing Your Images</h3>
+    <p>Convert to WebP, resize to display dimensions, and compress — all free in your browser.</p>
+    <a href="/" class="cta-btn">Open ImgSwift →</a>
+  </div>
+
+  <section class="article-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q">What image format does Google PageSpeed recommend?</summary>
+        <p class="faq-a">PageSpeed Insights recommends WebP and AVIF under the "Serve images in next-gen formats" audit. WebP is ~30% smaller than JPG; AVIF is ~50% smaller at equivalent quality.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">How much can image optimization improve my PageSpeed score?</summary>
+        <p class="faq-a">For image-heavy pages, the combination of next-gen formats, proper sizing, and LCP preloading typically improves scores by 15–40 points. The exact gain depends on how large and numerous the images are.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">What does "Properly size images" mean in PageSpeed?</summary>
+        <p class="faq-a">It means you're serving an image at a higher resolution than it's displayed — wasting bandwidth. Fix it by resizing images to their display dimensions before uploading, and use srcset to serve different sizes to different screen widths.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Does lazy loading improve PageSpeed score?</summary>
+        <p class="faq-a">Yes for below-the-fold images. Never apply lazy loading to the LCP/hero image — it delays the LCP metric and hurts your score.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">How do I fix the LCP image score?</summary>
+        <p class="faq-a">Add <code>&lt;link rel="preload" as="image"&gt;</code> in the head and <code>fetchpriority="high"</code> on the LCP image element. Also ensure it's converted to WebP/AVIF and sized correctly. These combined changes typically reduce LCP by 0.5–1.5 seconds.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="article-section">
+    <h2>Related Tools &amp; Guides</h2>
+    <div class="related-grid">
+      <a href="/jpg-to-webp/" class="related-link">JPG → WebP</a>
+      <a href="/png-to-webp/" class="related-link">PNG → WebP</a>
+      <a href="/jpg-to-avif/" class="related-link">JPG → AVIF</a>
+      <a href="/resize-image/" class="related-link">Resize Image</a>
+      <a href="/compress-image/" class="related-link">Compress Image</a>
+      <a href="/how-to-optimize-images-for-core-web-vitals/" class="related-link">Core Web Vitals Guide</a>
+      <a href="/image-seo-checklist/" class="related-link">Image SEO Checklist</a>
+    </div>
+  </section>
+
+</main>
+
+<footer style="background:var(--surface);border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--muted);font-size:0.85rem;margin-top:48px;">
+  <div style="font-weight:800;font-size:1.1rem;color:var(--text);margin-bottom:10px;">Img<span style="background:linear-gradient(135deg,#4f8ef7,#7b5bf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Swift</span></div>
+  <p style="margin-bottom:8px;">Free image tools — all processing happens in your browser.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+    <a href="/" style="color:var(--muted);">Home</a>
+    <a href="/compress-image/" style="color:var(--muted);">Compress</a>
+    <a href="/jpg-to-webp/" style="color:var(--muted);">JPG→WebP</a>
+    <a href="/resize-image/" style="color:var(--muted);">Resize</a>
+  </div>
+</footer>
+
+
+<script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+</body>
+</html>

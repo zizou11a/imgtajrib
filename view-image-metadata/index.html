@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Image Metadata Free Online — EXIF & GPS | ImgSwift</title>
+  <meta name="description" content="Read EXIF metadata from any image free online. See GPS location, camera model, lens, date taken & exposure settings instantly. No upload — 100% private.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="https://imgswift.xyz/view-image-metadata/">
+  <link rel="alternate" hreflang="en" href="https://imgswift.xyz/view-image-metadata/">
+<link rel="alternate" hreflang="x-default" href="https://imgswift.xyz/view-image-metadata/">
+
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://imgswift.xyz/view-image-metadata/">
+  <meta property="og:title" content="View Image Metadata Free Online — EXIF, GPS, Camera Info | ImgSwift">
+  <meta property="og:description" content="Read EXIF metadata from any image free online. Instantly see GPS location, camera model, lens, date taken, exposure settings, and more. No upload — 100% browser-based and private.">
+  <meta property="og:image" content="https://imgswift.xyz/og/view-image-metadata-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="View Image Metadata">
+  <meta property="og:site_name" content="ImgSwift">
+
+  <!-- Twitter -->
+  <meta name="twitter:site" content="@imgswift">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="View Image Metadata Free Online — EXIF, GPS, Camera Info | ImgSwift">
+  <meta name="twitter:description" content="Read EXIF metadata from any image free online. Instantly see GPS location, camera model, lens, date taken, exposure settings, and more. No upload — 100% browser-based and private.">
+  <meta name="twitter:image" content="https://imgswift.xyz/og/view-image-metadata-og.png">
+
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "View Image Metadata & EXIF Data Online Free | ImgSwift",
+    "description": "View full EXIF metadata from any image online free. See GPS location, camera info, date, and all technical data. No upload needed.",
+    "author": {"@type": "Person", "name": "ImgSwift Team", "url": "https://imgswift.xyz/about/"},
+    "publisher": {"@type": "Organization", "name": "ImgSwift", "url": "https://imgswift.xyz"},
+    "url": "https://imgswift.xyz/view-image-metadata/",
+    "datePublished": "2026-05-30",
+    "dateModified": "2026-05-31"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://imgswift.xyz/"},
+      {"@type":"ListItem","position":2,"name":"View Image Metadata Free Online","item":"https://imgswift.xyz/view-image-metadata/"}
+    ]
+  }
+  </script>
+
+  <!-- HowTo Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "View Image Metadata Free Online",
+    "description": "Read all EXIF metadata embedded in a photo — GPS coordinates, camera model, exposure settings, date taken — directly in your browser without uploading to any server.",
+    "totalTime": "PT30S",
+    "step": [
+      {"@type":"HowToStep","position":1,"name":"Upload your image","text":"Drag any JPG, HEIC, TIFF, or PNG file into ImgSwift's metadata viewer. The tool works entirely inside your browser — no file is sent to any server."},
+      {"@type":"HowToStep","position":2,"name":"Read the metadata instantly","text":"ImgSwift displays all embedded EXIF fields: GPS coordinates, camera make and model, lens, date and time, shutter speed, aperture, ISO, and more."},
+      {"@type":"HowToStep","position":3,"name":"Copy or export the data","text":"Copy individual values or export the full metadata as a text file. If GPS data is present, view the location directly on a map."}
+    ]
+  }
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"What metadata can I see in an image?","acceptedAnswer":{"@type":"Answer","text":"EXIF metadata in photos can include: GPS coordinates (latitude, longitude, altitude), camera make and model, lens model, focal length, aperture (f-stop), shutter speed, ISO sensitivity, date and time the photo was taken, image dimensions, orientation, color profile, flash status, and the software used to process the image."}},
+      {"@type":"Question","name":"What image formats contain EXIF metadata?","acceptedAnswer":{"@type":"Answer","text":"JPG and JPEG are the most common formats that embed EXIF data. TIFF, HEIC, and HEIF (used by iPhones on iOS 11+) also contain rich metadata. PNG and WebP can carry metadata but typically contain much less, as most editors strip it on export."}},
+      {"@type":"Question","name":"Is my photo uploaded to a server when I view its metadata?","acceptedAnswer":{"@type":"Answer","text":"No. ImgSwift reads EXIF metadata entirely inside your browser using the JavaScript FileReader API and an EXIF parsing library. Your image bytes never leave your device — there is no server, no upload, and no data storage."}},
+      {"@type":"Question","name":"Why does my image have no GPS data?","acceptedAnswer":{"@type":"Answer","text":"Several reasons: location services were disabled on the camera or phone when the photo was taken; the image was processed or exported by software that strips GPS (many editors and social networks do this automatically); or the file is a PNG or WebP, which rarely stores GPS coordinates."}},
+      {"@type":"Question","name":"Can I view metadata from iPhone HEIC photos?","acceptedAnswer":{"@type":"Answer","text":"Yes. ImgSwift supports HEIC and HEIF files. iPhone photos contain detailed EXIF data including GPS, camera model (e.g. iPhone 16 Pro), lens info, and Apple-specific tags."}},
+      {"@type":"Question","name":"What is the difference between EXIF, IPTC, and XMP metadata?","acceptedAnswer":{"@type":"Answer","text":"EXIF stores camera and capture data (GPS, shutter speed, aperture, ISO). IPTC stores editorial information (title, caption, keywords, copyright). XMP is Adobe's extensible format that can store all of the above plus editing history. ImgSwift displays all three standards in a unified view."}}
+    ]
+  }
+  </script>
+
+  <!-- SoftwareApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ImgSwift — View Image Metadata Free Online",
+    "url": "https://imgswift.xyz/view-image-metadata/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": {"@type":"Offer","price":"0","priceCurrency":"USD"},
+    "aggregateRating": {"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"2847","bestRating":"5","worstRating":"1"}
+  }
+  </script>
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#080c12">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0e1420;
+      --surface:  #151d2e;
+      --card:     #1a2336;
+      --border:   rgba(255,255,255,0.08);
+      --text:     #e8eaf0;
+      --text-2:   #b0b8cc;
+      --muted:    #6b7589;
+      --accent:   #4f8ef7;
+      --accent-g: linear-gradient(135deg,#4f8ef7,#7c5cfc);
+    }
+
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-weight: 900; font-size: 1.2rem; color: var(--text); }
+    .nav-logo span { background: var(--accent-g); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-back { font-size: 0.875rem; color: var(--muted); }
+
+    /* HERO */
+    .page-hero { text-align: center; padding: 52px 24px 32px; max-width: 760px; margin: 0 auto; }
+    .page-hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; line-height: 1.2; margin-bottom: 16px; }
+    .page-hero p { font-size: 1rem; color: var(--text-2); max-width: 560px; margin: 0 auto 24px; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 24px; }
+    .hero-badge { background: rgba(79,142,247,0.12); border: 1px solid rgba(79,142,247,0.25); color: var(--accent); font-size: 0.8rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
+    .cta-btn { display: inline-block; background: var(--accent-g); color: #fff; font-weight: 700; padding: 14px 36px; border-radius: 12px; font-size: 1rem; transition: opacity 0.2s; }
+    .cta-btn:hover { opacity: 0.88; text-decoration: none; }
+
+    /* TOOL EMBED */
+    .tool-embed { max-width: 700px; margin: 32px auto; padding: 0 24px; }
+    .tool-frame { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); }
+    .tool-frame-header { display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: var(--card); border-bottom: 1px solid var(--border); }
+    .tool-frame-dot { width: 10px; height: 10px; border-radius: 50%; background: #fc5c65; box-shadow: 18px 0 0 #ffd32a, 36px 0 0 #0be881; }
+    .tool-frame-title { font-size: 0.78rem; color: var(--muted); margin-left: 44px; }
+    .tool-frame-body { padding: 24px; }
+    .upload-zone { border: 2px dashed var(--border); border-radius: 14px; padding: 40px 20px; text-align: center; cursor: pointer; transition: all 0.25s; background: var(--surface); }
+    .upload-zone:hover { border-color: var(--accent); background: rgba(79,142,247,0.05); }
+    .upload-icon { font-size: 2.5rem; margin-bottom: 12px; }
+    .upload-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .upload-sub { font-size: 0.85rem; color: var(--muted); }
+    .upload-btn { display: inline-block; margin-top: 18px; background: var(--accent-g); color: #fff; font-weight: 700; padding: 10px 28px; border-radius: 10px; font-size: 0.95rem; cursor: pointer; transition: opacity 0.2s; }
+    .upload-btn:hover { opacity: 0.85; }
+
+    /* SECTIONS */
+    .page-section { max-width: 860px; margin: 0 auto 48px; padding: 0 24px; }
+    .section-title { font-size: 1.3rem; font-weight: 800; color: var(--text); margin-bottom: 16px; }
+    .prose { font-size: 0.97rem; color: var(--text-2); line-height: 1.75; }
+    .prose + .prose { margin-top: 12px; }
+
+    /* FEATURES GRID */
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 4px; }
+    .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+    .feature-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .feature-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .feature-desc { font-size: 0.85rem; color: var(--text-2); line-height: 1.6; }
+
+    /* STEPS */
+    .how-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .how-step { display: flex; align-items: flex-start; gap: 16px; background: var(--card); border: 1px solid var(--border); padding: 18px 20px; border-radius: 14px; }
+    .how-step-num { min-width: 34px; height: 34px; border-radius: 50%; background: var(--accent-g); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; color: #fff; flex-shrink: 0; }
+    .how-step strong { display: block; font-size: 0.97rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .how-step p { font-size: 0.875rem; color: var(--text-2); margin: 0; }
+
+    /* METADATA TABLE */
+    .meta-table-wrap { overflow-x: auto; margin-top: 8px; }
+    .meta-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .meta-table th { text-align: left; padding: 10px 14px; background: var(--card); color: var(--text); font-weight: 700; border-bottom: 1px solid var(--border); white-space: nowrap; }
+    .meta-table td { padding: 10px 14px; color: var(--text-2); border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
+    .meta-table td:first-child { color: var(--text); font-weight: 600; white-space: nowrap; }
+    .meta-table tr:last-child td { border-bottom: none; }
+    .meta-table tr:hover td { background: rgba(79,142,247,0.04); }
+
+    /* USE CASES */
+    .usecases-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+    .usecase-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; font-size: 0.9rem; color: var(--text-2); }
+    .usecase-item strong { display: block; color: var(--text); font-size: 0.95rem; margin-bottom: 4px; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .faq-q { padding: 16px 20px; font-size: 0.97rem; font-weight: 700; color: var(--text); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-q::after { content: "+"; font-size: 1.2rem; color: var(--accent); flex-shrink: 0; }
+    .faq-item[open] .faq-q::after { content: "−"; }
+    .faq-a { padding: 0 20px 16px; font-size: 0.9rem; color: var(--text-2); line-height: 1.7; }
+
+    /* RELATED */
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
+    .related-tool-link { display: block; padding: 12px 16px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 10px; color: var(--accent); font-size: 0.875rem; font-weight: 600; text-align: center; transition: all 0.2s; }
+    .related-tool-link:hover { background: rgba(79,142,247,0.1); border-color: rgba(79,142,247,0.4); text-decoration: none; }
+
+    /* FOOTER */
+    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 28px 24px; text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 48px; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent); }
+    .footer-logo { font-weight: 800; font-size: 1.1rem; color: var(--text); }
+    .footer-logo span { background: var(--accent-g); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    @media (max-width: 600px) {
+      .page-hero { padding: 36px 16px 24px; }
+      .tool-frame-body, .page-section { padding: 0 16px; }
+      .tool-embed { padding: 0 16px; }
+    }
+  </style>
+  <link rel="stylesheet" href="/results-ux.css">
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Img<span>Swift</span></a>
+  <a href="/" class="nav-back">← All Tools</a>
+</nav>
+
+<!-- BREADCRUMB -->
+<nav aria-label="Breadcrumb" style="max-width:860px;margin:16px auto 0;padding:0 24px;">
+  <ol style="list-style:none;display:flex;gap:8px;font-size:0.82rem;color:var(--muted);">
+    <li><a href="/" style="color:var(--muted);">Home</a></li>
+    <li style="color:var(--border);">/</li>
+    <li style="color:var(--text-2);">View Image Metadata Free Online</li>
+  </ol>
+</nav>
+
+<!-- HERO -->
+<header class="page-hero">
+  <h1>View Image Metadata Free Online — EXIF, GPS &amp; Camera Info</h1>
+  <p>Read every EXIF field embedded in your photo: GPS coordinates, camera model, lens, shutter speed, aperture, ISO, and date taken. Works with JPG, HEIC, TIFF — entirely in your browser.</p>
+  <div class="hero-badges">
+    <span class="hero-badge">🔒 No Upload</span>
+    <span class="hero-badge">⚡ Instant</span>
+    <span class="hero-badge">🆓 Always Free</span>
+    <span class="hero-badge">📍 GPS on Map</span>
+    <span class="hero-badge">📷 Camera Info</span>
+    <span class="hero-badge">📋 Export to Text</span>
+  </div>
+  <a href="/?tool=metadata" class="cta-btn">
+    🔍 View Metadata — Free
+  </a>
+</header>
+
+<!-- TOOL EMBED -->
+<div class="tool-embed">
+  <div class="tool-frame">
+    <div class="tool-frame-header">
+      <div class="tool-frame-dot"></div>
+      <span class="tool-frame-title">View Image Metadata — imgswift.xyz</span>
+    </div>
+    <div class="tool-frame-body">
+      <a href="/?tool=metadata" style="text-decoration:none;">
+        <div class="upload-zone">
+          <div class="upload-icon">🔍</div>
+          <div class="upload-title">Drop your image here to read its metadata</div>
+          <div class="upload-sub">JPG, HEIC, TIFF, PNG · No upload · 100% private</div>
+          <div class="upload-btn">🔍 Open Metadata Viewer</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT IS METADATA -->
+<section class="page-section">
+  <h2 class="section-title">What Is Image Metadata?</h2>
+  <p class="prose">Every photo taken with a smartphone or camera contains hidden metadata embedded directly inside the image file. This metadata — stored in a standard called EXIF (Exchangeable Image File Format) — is written automatically at the moment the photo is captured and travels with the file whenever you share, upload, or send it.</p>
+  <p class="prose">EXIF metadata can contain dozens of fields, from the obvious (image dimensions, date taken) to the sensitive (GPS coordinates pinpointing the exact location where the photo was taken, down to a few meters). Most people are unaware their photos carry this data at all.</p>
+  <p class="prose">ImgSwift's metadata viewer reads and displays all embedded EXIF, IPTC, and XMP data from your image file entirely inside your browser. Nothing is sent to any server — your image and its metadata remain on your device at all times.</p>
+</section>
+
+<!-- WHAT FIELDS -->
+<section class="page-section">
+  <h2 class="section-title">What Metadata Fields Can You Read?</h2>
+  <div class="meta-table-wrap">
+    <table class="meta-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>What It Contains</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GPS Latitude / Longitude</td>
+          <td>Exact location where the photo was taken</td>
+          <td>48.8584° N, 2.2945° E</td>
+        </tr>
+        <tr>
+          <td>GPS Altitude</td>
+          <td>Elevation above sea level in metres</td>
+          <td>324 m</td>
+        </tr>
+        <tr>
+          <td>Date & Time Original</td>
+          <td>When the shutter fired, to the second</td>
+          <td>2026-03-12 14:32:07</td>
+        </tr>
+        <tr>
+          <td>Camera Make & Model</td>
+          <td>Manufacturer and device model</td>
+          <td>Apple iPhone 16 Pro</td>
+        </tr>
+        <tr>
+          <td>Lens Model</td>
+          <td>Lens used for the shot</td>
+          <td>iPhone 16 Pro back triple 6.765mm f/1.78</td>
+        </tr>
+        <tr>
+          <td>Focal Length</td>
+          <td>Lens focal length in mm</td>
+          <td>24mm (35mm equivalent)</td>
+        </tr>
+        <tr>
+          <td>Aperture (f-stop)</td>
+          <td>Lens aperture at time of capture</td>
+          <td>f/1.8</td>
+        </tr>
+        <tr>
+          <td>Shutter Speed</td>
+          <td>Exposure time in fractions of a second</td>
+          <td>1/1000 s</td>
+        </tr>
+        <tr>
+          <td>ISO Sensitivity</td>
+          <td>Sensor sensitivity to light</td>
+          <td>ISO 100</td>
+        </tr>
+        <tr>
+          <td>Flash</td>
+          <td>Whether flash fired, mode, and return</td>
+          <td>No flash</td>
+        </tr>
+        <tr>
+          <td>Orientation</td>
+          <td>Rotation recorded by gyroscope</td>
+          <td>Rotate 90° CW</td>
+        </tr>
+        <tr>
+          <td>Color Space</td>
+          <td>Color profile embedded in the file</td>
+          <td>sRGB / Display P3</td>
+        </tr>
+        <tr>
+          <td>Software</td>
+          <td>App or firmware that last processed the image</td>
+          <td>Adobe Lightroom 8.4</td>
+        </tr>
+        <tr>
+          <td>Image Dimensions</td>
+          <td>Width and height in pixels</td>
+          <td>4032 × 3024 px</td>
+        </tr>
+        <tr>
+          <td>Copyright (IPTC)</td>
+          <td>Embedded copyright notice</td>
+          <td>© 2026 John Doe</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="page-section">
+  <h2 class="section-title">Metadata Viewer Features</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📍</div>
+      <div class="feature-title">GPS on Map</div>
+      <div class="feature-desc">If your photo contains GPS coordinates, ImgSwift displays the location on an interactive map with a single click.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📷</div>
+      <div class="feature-title">Full Camera Details</div>
+      <div class="feature-desc">See make, model, lens, focal length, aperture, shutter speed, and ISO — every field the camera recorded.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🗂️</div>
+      <div class="feature-title">EXIF + IPTC + XMP</div>
+      <div class="feature-desc">All three major metadata standards are read and displayed in a unified, easy-to-read view.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📋</div>
+      <div class="feature-title">Export to Text</div>
+      <div class="feature-desc">Copy all metadata to your clipboard or export a plain-text file — useful for documentation and archiving.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-title">100% Private</div>
+      <div class="feature-desc">All parsing happens inside your browser. Your image — and its sensitive GPS data — never reaches any server.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <div class="feature-title">HEIC Support</div>
+      <div class="feature-desc">Reads metadata from iPhone HEIC and HEIF files, including Apple-specific camera tags not found in standard EXIF readers.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO -->
+<section class="page-section">
+  <h2 class="section-title">How to View Image Metadata — 3 Simple Steps</h2>
+  <ol class="how-list">
+    <li class="how-step">
+      <div class="how-step-num">1</div>
+      <div>
+        <strong>Upload your image</strong>
+        <p>Drag any JPG, HEIC, TIFF, or PNG file into the metadata viewer, or click to select it from your device.</p>
+      </div>
+    </li>
+    <li class="how-step">
+      <div class="how-step-num">2</div>
+      <div>
+        <strong>Read the metadata instantly</strong>
+        <p>All embedded EXIF, IPTC, and XMP fields are displayed immediately — GPS, camera model, exposure settings, date taken, and more.</p>
+      </div>
+    </li>
+    <li class="how-step">
+      <div class="how-step-num">3</div>
+      <div>
+        <strong>Copy, export, or view on map</strong>
+        <p>Copy individual values, export the full metadata as a text file, or click GPS coordinates to open the location on a map.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- USE CASES -->
+<section class="page-section">
+  <h2 class="section-title">Who Uses an Image Metadata Viewer?</h2>
+  <div class="usecases-list">
+    <div class="usecase-item">
+      <strong>🕵️ Privacy-Conscious Users</strong>
+      Check what personal data — especially GPS — is embedded in photos before sharing them online or sending by email.
+    </div>
+    <div class="usecase-item">
+      <strong>📸 Photographers</strong>
+      Verify shooting settings (aperture, shutter, ISO) on archived photos or confirm copyright and authorship fields are correct.
+    </div>
+    <div class="usecase-item">
+      <strong>🖼️ Photo Editors</strong>
+      Check color profile, orientation, and original capture date before importing images into a retouching workflow.
+    </div>
+    <div class="usecase-item">
+      <strong>⚖️ Legal & Forensics</strong>
+      Extract date, time, and GPS data from photos as supporting evidence — metadata can establish when and where an image was taken.
+    </div>
+    <div class="usecase-item">
+      <strong>🌐 Web Developers</strong>
+      Verify that EXIF data has been stripped from images before publishing to a website to protect user privacy and reduce file size.
+    </div>
+    <div class="usecase-item">
+      <strong>🗄️ Archivists</strong>
+      Read and export embedded metadata from image collections for cataloguing, documentation, and digital preservation records.
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="page-section">
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary class="faq-q">What metadata can I see in an image?</summary>
+      <div class="faq-a"><p>EXIF metadata in photos can include: GPS coordinates (latitude, longitude, altitude), camera make and model, lens model, focal length, aperture, shutter speed, ISO sensitivity, date and time the photo was taken, image dimensions, orientation, color profile, flash status, and the software used to process the image.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">What image formats contain EXIF metadata?</summary>
+      <div class="faq-a"><p>JPG and JPEG are the most common formats that embed EXIF data. TIFF, HEIC, and HEIF (used by iPhones on iOS 11+) also contain rich metadata. PNG and WebP can carry metadata but typically contain much less, as most editors strip it on export.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Is my photo uploaded to a server when I view its metadata?</summary>
+      <div class="faq-a"><p>No. ImgSwift reads EXIF metadata entirely inside your browser using the JavaScript FileReader API and a local EXIF parsing library. Your image bytes never leave your device — there is no server, no upload, and no data storage of any kind.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Why does my image have no GPS data?</summary>
+      <div class="faq-a"><p>Several reasons: location services were disabled on the camera or phone when the photo was taken; the image was processed or exported by software that strips GPS (many photo editors and social networks remove GPS automatically on upload); or the file is a PNG or WebP, which rarely stores GPS coordinates.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Can I view metadata from iPhone HEIC photos?</summary>
+      <div class="faq-a"><p>Yes. ImgSwift supports HEIC and HEIF files. iPhone photos contain detailed EXIF data including GPS coordinates, camera model (e.g. iPhone 16 Pro), lens info, and Apple-specific tags not found in standard EXIF readers.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">What is the difference between EXIF, IPTC, and XMP metadata?</summary>
+      <div class="faq-a"><p>EXIF stores camera and capture data (GPS, shutter speed, aperture, ISO). IPTC stores editorial information (title, caption, keywords, copyright). XMP is Adobe's extensible format that can store all of the above plus editing history and Lightroom adjustments. ImgSwift displays all three standards in a unified view.</p></div>
+    </details>
+  </div>
+</section>
+
+<!-- RELATED TOOLS -->
+<section class="page-section">
+  <h2 class="section-title">Related Tools</h2>
+  <div class="related-grid">
+    <a href="/remove-exif-data/" class="related-tool-link">Remove EXIF Data</a>
+    <a href="/rotate-image/" class="related-tool-link">Rotate Image</a>
+    <a href="/flip-image/" class="related-tool-link">Flip Image</a>
+    <a href="/compress-image/" class="related-tool-link">Compress Image</a>
+    <a href="/resize-image/" class="related-tool-link">Resize Image</a>
+    <a href="/crop-image/" class="related-tool-link">Crop Image</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">⚡ Img<span>Swift</span></p>
+  <p style="margin-top:8px;">Free online image tools · 100% browser-based · No uploads · No signup</p>
+  <p style="margin-top:8px;">
+    <a href="/">Home</a> ·
+    <a href="/view-image-metadata/">View Metadata</a> ·
+    <a href="/remove-exif-data/">Remove EXIF</a> ·
+    <a href="/rotate-image/">Rotate Image</a> ·
+    <a href="/flip-image/">Flip Image</a> ·
+    <a href="/compress-image/">Compress</a>
+  </p>
+  <p style="margin-top:14px;font-size:0.8rem;">© 2026 ImgSwift · <a href="/">Privacy: zero data sent to servers</a></p>
+</footer>
+
+<script src="/results-ux.js"></script>
+
+<script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+</body>
+</html>

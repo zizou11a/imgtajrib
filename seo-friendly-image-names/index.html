@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEO-Friendly Image Names: How to Name Image Files for Google in 2026 | ImgSwift</title>
+  <meta name="description" content="Learn how to name image files for SEO. Step-by-step rules for descriptive filenames, hyphens vs underscores, keywords, folder structure, and renaming bulk images — with 40+ real examples." />
+  <meta name="keywords" content="seo friendly image names, image file names seo, how to name images for seo, image filename best practices, rename images for seo, image seo 2026" />
+  <link rel="canonical" href="https://imgswift.xyz/seo-friendly-image-names/" />
+
+  <meta property="og:title" content="SEO-Friendly Image Names: How to Name Image Files for Google in 2026" />
+  <meta property="og:description" content="The complete guide to naming image files for SEO — with 40+ real examples, keyword rules, folder structure tips, and bulk rename scripts." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://imgswift.xyz/seo-friendly-image-names/" />
+  <meta property="og:image" content="https://imgswift.xyz/og/compress-image-og.png" />
+  <meta property="og:site_name" content="ImgSwift" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@imgswift" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://imgswift.xyz/"},
+      {"@type":"ListItem","position":2,"name":"SEO-Friendly Image Names","item":"https://imgswift.xyz/seo-friendly-image-names/"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "SEO-Friendly Image Names: How to Name Image Files for Google in 2026",
+    "description": "The complete guide to naming image files for SEO — with 40+ real examples, keyword rules, folder structure tips, and bulk rename scripts.",
+    "author": { "@type": "Organization", "name": "ImgSwift" },
+    "publisher": { "@type": "Organization", "name": "ImgSwift", "url": "https://imgswift.xyz" },
+    "datePublished": "2025-01-01",
+    "dateModified": "2026-06-01",
+    "mainEntityOfPage": "https://imgswift.xyz/seo-friendly-image-names/"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Does image filename affect SEO?","acceptedAnswer":{"@type":"Answer","text":"Yes. Google explicitly states that descriptive filenames help it understand image content. A filename like 'red-leather-sofa-living-room.jpg' gives Google context it uses for both Google Image Search ranking and as a supporting signal for the overall page."}},
+      {"@type":"Question","name":"Should I use hyphens or underscores in image filenames?","acceptedAnswer":{"@type":"Answer","text":"Always use hyphens. Google treats hyphens as word separators in URLs and filenames (so 'red-sofa' is read as two words: 'red' and 'sofa'). Underscores are treated as joiners, meaning 'red_sofa' is read as one word: 'red_sofa'."}},
+      {"@type":"Question","name":"How many keywords should I include in an image filename?","acceptedAnswer":{"@type":"Answer","text":"Use 3–5 words that naturally describe the image. Include your primary keyword if the image genuinely shows what that keyword refers to. Avoid stuffing multiple keywords into one filename — 'red-sofa-buy-sofa-cheap-sofa-online.jpg' is spam and Google ignores or penalizes it."}},
+      {"@type":"Question","name":"Does renaming existing images hurt SEO?","acceptedAnswer":{"@type":"Answer","text":"Renaming images can temporarily affect rankings as Google re-crawls the new URLs. To minimize disruption: set up 301 redirects from old image URLs to new ones, update all src and srcset references in your HTML, and update your sitemap. The long-term SEO benefit outweighs the short-term disruption."}},
+      {"@type":"Question","name":"Should image filenames match alt text?","acceptedAnswer":{"@type":"Answer","text":"They should be consistent, not identical. Both the filename and alt text should describe the same image, but they serve different purposes. The filename is a URL signal for crawlers; the alt text is a text fallback and accessibility description for users. A filename like 'nike-air-max-270-white.jpg' pairs well with alt text like 'Nike Air Max 270 in white, side view'."}},
+      {"@type":"Question","name":"What is the ideal image filename length?","acceptedAnswer":{"@type":"Answer","text":"Keep filenames under 60 characters (not counting the extension). 3–5 descriptive hyphenated words is the sweet spot. Shorter filenames are easier to maintain, less likely to be truncated in logs, and still give Google enough signal to understand the image."}}
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="/icon-192.png" type="image/png" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <style>
+    .article-wrap { max-width: 820px; margin: 0 auto; padding: 0 20px 80px; }
+
+    .breadcrumb-bar {
+      max-width: 820px; margin: 16px auto 0; padding: 0 20px;
+      font-size: 0.82rem; color: var(--muted);
+    }
+    .breadcrumb-bar ol { list-style: none; display: flex; gap: 8px; }
+    .breadcrumb-bar a { color: var(--muted); text-decoration: none; }
+    .breadcrumb-bar a:hover { color: var(--accent); }
+
+    .article-hero { max-width: 820px; margin: 0 auto; padding: 48px 20px 0; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(79,142,247,0.1); color: var(--accent);
+      font-size: 11px; font-weight: 700; padding: 5px 12px;
+      border-radius: 20px; margin-bottom: 20px;
+      text-transform: uppercase; letter-spacing: 0.6px;
+      border: 1px solid rgba(79,142,247,0.25);
+    }
+    .article-hero h1 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 900;
+      line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.5px;
+    }
+    .article-hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--accent), #7b5bf6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .article-subtitle { color: var(--text-2); font-size: 1.05rem; line-height: 1.75; margin-bottom: 20px; max-width: 680px; }
+    .article-meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.82rem; color: var(--muted); margin-bottom: 36px; }
+    .article-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--border); align-self: center; }
+
+    .toc { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px 26px; margin-bottom: 40px; }
+    .toc h2 { font-size: 0.82rem; font-weight: 800; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); }
+    .toc ol { margin: 0; padding-left: 20px; }
+    .toc li { margin-bottom: 8px; }
+    .toc a { color: var(--text-2); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+    .toc a:hover { color: var(--accent); }
+
+    .article-section { margin-bottom: 52px; }
+    .article-section h2 {
+      font-size: 1.4rem; font-weight: 900; margin-bottom: 16px;
+      border-bottom: 1px solid var(--border); padding-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+    .article-section h3 { font-size: 1.05rem; font-weight: 800; margin: 28px 0 10px; color: var(--text); }
+    .article-section p { color: var(--text-2); line-height: 1.8; margin-bottom: 14px; font-size: 0.97rem; }
+    .article-section ul, .article-section ol { padding-left: 22px; margin-bottom: 20px; }
+    .article-section li { color: var(--text-2); margin-bottom: 10px; font-size: 0.95rem; line-height: 1.7; }
+    .article-section a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    .article-section strong { color: var(--text); }
+
+    hr.section-divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+    .callout { border-radius: 10px; padding: 16px 20px; margin: 20px 0; font-size: 0.9rem; line-height: 1.7; }
+    .callout-good  { background: rgba(45,212,160,0.08); border-left: 3px solid var(--green); }
+    .callout-bad   { background: rgba(248,113,113,0.08); border-left: 3px solid var(--red); }
+    .callout-info  { background: rgba(79,142,247,0.08); border-left: 3px solid var(--accent); }
+    .callout-tip   { background: rgba(245,158,11,0.08); border-left: 3px solid var(--yellow); }
+    .callout-label { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
+    .callout-good  .callout-label { color: var(--green); }
+    .callout-bad   .callout-label { color: var(--red); }
+    .callout-info  .callout-label { color: var(--accent); }
+    .callout-tip   .callout-label { color: var(--yellow); }
+    .callout p { margin: 0; color: var(--text-2); }
+    .callout code { background: rgba(255,255,255,0.08); padding: 1px 5px; border-radius: 3px; font-size: 0.85em; font-family: monospace; color: var(--text); }
+
+    /* Example grid */
+    .example-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+    @media (max-width: 600px) { .example-grid { grid-template-columns: 1fr; } }
+    .example-card { border-radius: 10px; padding: 16px; border: 1px solid var(--border); background: var(--card); }
+    .example-card.good { border-color: rgba(45,212,160,0.3); background: rgba(45,212,160,0.05); }
+    .example-card.bad  { border-color: rgba(248,113,113,0.3); background: rgba(248,113,113,0.05); }
+    .ex-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 8px; }
+    .example-card.good .ex-label { color: var(--green); }
+    .example-card.bad  .ex-label { color: var(--red); }
+    .example-card code { display: block; font-family: monospace; font-size: 0.82rem; background: rgba(255,255,255,0.06); padding: 8px 12px; border-radius: 6px; line-height: 1.6; word-break: break-all; margin-bottom: 8px; color: var(--text); }
+    .example-card p { font-size: 0.82rem; color: var(--text-2); margin: 0; line-height: 1.5; }
+
+    /* Table */
+    .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 10px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    thead { background: var(--card2); }
+    th { text-align: left; padding: 12px 16px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.4px; color: var(--text-2); white-space: nowrap; }
+    td { padding: 12px 16px; border-top: 1px solid var(--border); color: var(--text-2); vertical-align: top; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .tag { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; }
+    .tag-yes   { background: rgba(45,212,160,0.12); color: var(--green); }
+    .tag-no    { background: rgba(248,113,113,0.12); color: var(--red); }
+    .tag-maybe { background: rgba(245,158,11,0.12); color: var(--yellow); }
+    td code { background: rgba(255,255,255,0.07); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.82em; color: var(--text); }
+
+    /* Code block */
+    .code-wrap { margin: 20px 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--border2); }
+    .code-header { background: var(--card2); padding: 9px 18px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
+    .code-dots { display: flex; gap: 6px; }
+    .code-dots span { width: 10px; height: 10px; border-radius: 50%; }
+    .code-dots .d1 { background: #ff5f57; } .code-dots .d2 { background: #febc2e; } .code-dots .d3 { background: #28c840; }
+    .code-lang { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); }
+    .code-block { background: #0d1117; color: #e4e2df; padding: 18px 20px; font-family: monospace; font-size: 0.82rem; line-height: 1.75; overflow-x: auto; margin: 0; }
+    .cm { color: #5c7a5c; } .tc { color: #7bb8d4; } .at { color: #c9956a; } .vl { color: #98c379; } .kw { color: #c678dd; } .nm { color: #e5c07b; } .st { color: #61afef; }
+
+    /* Checklist */
+    .checklist { list-style: none; padding: 0; margin: 20px 0; }
+    .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.93rem; }
+    .checklist li:last-child { border-bottom: none; }
+    .ci { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0; margin-top: 2px; }
+    .ci-check { background: rgba(45,212,160,0.12); color: var(--green); }
+    .ci-x { background: rgba(248,113,113,0.12); color: var(--red); }
+
+    /* Stat cards */
+    .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 28px 0; }
+    @media (max-width: 600px) { .stat-row { grid-template-columns: 1fr; } }
+    .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 900; color: var(--accent); letter-spacing: -1px; display: block; margin-bottom: 5px; }
+    .stat-label { font-size: 0.8rem; color: var(--muted); line-height: 1.4; }
+
+    /* Filename anatomy card */
+    .anatomy-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 24px; margin: 24px 0;
+    }
+    .anatomy-card h4 { font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); margin-bottom: 18px; }
+    .anatomy-filename {
+      font-family: monospace; font-size: 1.1rem; font-weight: 700;
+      color: var(--text); background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border2); border-radius: 8px;
+      padding: 14px 18px; margin-bottom: 18px; word-break: break-all;
+      line-height: 1.6;
+    }
+    .anatomy-filename .p1 { color: #7bb8d4; }
+    .anatomy-filename .p2 { color: #98c379; }
+    .anatomy-filename .p3 { color: #e5c07b; }
+    .anatomy-filename .p4 { color: #c9956a; }
+    .anatomy-filename .sep { color: var(--muted); }
+    .anatomy-legend { display: flex; flex-wrap: wrap; gap: 12px; }
+    .legend-item { display: flex; align-items: center; gap: 7px; font-size: 0.8rem; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .legend-item span { color: var(--text-2); }
+
+    /* Industry examples grid */
+    .industry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+    @media (max-width: 600px) { .industry-grid { grid-template-columns: 1fr; } }
+    .industry-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px;
+    }
+    .industry-label {
+      font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.6px; color: var(--accent); margin-bottom: 10px;
+    }
+    .industry-card ul { list-style: none; padding: 0; margin: 0; }
+    .industry-card li { font-family: monospace; font-size: 0.78rem; color: var(--text-2); padding: 5px 0; border-bottom: 1px solid var(--border); line-height: 1.4; }
+    .industry-card li:last-child { border-bottom: none; }
+    .industry-card li::before { content: '→ '; color: var(--accent); }
+
+    /* FAQ */
+    .faq-list { margin: 0; padding: 0; list-style: none; }
+    .faq-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; overflow: hidden; background: var(--card); transition: border-color 0.2s; }
+    .faq-item[open] { border-color: var(--accent); }
+    .faq-q { padding: 16px 20px; font-size: 0.95rem; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--text); user-select: none; }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-q::after { content: '+'; font-size: 1.2rem; color: var(--accent); font-weight: 400; flex-shrink: 0; transition: transform 0.25s; }
+    .faq-item[open] .faq-q::after { transform: rotate(45deg); }
+    .faq-q:hover { color: var(--accent); }
+    .faq-a { padding: 0 20px 16px; font-size: 0.88rem; color: var(--text-2); line-height: 1.75; border-top: 1px solid var(--border); }
+    .faq-a p { padding-top: 12px; margin: 0; }
+    .faq-a code { background: rgba(255,255,255,0.08); padding: 1px 5px; border-radius: 3px; font-size: 0.85em; font-family: monospace; color: var(--text); }
+
+    /* CTA */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(79,142,247,0.1), rgba(123,91,246,0.1));
+      border: 1px solid rgba(79,142,247,0.3); border-radius: 16px;
+      padding: 32px; text-align: center; margin: 48px 0 0;
+    }
+    .cta-banner h3 { font-size: 1.2rem; font-weight: 900; margin-bottom: 10px; }
+    .cta-banner p { color: var(--text-2); margin-bottom: 18px; font-size: 0.92rem; }
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #4f8ef7, #7b5bf6);
+      color: #fff; font-weight: 800; font-size: 0.95rem;
+      padding: 12px 28px; border-radius: 10px; text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* Related */
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 10px; }
+    .related-link {
+      display: block; padding: 14px; background: var(--card);
+      border: 1px solid var(--border); border-radius: 10px;
+      color: var(--accent); font-size: 0.82rem; font-weight: 700;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .related-link:hover { border-color: var(--accent); background: rgba(79,142,247,0.08); }
+    .related-cat { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); margin-bottom: 5px; }
+    .related-title { color: var(--text); font-size: 0.85rem; line-height: 1.35; }
+
+    .link-card {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 18px;
+      text-decoration: none; color: inherit; margin: 24px 0;
+      transition: border-color 0.2s;
+    }
+    .link-card:hover { border-color: var(--accent); }
+    .link-card-icon { font-size: 22px; flex-shrink: 0; }
+    .link-card-text strong { display: block; color: var(--text); font-size: 0.9rem; font-weight: 700; margin-bottom: 2px; }
+    .link-card-text span { color: var(--muted); font-size: 0.8rem; }
+    .link-card-arrow { margin-left: auto; color: var(--accent); font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-icon">⚡</div>
+    Img<span>Swift</span>
+  </a>
+  <div style="display:flex;gap:8px;align-items:center;">
+    <a href="/" style="font-size:0.82rem;color:var(--muted);text-decoration:none;padding:6px 12px;border:1px solid var(--border);border-radius:8px;font-weight:700;transition:0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">← All Tools</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb-bar" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li style="color:var(--border);">/</li>
+    <li style="color:var(--text-2);">SEO-Friendly Image Names</li>
+  </ol>
+</nav>
+
+<!-- HERO -->
+<header class="article-hero">
+  <div class="hero-badge">🔍 Image SEO</div>
+  <h1>SEO-Friendly Image Names:<br><em>The Complete 2026 Guide</em></h1>
+  <p class="article-subtitle">
+    Your image filenames are a direct signal Google uses to rank your images — and most websites get them completely wrong. This guide covers every rule for naming image files for SEO, with 40+ real-world examples across every industry, plus scripts to bulk-rename existing images without breaking your site.
+  </p>
+  <div class="article-meta">
+    <span>By ImgSwift Team</span>
+    <div class="dot"></div>
+    <span>Updated June 2026</span>
+    <div class="dot"></div>
+    <span>13 min read</span>
+    <div class="dot"></div>
+    <span>~3,000 words</span>
+  </div>
+</header>
+
+<!-- ARTICLE BODY -->
+<div class="article-wrap">
+
+  <!-- TOC -->
+  <nav class="toc" aria-label="Table of contents">
+    <h2>📖 In This Guide</h2>
+    <ol>
+      <li><a href="#why-filenames-matter">Why Image Filenames Matter for SEO</a></li>
+      <li><a href="#golden-rules">The 6 Golden Rules of SEO Image Naming</a></li>
+      <li><a href="#hyphens-vs-underscores">Hyphens vs. Underscores: The Definitive Answer</a></li>
+      <li><a href="#anatomy">Anatomy of a Perfect Image Filename</a></li>
+      <li><a href="#by-industry">Examples by Industry — 40+ Real Filenames</a></li>
+      <li><a href="#filename-vs-alt">Filename vs. Alt Text: How They Work Together</a></li>
+      <li><a href="#folder-structure">Folder Structure and URL Path SEO</a></li>
+      <li><a href="#renaming">Renaming Existing Images Without Breaking SEO</a></li>
+      <li><a href="#bulk-rename">Bulk Rename Scripts (Bash, Python, Node)</a></li>
+      <li><a href="#checklist">Image Filename SEO Checklist</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </nav>
+
+  <!-- STATS -->
+  <div class="stat-row">
+    <div class="stat-card">
+      <span class="stat-num">22.6%</span>
+      <div class="stat-label">Of all US web searches happen on Google Images (SparkToro)</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">~65%</span>
+      <div class="stat-label">Of product pages use generic filenames like IMG_4872.jpg</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">3–5</span>
+      <div class="stat-label">Words — the ideal image filename length for SEO</div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 1 -->
+  <section class="article-section" id="why-filenames-matter">
+    <h2>1. Why Image Filenames Matter for SEO</h2>
+
+    <p>Google's own documentation states that <strong>"the filename can give Google clues about the subject matter of the image."</strong> This isn't a minor hint — filenames are one of the explicit signals Google uses to understand and rank images in both Google Image Search and standard web search.</p>
+
+    <p>When Google crawls your page, it looks at several signals to understand each image: the filename, the <code>alt</code> attribute, the surrounding text, the page title, and structured data. The filename is the first signal in the chain — it's visible in the image URL before any page content is rendered.</p>
+
+    <div class="callout callout-info">
+      <div class="callout-label">💡 The Full Image SEO Signal Stack</div>
+      <p>Filename → Alt text → Surrounding body text → Image caption → Page title/H1 → Structured data (ImageObject). All signals reinforce each other. A great filename paired with weak alt text still underperforms versus both being well-optimized.</p>
+    </div>
+
+    <h3>What You're Losing with Generic Filenames</h3>
+    <p>A filename like <code>IMG_4872.jpg</code> or <code>photo-1.png</code> tells Google absolutely nothing. You're throwing away a free, permanent optimization signal on every single image. For an e-commerce site with 5,000 product images, that's 5,000 missed ranking opportunities.</p>
+
+    <p>Google Image Search drives real commercial traffic — especially for product, recipe, and how-to content. A well-named image can rank independently of the parent page and bring in visitors who never would have found the page through regular search.</p>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 2 -->
+  <section class="article-section" id="golden-rules">
+    <h2>2. The 6 Golden Rules of SEO Image Naming</h2>
+
+    <ul class="checklist">
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Be descriptive — describe what's actually in the image.</strong> The filename should tell Google (and humans reading the URL) what the image shows. Think: what would you type into Google Images to find this picture?</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Use hyphens to separate words.</strong> <code>red-leather-sofa.jpg</code> — not underscores, not spaces, not camelCase. Hyphens are the only word separator Google reads correctly in filenames.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Use all lowercase.</strong> URLs are case-sensitive on most servers. <code>Red-Sofa.jpg</code> and <code>red-sofa.jpg</code> are different files. Lowercase prevents 404 errors and duplicate content issues.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Include your target keyword naturally.</strong> If the image genuinely shows what the keyword describes, include it. Don't force keywords onto images that don't depict them — Google can verify via its computer vision.</div>
+      </li>
+      <li>
+        <span class="ci ci-x">✗</span>
+        <div><strong>Never keyword-stuff.</strong> <code>buy-cheap-red-sofa-online-discount-sofa-sale.jpg</code> is spam. Google ignores over-stuffed filenames and may penalize the page. 3–5 words is the limit.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Keep it under 60 characters (not counting the extension).</strong> Short, specific filenames are easier to maintain, less likely to be truncated in logs and analytics, and signal clarity to Google.</div>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 3 -->
+  <section class="article-section" id="hyphens-vs-underscores">
+    <h2>3. Hyphens vs. Underscores: The Definitive Answer</h2>
+
+    <p>This is one of the most common questions in image SEO — and it has a clear, documented answer.</p>
+
+    <div class="example-grid">
+      <div class="example-card good">
+        <div class="ex-label">✓ Hyphens — Correct</div>
+        <code>red-leather-sofa.jpg</code>
+        <p>Google reads this as three separate words: <strong>red</strong>, <strong>leather</strong>, <strong>sofa</strong>. All three are indexable keywords.</p>
+      </div>
+      <div class="example-card bad">
+        <div class="ex-label">✗ Underscores — Wrong</div>
+        <code>red_leather_sofa.jpg</code>
+        <p>Google reads this as <strong>one word</strong>: "red_leather_sofa". None of the individual terms are separately indexed.</p>
+      </div>
+    </div>
+
+    <p>Google's John Mueller has confirmed this multiple times: hyphens are treated as word separators in URLs; underscores are treated as word joiners. This applies to both page URLs and image filenames.</p>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">💡 What About Spaces?</div>
+      <p>Spaces in filenames get URL-encoded to <code>%20</code> — so <code>red leather sofa.jpg</code> becomes <code>red%20leather%20sofa.jpg</code> in the browser. While this technically works, it makes filenames fragile, breaks in some tools, and looks unprofessional. Always use hyphens.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Separator</th><th>Google reads as</th><th>Recommendation</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>red-sofa.jpg</code></td><td>"red" + "sofa" (2 words)</td><td><span class="tag tag-yes">Use This</span></td></tr>
+          <tr><td><code>red_sofa.jpg</code></td><td>"red_sofa" (1 word)</td><td><span class="tag tag-no">Avoid</span></td></tr>
+          <tr><td><code>redSofa.jpg</code></td><td>"redSofa" (1 word)</td><td><span class="tag tag-no">Avoid</span></td></tr>
+          <tr><td><code>red sofa.jpg</code></td><td>"red" + "sofa" (encoded as %20)</td><td><span class="tag tag-maybe">Avoid</span></td></tr>
+          <tr><td><code>RedSofa.jpg</code></td><td>"RedSofa" (case-sensitive risk)</td><td><span class="tag tag-no">Avoid</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 4 -->
+  <section class="article-section" id="anatomy">
+    <h2>4. Anatomy of a Perfect Image Filename</h2>
+
+    <p>A well-structured image filename follows a consistent pattern: <strong>subject → descriptor → context → variant</strong>. Not every image needs all four parts — but understanding each one helps you write better filenames faster.</p>
+
+    <div class="anatomy-card">
+      <h4>Filename anatomy</h4>
+      <div class="anatomy-filename">
+        <span class="p1">nike-air-max-270</span><span class="sep">-</span><span class="p2">white-volt</span><span class="sep">-</span><span class="p3">side-view</span><span class="sep">.</span><span class="p4">webp</span>
+      </div>
+      <div class="anatomy-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#7bb8d4;"></div><span><strong>Subject</strong> — the primary item shown</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background:#98c379;"></div><span><strong>Descriptor</strong> — color, size, material, variant</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background:#e5c07b;"></div><span><strong>Context</strong> — angle, use, location, type</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background:#c9956a;"></div><span><strong>Extension</strong> — lowercase, modern format</span></div>
+      </div>
+    </div>
+
+    <h3>More Anatomy Examples</h3>
+    <div class="example-grid">
+      <div class="example-card good">
+        <div class="ex-label">✓ E-commerce</div>
+        <code>linen-duvet-cover-king-white.webp</code>
+        <p>Product → material → variant → size → color</p>
+      </div>
+      <div class="example-card good">
+        <div class="ex-label">✓ Food / Recipe</div>
+        <code>sourdough-bread-sliced-overhead.webp</code>
+        <p>Subject → state → angle — all indexable terms</p>
+      </div>
+      <div class="example-card good">
+        <div class="ex-label">✓ Real Estate</div>
+        <code>open-plan-kitchen-brooklyn-apartment.webp</code>
+        <p>Room type → style → location — great for local SEO</p>
+      </div>
+      <div class="example-card good">
+        <div class="ex-label">✓ Software / UI</div>
+        <code>imgswift-compress-image-dashboard.webp</code>
+        <p>Brand → feature → page type — brand + keyword</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 5 -->
+  <section class="article-section" id="by-industry">
+    <h2>5. Examples by Industry — 40+ Real Filenames</h2>
+
+    <p>Different industries need different filename strategies. Here's how to apply the rules across the most common use cases.</p>
+
+    <div class="industry-grid">
+      <div class="industry-card">
+        <div class="industry-label">🛒 E-Commerce</div>
+        <ul>
+          <li>nike-air-max-270-white-mens.webp</li>
+          <li>leather-crossbody-bag-tan-small.webp</li>
+          <li>standing-desk-oak-120cm-front.webp</li>
+          <li>ceramic-pour-over-coffee-set.webp</li>
+          <li>mens-wool-coat-navy-size-l.webp</li>
+        </ul>
+      </div>
+      <div class="industry-card">
+        <div class="industry-label">🍕 Food & Recipe</div>
+        <ul>
+          <li>classic-margherita-pizza-overhead.webp</li>
+          <li>sourdough-starter-day-5-bubbling.webp</li>
+          <li>grilled-salmon-lemon-herb-plate.webp</li>
+          <li>matcha-latte-iced-glass.webp</li>
+          <li>chocolate-lava-cake-plated.webp</li>
+        </ul>
+      </div>
+      <div class="industry-card">
+        <div class="industry-label">🏠 Real Estate</div>
+        <ul>
+          <li>open-plan-kitchen-brooklyn-apt.webp</li>
+          <li>master-bedroom-walk-in-closet.webp</li>
+          <li>rooftop-terrace-manhattan-view.webp</li>
+          <li>scandinavian-living-room-fireplace.webp</li>
+          <li>home-office-built-in-shelves.webp</li>
+        </ul>
+      </div>
+      <div class="industry-card">
+        <div class="industry-label">✈️ Travel</div>
+        <ul>
+          <li>santorini-sunset-oia-village.webp</li>
+          <li>kyoto-bamboo-forest-arashiyama.webp</li>
+          <li>amalfi-coast-cliffside-village.webp</li>
+          <li>machu-picchu-morning-fog.webp</li>
+          <li>bali-rice-terraces-ubud.webp</li>
+        </ul>
+      </div>
+      <div class="industry-card">
+        <div class="industry-label">💻 Software / SaaS</div>
+        <ul>
+          <li>dashboard-analytics-monthly-report.webp</li>
+          <li>onboarding-flow-step-2-invite.webp</li>
+          <li>mobile-app-dark-mode-home.webp</li>
+          <li>pricing-table-pro-plan.webp</li>
+          <li>api-documentation-code-example.webp</li>
+        </ul>
+      </div>
+      <div class="industry-card">
+        <div class="industry-label">💪 Health & Fitness</div>
+        <ul>
+          <li>deadlift-form-starting-position.webp</li>
+          <li>meal-prep-bowls-5-day-plan.webp</li>
+          <li>yoga-warrior-pose-outdoor.webp</li>
+          <li>foam-roller-upper-back-stretch.webp</li>
+          <li>hiit-workout-timer-phone.webp</li>
+        </ul>
+      </div>
+      <div class="industry-card">
+        <div class="industry-label">🏥 Medical / Health Info</div>
+        <ul>
+          <li>vitamin-d-supplement-capsules.webp</li>
+          <li>blood-pressure-monitor-home-use.webp</li>
+          <li>anatomy-shoulder-rotator-cuff.webp</li>
+          <li>sleep-hygiene-bedroom-routine.webp</li>
+          <li>healthy-plate-portion-guide.webp</li>
+        </ul>
+      </div>
+      <div class="industry-card">
+        <div class="industry-label">🏗️ B2B / Industrial</div>
+        <ul>
+          <li>cnc-machined-aluminum-part.webp</li>
+          <li>warehouse-racking-system-heavy.webp</li>
+          <li>forklift-operator-safety-training.webp</li>
+          <li>industrial-conveyor-belt-system.webp</li>
+          <li>solar-panel-installation-roof.webp</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">💡 Pattern to Notice</div>
+      <p>Every good filename above answers: <em>what is it, what does it look like or where is it, and what context is it in?</em> If your filename answers all three in 3–5 words, it's a good filename.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 6 -->
+  <section class="article-section" id="filename-vs-alt">
+    <h2>6. Filename vs. Alt Text: How They Work Together</h2>
+
+    <p>Filenames and alt text are complementary, not redundant. They serve different purposes and are read by different systems at different times.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Signal</th><th>Read By</th><th>When</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Filename</strong></td><td>Google crawler, CDN logs, analytics</td><td>On crawl, before page renders</td><td>URL-level keyword signal for indexing</td></tr>
+          <tr><td><strong>Alt text</strong></td><td>Screen readers, Google, browser fallback</td><td>When page renders</td><td>Accessibility + contextual keyword signal</td></tr>
+          <tr><td><strong>Caption</strong></td><td>Sighted users, Google</td><td>When page renders</td><td>User-facing context, supports alt text</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>The Right Relationship Between Filename and Alt Text</h3>
+    <p>They should describe the same image from slightly different angles — consistent but not identical. The filename is a concise slug; the alt text can be more descriptive and human-readable.</p>
+
+    <div class="example-grid">
+      <div class="example-card good">
+        <div class="ex-label">✓ Consistent (Good)</div>
+        <code>nike-air-max-270-white.webp</code>
+        <p style="margin-top:8px;"><strong>alt=</strong> "Nike Air Max 270 in white colorway, side view on white background"</p>
+      </div>
+      <div class="example-card bad">
+        <div class="ex-label">✗ Contradictory (Bad)</div>
+        <code>IMG_9821.jpg</code>
+        <p style="margin-top:8px;"><strong>alt=</strong> "Nike Air Max 270 in white"<br>Filename gives zero signal — missed opportunity.</p>
+      </div>
+    </div>
+
+    <div class="example-grid">
+      <div class="example-card bad">
+        <div class="ex-label">✗ Identical (Redundant)</div>
+        <code>nike-air-max-270-white.webp</code>
+        <p style="margin-top:8px;"><strong>alt=</strong> "nike-air-max-270-white"<br>Alt text should be human-readable, not a slug copy.</p>
+      </div>
+      <div class="example-card good">
+        <div class="ex-label">✓ Complementary (Best)</div>
+        <code>sourdough-loaf-overhead.webp</code>
+        <p style="margin-top:8px;"><strong>alt=</strong> "Freshly baked sourdough loaf with scored crust, overhead shot on wooden board"</p>
+      </div>
+    </div>
+
+    <a href="/alt-text-best-practices/" class="link-card">
+      <div class="link-card-icon">📋</div>
+      <div class="link-card-text">
+        <strong>Alt Text Best Practices — The Complete Guide</strong>
+        <span>50+ real examples for every image type: products, charts, people, icons, and more.</span>
+      </div>
+      <div class="link-card-arrow">→</div>
+    </a>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 7 -->
+  <section class="article-section" id="folder-structure">
+    <h2>7. Folder Structure and URL Path SEO</h2>
+
+    <p>The folder path your image lives in is also part of its URL — and therefore also a signal. A well-organized image directory reinforces the filename's keyword signal.</p>
+
+    <div class="example-grid">
+      <div class="example-card bad">
+        <div class="ex-label">✗ Generic Structure</div>
+        <code>/images/IMG_4872.jpg</code>
+        <p>No context at any level. Folder and filename are both wasted signals.</p>
+      </div>
+      <div class="example-card good">
+        <div class="ex-label">✓ Semantic Structure</div>
+        <code>/images/sofas/red-leather-sofa-3-seater.webp</code>
+        <p>Category folder + descriptive filename = two levels of keyword context.</p>
+      </div>
+    </div>
+
+    <h3>Recommended Folder Structure by Site Type</h3>
+    <div class="code-wrap">
+      <div class="code-header">
+        <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <span class="code-lang">Directory Structure</span>
+      </div>
+      <pre class="code-block"><span class="cm"># E-commerce site</span>
+/images/
+  products/
+    sofas/
+      red-leather-sofa-3-seater-front.webp
+      red-leather-sofa-3-seater-side.webp
+    chairs/
+      ergonomic-office-chair-mesh-black.webp
+  blog/
+    how-to-clean-leather-sofa-steps.webp
+  brand/
+    logo-horizontal-white.svg
+
+<span class="cm"># Recipe / food blog</span>
+/images/
+  recipes/
+    pasta/
+      spaghetti-carbonara-plated-overhead.webp
+    desserts/
+      tiramisu-slice-espresso.webp
+  how-to/
+    pasta-dough-rolling-technique.webp</pre>
+    </div>
+
+    <div class="callout callout-info">
+      <div class="callout-label">💡 CDN and Image Path Strategy</div>
+      <p>If you use a CDN or image transformation service, ensure the <strong>canonical image URL</strong> (the one in your HTML <code>src</code> attribute and sitemap) reflects your semantic folder structure. CDN-specific paths like <code>cdn.example.com/f_auto,q_80/v1/products/img001.jpg</code> carry no keyword signal from the transformation parameters.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 8 -->
+  <section class="article-section" id="renaming">
+    <h2>8. Renaming Existing Images Without Breaking SEO</h2>
+
+    <p>Renaming images that are already indexed carries some risk — Google has to re-crawl and re-index the new URLs. Done correctly, the long-term SEO gain outweighs the short-term disruption.</p>
+
+    <h3>Step-by-Step Rename Protocol</h3>
+    <ol>
+      <li><strong>Audit first.</strong> Use Screaming Frog or a site crawl to get a full list of current image URLs. Export to a spreadsheet.</li>
+      <li><strong>Plan new names.</strong> Map each current filename to its new SEO-friendly name. Keep the extension the same for now (you can convert formats separately).</li>
+      <li><strong>Rename files on the server.</strong> Use a bulk rename script (see Section 9) to rename files and generate a redirect mapping simultaneously.</li>
+      <li><strong>Set up 301 redirects.</strong> For every renamed image, add a 301 redirect from the old URL to the new URL in your <code>.htaccess</code> (Apache) or Nginx config. This preserves any backlinks pointing to the old image URL.</li>
+      <li><strong>Update all src references.</strong> Search your HTML, CSS, and JS for every old filename and update to the new one. Don't rely only on redirects — update the source.</li>
+      <li><strong>Update your image sitemap.</strong> If you have an image sitemap (recommended), regenerate it with the new URLs.</li>
+      <li><strong>Request re-indexing.</strong> Submit your updated sitemap via Google Search Console. Use the URL Inspection tool on key pages to trigger faster re-crawling.</li>
+    </ol>
+
+    <div class="callout callout-bad">
+      <div class="callout-label">⚠ Don't Rename Everything at Once</div>
+      <p>If you have thousands of images, rename in batches of 200–500 at a time, spaced a few weeks apart. Mass URL changes can temporarily confuse Google's understanding of your site structure and cause brief ranking drops across unrelated pages.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 9 -->
+  <section class="article-section" id="bulk-rename">
+    <h2>9. Bulk Rename Scripts</h2>
+
+    <p>Manual renaming doesn't scale past a few dozen images. These scripts automate the process and output a redirect map as a side effect.</p>
+
+    <h3>Bash — Rename All JPEGs in a Folder</h3>
+    <div class="code-wrap">
+      <div class="code-header">
+        <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <span class="code-lang">Bash</span>
+      </div>
+      <pre class="code-block"><span class="cm">#!/bin/bash</span>
+<span class="cm"># Converts filenames to lowercase and replaces spaces/underscores with hyphens</span>
+<span class="cm"># Usage: ./rename-images.sh ./images/products</span>
+
+DIR=<span class="vl">"${1:-.}"</span>
+
+<span class="kw">find</span> <span class="st">"$DIR"</span> -type f \( -iname <span class="vl">"*.jpg"</span> -o -iname <span class="vl">"*.jpeg"</span> -o -iname <span class="vl">"*.png"</span> -o -iname <span class="vl">"*.webp"</span> \) | <span class="kw">while</span> <span class="nm">read</span> -r FILE; <span class="kw">do</span>
+  DIR_PATH=$(<span class="nm">dirname</span> <span class="st">"$FILE"</span>)
+  BASENAME=$(<span class="nm">basename</span> <span class="st">"$FILE"</span>)
+
+  <span class="cm"># Lowercase, replace spaces and underscores with hyphens</span>
+  NEWNAME=$(<span class="nm">echo</span> <span class="st">"$BASENAME"</span> | <span class="nm">tr</span> <span class="vl">'[:upper:]'</span> <span class="vl">'[:lower:]'</span> | <span class="nm">sed</span> <span class="vl">'s/[ _]/-/g'</span>)
+
+  <span class="kw">if</span> [ <span class="st">"$BASENAME"</span> != <span class="st">"$NEWNAME"</span> ]; <span class="kw">then</span>
+    <span class="nm">mv</span> <span class="st">"$DIR_PATH/$BASENAME"</span> <span class="st">"$DIR_PATH/$NEWNAME"</span>
+    <span class="cm"># Output redirect map: old → new</span>
+    <span class="nm">echo</span> <span class="vl">"Redirect 301 /images/$BASENAME /images/$NEWNAME"</span> >> redirects.conf
+  <span class="kw">fi</span>
+<span class="kw">done</span>
+
+<span class="nm">echo</span> <span class="vl">"Done. Redirects saved to redirects.conf"</span></pre>
+    </div>
+
+    <h3>Python — Rename with CSV Audit Log</h3>
+    <div class="code-wrap">
+      <div class="code-header">
+        <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <span class="code-lang">Python</span>
+      </div>
+      <pre class="code-block"><span class="kw">import</span> os, re, csv
+<span class="kw">from</span> pathlib <span class="kw">import</span> Path
+
+IMAGE_DIR = <span class="vl">"./images"</span>
+LOG_FILE  = <span class="vl">"rename-log.csv"</span>
+EXTS      = {<span class="vl">".jpg"</span>, <span class="vl">".jpeg"</span>, <span class="vl">".png"</span>, <span class="vl">".webp"</span>, <span class="vl">".gif"</span>}
+
+<span class="kw">def</span> <span class="nm">seo_name</span>(name: str) -> str:
+    name = name.lower()
+    name = re.sub(<span class="vl">r'[\s_]+'</span>, <span class="vl">'-'</span>, name)      <span class="cm"># spaces/underscores → hyphens</span>
+    name = re.sub(<span class="vl">r'[^a-z0-9\-\.]'</span>, <span class="vl">''</span>, name) <span class="cm"># strip special chars</span>
+    name = re.sub(<span class="vl">r'-{2,}'</span>, <span class="vl">'-'</span>, name)        <span class="cm"># collapse multiple hyphens</span>
+    <span class="kw">return</span> name
+
+<span class="kw">with</span> <span class="nm">open</span>(LOG_FILE, <span class="vl">'w'</span>, newline=<span class="vl">''</span>) <span class="kw">as</span> log:
+    writer = csv.writer(log)
+    writer.writerow([<span class="vl">"old_path"</span>, <span class="vl">"new_path"</span>, <span class="vl">"status"</span>])
+
+    <span class="kw">for</span> p <span class="kw">in</span> Path(IMAGE_DIR).rglob(<span class="vl">"*"</span>):
+        <span class="kw">if</span> p.suffix.lower() <span class="kw">not in</span> EXTS:
+            <span class="kw">continue</span>
+        new_name = seo_name(p.stem) + p.suffix.lower()
+        new_path = p.parent / new_name
+        <span class="kw">if</span> p.name == new_name:
+            writer.writerow([p, new_path, <span class="vl">"unchanged"</span>])
+            <span class="kw">continue</span>
+        p.rename(new_path)
+        writer.writerow([p, new_path, <span class="vl">"renamed"</span>])
+
+<span class="nm">print</span>(<span class="vl">f"Done. Audit log saved to {LOG_FILE}"</span>)</pre>
+    </div>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">💡 Dry Run First</div>
+      <p>Before running any rename script on production, test with a <strong>dry run</strong>: replace the <code>mv</code> / <code>p.rename()</code> call with a <code>print()</code> statement to preview all changes without modifying any files.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 10 — CHECKLIST -->
+  <section class="article-section" id="checklist">
+    <h2>10. Image Filename SEO Checklist</h2>
+
+    <ul class="checklist">
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Descriptive filename</strong> — 3–5 words that clearly describe what the image shows.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Hyphens as word separators</strong> — never underscores, spaces, or camelCase.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>All lowercase</strong> — prevents case-sensitivity 404s on Linux servers.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Target keyword included naturally</strong> — only if the image genuinely shows what the keyword describes.</div>
+      </li>
+      <li>
+        <span class="ci ci-x">✗</span>
+        <div><strong>No keyword stuffing</strong> — one core keyword, not five. No filler words like "buy", "cheap", "online".</div>
+      </li>
+      <li>
+        <span class="ci ci-x">✗</span>
+        <div><strong>No camera/generic filenames</strong> — no <code>IMG_4872.jpg</code>, <code>photo-1.png</code>, <code>screenshot.png</code>, or <code>image.jpg</code>.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Under 60 characters</strong> (not counting extension). If it's longer, it's probably over-described.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Modern format extension</strong> — <code>.webp</code> or <code>.avif</code> preferred; lowercase extension always.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Semantic folder structure</strong> — category-based subfolders reinforce the filename keyword signal.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Filename consistent with alt text</strong> — both describe the same image; neither is a copy of the other.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>301 redirects set</strong> for any renamed images that were previously indexed or linked.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Image sitemap updated</strong> after any bulk rename operation.</div>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 11 — FAQ -->
+  <section class="article-section" id="faq">
+    <h2>11. Frequently Asked Questions</h2>
+
+    <ul class="faq-list">
+      <li class="faq-item">
+        <details>
+          <summary class="faq-q">Does image filename affect SEO?</summary>
+          <div class="faq-a"><p>Yes. Google explicitly states that descriptive filenames help it understand image content. A filename like <code>red-leather-sofa-living-room.jpg</code> gives Google context it uses for both Google Image Search ranking and as a supporting signal for the overall page topic. It's a free, permanent optimization signal — most sites ignore it entirely.</p></div>
+        </details>
+      </li>
+      <li class="faq-item">
+        <details>
+          <summary class="faq-q">Should I use hyphens or underscores in image filenames?</summary>
+          <div class="faq-a"><p>Always use hyphens. Google treats hyphens as word separators in URLs and filenames — so <code>red-sofa</code> is read as two words: "red" and "sofa". Underscores are treated as joiners, meaning <code>red_sofa</code> is read as one word: "red_sofa". This is documented behavior confirmed by Google's John Mueller multiple times.</p></div>
+        </details>
+      </li>
+      <li class="faq-item">
+        <details>
+          <summary class="faq-q">How many keywords should I include in an image filename?</summary>
+          <div class="faq-a"><p>Use 3–5 words that naturally describe the image. Include your primary keyword if the image genuinely shows what that keyword refers to. Avoid stuffing multiple keywords into one filename — <code>red-sofa-buy-sofa-cheap-sofa-online.jpg</code> is spam and Google ignores or penalizes it.</p></div>
+        </details>
+      </li>
+      <li class="faq-item">
+        <details>
+          <summary class="faq-q">Does renaming existing images hurt SEO?</summary>
+          <div class="faq-a"><p>Renaming images can temporarily affect rankings as Google re-crawls the new URLs. To minimize disruption: set up 301 redirects from old image URLs to new ones, update all <code>src</code> and <code>srcset</code> references in your HTML, and update your image sitemap. The long-term SEO benefit of descriptive filenames outweighs the short-term crawl disruption for most sites.</p></div>
+        </details>
+      </li>
+      <li class="faq-item">
+        <details>
+          <summary class="faq-q">Should image filenames match alt text?</summary>
+          <div class="faq-a"><p>They should be consistent but not identical. Both the filename and alt text should describe the same image, but they serve different purposes. The filename is a URL-level signal for crawlers; the alt text is a human-readable description for users and screen readers. A filename like <code>nike-air-max-270-white.webp</code> pairs well with alt text like <code>Nike Air Max 270 in white, side view on white background</code>.</p></div>
+        </details>
+      </li>
+      <li class="faq-item">
+        <details>
+          <summary class="faq-q">What is the ideal image filename length?</summary>
+          <div class="faq-a"><p>Keep filenames under 60 characters (not counting the extension). 3–5 descriptive hyphenated words is the sweet spot. Shorter filenames are easier to maintain, less likely to be truncated in server logs and analytics tools, and still give Google enough signal to understand the image.</p></div>
+        </details>
+      </li>
+      <li class="faq-item">
+        <details>
+          <summary class="faq-q">Do image filenames matter more than alt text for SEO?</summary>
+          <div class="faq-a"><p>Both matter, and they work together. Alt text is generally considered a stronger SEO signal because it's a named HTML attribute specifically designed for image description. However, the filename is still a meaningful signal — and it's available before the page renders. Think of the filename as the foundation and alt text as the reinforcement. Optimizing both gives you the full signal stack.</p></div>
+        </details>
+      </li>
+      <li class="faq-item">
+        <details>
+          <summary class="faq-q">Should I include the product SKU or ID in the filename?</summary>
+          <div class="faq-a"><p>Only if the SKU is itself a searched term. For some B2B products, the model number or part number is exactly what buyers search — in that case, including it makes sense: <code>bosch-gbh-2-28f-rotary-hammer.webp</code>. For most consumer products, descriptive words perform better than internal IDs. Never use the SKU as the <em>only</em> identifier: <code>SKU-40291.jpg</code> gives Google nothing.</p></div>
+        </details>
+      </li>
+    </ul>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-banner">
+    <h3>Convert Images to WebP While Renaming</h3>
+    <p>Pair your new SEO-friendly filenames with modern formats. ImgSwift converts JPEG and PNG to WebP or AVIF in seconds — free, no signup, no upload limits.</p>
+    <a href="/" class="cta-btn">Convert Images Free →</a>
+  </div>
+
+  <!-- RELATED -->
+  <section style="margin-top:52px;">
+    <h2 style="font-size:1.1rem;font-weight:900;margin-bottom:6px;">Related Guides</h2>
+    <p style="color:var(--muted);font-size:0.85rem;margin-bottom:16px;">Complete your image SEO — every signal, optimized.</p>
+    <div class="related-grid">
+      <a href="/alt-text-best-practices/" class="related-link">
+        <div class="related-cat">SEO & Accessibility</div>
+        <div class="related-title">Alt Text Best Practices: The Complete 2026 Guide</div>
+      </a>
+      <a href="/lcp-image-optimization/" class="related-link">
+        <div class="related-cat">Performance</div>
+        <div class="related-title">LCP Image Optimization: Fix Largest Contentful Paint</div>
+      </a>
+      <a href="/image-optimization-checklist-for-websites/" class="related-link">
+        <div class="related-cat">Performance</div>
+        <div class="related-title">Image Optimization Checklist for Websites 2026</div>
+      </a>
+      <a href="/best-image-format-for-websites/" class="related-link">
+        <div class="related-cat">Formats</div>
+        <div class="related-title">Best Image Format for Websites in 2026</div>
+      </a>
+    </div>
+  </section>
+
+</div><!-- /article-wrap -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">Img<span>Swift</span></span>
+      <p>Free image tools — compress, convert, resize, and optimize images directly in your browser.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <strong>Tools</strong>
+        <a href="/compress-image/">Compress Image</a>
+        <a href="/resize-image/">Resize Image</a>
+        <a href="/jpg-to-webp/">JPG to WebP</a>
+        <a href="/png-to-avif/">PNG to AVIF</a>
+      </div>
+      <div class="footer-col">
+        <strong>Guides</strong>
+        <a href="/seo-friendly-image-names/">Image SEO Names</a>
+        <a href="/alt-text-best-practices/">Alt Text Guide</a>
+        <a href="/lcp-image-optimization/">LCP Optimization</a>
+        <a href="/lazy-loading-images-guide/">Lazy Loading</a>
+      </div>
+      <div class="footer-col">
+        <strong>Company</strong>
+        <a href="/terms-of-use/">Terms of Use</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 ImgSwift · Free Image Tools</div>
+</footer>
+
+</body>
+</html>

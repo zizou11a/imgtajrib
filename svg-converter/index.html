@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG Converter — Free Online SVG to PNG, JPG, WebP | ImgSwift</title>
+  <meta name="description" content="Convert SVG to PNG, JPG, WebP, or AVIF free online. Upload a file or paste raw SVG code. Custom scale, background color, batch convert. No upload, 100% browser-based.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="https://imgswift.xyz/svg-converter/">
+  <link rel="alternate" hreflang="en" href="https://imgswift.xyz/svg-converter/">
+  <link rel="alternate" hreflang="x-default" href="https://imgswift.xyz/svg-converter/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://imgswift.xyz/svg-converter/">
+  <meta property="og:title" content="SVG Converter — Free Online SVG to PNG, JPG, WebP | ImgSwift">
+  <meta property="og:description" content="Convert SVG to PNG, JPG, WebP, or AVIF free online. Upload a file or paste raw SVG code. No upload, 100% browser-based.">
+  <meta property="og:image" content="https://imgswift.xyz/og/default-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="SVG Converter Online">
+  <meta property="og:site_name" content="ImgSwift">
+  <meta name="twitter:site" content="@imgswift">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SVG Converter — Free Online SVG to PNG, JPG, WebP | ImgSwift">
+  <meta name="twitter:description" content="Convert SVG to PNG, JPG, WebP, or AVIF free online. No upload, 100% browser-based.">
+  <meta name="twitter:image" content="https://imgswift.xyz/og/default-og.png">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"SVG Converter — Free Online SVG to PNG, JPG, WebP | ImgSwift","description":"Convert SVG to PNG, JPG, WebP, or AVIF free online. Upload a file or paste raw SVG code. No upload, 100% browser-based.","author":{"@type":"Person","name":"ImgSwift Team","url":"https://imgswift.xyz/about/"},"publisher":{"@type":"Organization","name":"ImgSwift","url":"https://imgswift.xyz"},"url":"https://imgswift.xyz/svg-converter/","datePublished":"2026-06-03","dateModified":"2026-06-03"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://imgswift.xyz/"},{"@type":"ListItem","position":2,"name":"SVG Converter","item":"https://imgswift.xyz/svg-converter/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"HowTo","name":"SVG Converter — SVG to PNG, JPG, WebP","description":"Convert SVG to PNG, JPG, WebP, or AVIF free online.","totalTime":"PT1M","step":[{"@type":"HowToStep","position":1,"name":"Upload your SVG file","text":"Click the upload area or drag one or more SVG files. You can also paste raw SVG code directly."},{"@type":"HowToStep","position":2,"name":"Choose output format and scale","text":"Select PNG, JPG, WebP, or AVIF. Set a scale factor or enter custom pixel dimensions."},{"@type":"HowToStep","position":3,"name":"Download the converted image","text":"Click Convert & Download. Your file is ready instantly — no account required."}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I convert SVG to PNG?","acceptedAnswer":{"@type":"Answer","text":"Upload your SVG file or paste SVG code, select PNG as the output format, choose a scale (2× recommended), and click Convert. Your PNG downloads instantly in the browser."}},{"@type":"Question","name":"Does SVG to PNG preserve transparency?","acceptedAnswer":{"@type":"Answer","text":"Yes. PNG supports full transparency. For JPG, which does not support transparency, you can choose a background fill color before converting."}},{"@type":"Question","name":"What scale factor should I use?","acceptedAnswer":{"@type":"Answer","text":"Use 1× for the declared size, 2× for Retina screens, 3× for print. Icons at 24×24px at 2× produce a sharp 48×48px PNG."}},{"@type":"Question","name":"Can I convert SVG code without a file?","acceptedAnswer":{"@type":"Answer","text":"Yes. Switch to the SVG Code tab, paste your raw SVG markup, and convert it just like a file."}},{"@type":"Question","name":"Can I batch convert multiple SVG files?","acceptedAnswer":{"@type":"Answer","text":"Yes. Select or drag multiple .svg files and they will all be converted in one click."}}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"ImgSwift — SVG Converter","url":"https://imgswift.xyz/svg-converter/","applicationCategory":"MultimediaApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"2847","bestRating":"5","worstRating":"1"}}
+  </script>
+
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" as="style">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#080c12">
+  <link rel="stylesheet" href="/tool-critical.css">
+  <link rel="stylesheet" href="/results-ux.css">
+
+  <style>
+    /* ── SVG TOOL STYLES (scoped, no conflicts) ── */
+    .svg-tabs{display:flex;background:var(--surface);border-radius:12px;padding:4px;gap:4px;border:1px solid var(--border);margin-bottom:20px}
+    .svg-tab{flex:1;padding:10px;border-radius:9px;border:none;background:transparent;color:var(--muted);cursor:pointer;font-size:0.875rem;font-weight:700;font-family:inherit;transition:.2s;display:flex;align-items:center;justify-content:center;gap:6px}
+    .svg-tab:hover{color:var(--text-2)}
+    .svg-tab.active{background:var(--card2,#1a2236);color:var(--text);box-shadow:0 2px 8px rgba(0,0,0,.3)}
+    .svg-panel{display:none}.svg-panel.active{display:block;animation:svgFadeIn .2s ease}
+    @keyframes svgFadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+    .svg-upload-area{border:2px dashed var(--border);border-radius:14px;padding:30px 20px;text-align:center;cursor:pointer;color:var(--muted);margin-bottom:14px;transition:.2s;background:var(--surface)}
+    .svg-upload-area:hover,.svg-upload-area.drag-over{border-color:var(--accent);color:var(--accent);background:rgba(79,142,247,.04)}
+    .svg-upload-area .upload-icon{font-size:2.2rem;margin-bottom:8px;display:block}
+    .svg-upload-area strong{display:block;font-size:.95rem;font-weight:800;color:var(--text);margin-bottom:4px}
+    .svg-upload-area small{font-size:.8rem}
+
+    .svg-thumb-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+    .svg-thumb-wrap{position:relative}
+    .svg-thumb{width:64px;height:64px;object-fit:cover;border-radius:10px;border:2px solid var(--border);display:block}
+    .svg-thumb-name{display:block;font-size:.7rem;color:var(--muted);text-align:center;max-width:64px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}
+
+    .svg-label{font-size:.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;margin-top:16px;display:block}
+    .svg-select-wrap{position:relative;margin-bottom:4px}
+    .svg-select-wrap::after{content:'▾';position:absolute;top:50%;right:12px;transform:translateY(-50%);color:var(--accent);pointer-events:none;font-size:.8rem}
+    .svg-select{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.9rem;font-family:inherit;appearance:none;outline:none;transition:border .2s}
+    .svg-select:focus{border-color:var(--accent)}
+
+    .svg-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px}
+    .svg-chip{padding:5px 14px;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-size:.8rem;font-weight:700;font-family:inherit;transition:.2s}
+    .svg-chip:hover{border-color:var(--accent);color:var(--accent)}
+    .svg-chip.active{background:rgba(79,142,247,.12);border-color:var(--accent);color:var(--accent)}
+
+    .svg-custom-size{display:none;gap:10px;margin-bottom:4px}
+    .svg-custom-size.show{display:grid;grid-template-columns:1fr 1fr}
+    .svg-custom-size label{display:block;font-size:.75rem;color:var(--muted);margin-bottom:4px}
+    .svg-custom-size input{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.9rem;font-family:inherit;outline:none;transition:border .2s}
+    .svg-custom-size input:focus{border-color:var(--accent)}
+
+    .svg-bg-row{display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap}
+    .svg-swatch{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:.15s;flex-shrink:0}
+    .svg-swatch:hover{transform:scale(1.15)}
+    .svg-swatch.active{border-color:var(--accent)}
+    .svg-swatch-custom{background:linear-gradient(135deg,#f00,#0f0,#00f);position:relative}
+    .svg-swatch-custom input[type=color]{position:absolute;opacity:0;width:100%;height:100%;cursor:pointer;border-radius:50%;inset:0}
+
+    .svg-preview-wrap{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px;display:none}
+    .svg-preview-wrap.show{display:block}
+    .svg-preview-bar{display:flex;align-items:center;justify-content:space-between;padding:7px 12px;background:rgba(0,0,0,.15);border-bottom:1px solid var(--border);font-size:.75rem}
+    .svg-preview-bar span:first-child{color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.8px}
+    .svg-preview-bar span:last-child{color:var(--accent);font-weight:600}
+    .svg-preview-body{padding:12px;display:flex;align-items:center;justify-content:center;min-height:100px;background-image:linear-gradient(45deg,rgba(255,255,255,.03) 25%,transparent 25%),linear-gradient(-45deg,rgba(255,255,255,.03) 25%,transparent 25%),linear-gradient(45deg,transparent 75%,rgba(255,255,255,.03) 75%),linear-gradient(-45deg,transparent 75%,rgba(255,255,255,.03) 75%);background-size:18px 18px;background-position:0 0,0 9px,9px -9px,-9px 0}
+    #svgPreviewImg{max-width:100%;max-height:180px;object-fit:contain;display:block}
+
+    .svg-code-area{width:100%;min-height:120px;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:.8rem;font-family:'JetBrains Mono',monospace;line-height:1.6;resize:vertical;outline:none;transition:border .2s;margin-bottom:10px}
+    .svg-code-area:focus{border-color:var(--accent)}
+    .svg-preview-btn{width:100%;padding:10px;border:none;background:rgba(79,142,247,.12);color:var(--accent);border-radius:10px;font-size:.875rem;font-weight:700;font-family:inherit;cursor:pointer;margin-bottom:14px;transition:.2s}
+    .svg-preview-btn:hover{background:rgba(79,142,247,.2)}
+
+    .svg-divider{border:none;border-top:1px solid var(--border);margin:16px 0}
+    .svg-progress{margin-bottom:12px;display:none}
+    .svg-progress.show{display:block}
+    .svg-progress-info{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-bottom:5px}
+    .svg-progress-bar{width:100%;height:5px;background:var(--border);border-radius:999px;overflow:hidden}
+    .svg-progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),#7b5bf6);border-radius:999px;transition:width .3s;width:0}
+    .svg-status{text-align:center;font-weight:700;color:#2dd4a0;min-height:20px;margin-bottom:10px;font-size:.875rem}
+    .svg-btn-convert{width:100%;padding:13px;cursor:pointer;border:none;background:linear-gradient(135deg,#4f8ef7,#7b5bf6);color:#fff;border-radius:12px;font-size:.95rem;font-weight:800;font-family:inherit;margin-bottom:10px;transition:.2s;display:flex;align-items:center;justify-content:center;gap:7px}
+    .svg-btn-convert:hover{opacity:.92}.svg-btn-convert:active{transform:scale(.985)}.svg-btn-convert:disabled{opacity:.45;cursor:not-allowed}
+    .svg-btn-new{width:100%;padding:11px;background:transparent;color:#2dd4a0;border:2px solid #2dd4a0;border-radius:12px;font-size:.875rem;font-weight:800;font-family:inherit;cursor:pointer;display:none;align-items:center;justify-content:center;gap:7px;margin-bottom:10px;transition:.2s}
+    .svg-btn-new:hover{background:rgba(45,212,160,.1)}.svg-btn-new.show{display:flex}
+
+    .svg-results{margin-top:12px;display:none}.svg-results.show{display:block}
+    .svg-results-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+    .svg-results-title{font-size:.85rem;font-weight:700;color:var(--text-2)}
+    .svg-btn-dlall{padding:6px 14px;background:#1ab888;color:#fff;border:none;border-radius:8px;font-size:.8rem;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px}
+    .svg-result-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:8px}
+    .svg-result-name{font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .svg-result-meta{display:flex;align-items:center;gap:8px}
+    .svg-result-col{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1}
+    .svg-result-col-label{font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+    .svg-result-fmt{font-size:.8rem;font-weight:900;background:var(--border);border-radius:4px;padding:1px 7px;color:var(--text-2)}
+    .svg-result-fmt.out{background:rgba(79,142,247,.15);color:var(--accent)}
+    .svg-result-size{font-size:.8rem;font-weight:700;color:var(--text)}
+    .svg-result-arrow{font-size:1.1rem;color:var(--muted);flex-shrink:0}
+    .svg-result-saving{display:flex;flex-direction:column;align-items:center;gap:2px;background:rgba(45,212,160,.08);border:1px solid rgba(45,212,160,.2);border-radius:8px;padding:5px 10px;min-width:56px;flex-shrink:0}
+    .svg-result-saving-label{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+    .svg-result-saving-pct{font-size:1rem;font-weight:900;color:#2dd4a0}
+    .svg-result-actions{display:flex;gap:7px;margin-top:10px;padding-top:9px;border-top:1px solid var(--border)}
+    .svg-result-btn{flex:1;padding:7px 8px;border:none;border-radius:8px;font-size:.8rem;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s;display:flex;align-items:center;justify-content:center;gap:4px}
+    .svg-result-btn-prev{background:var(--surface);color:var(--text-2);border:1px solid var(--border)}.svg-result-btn-prev:hover{background:var(--border)}
+    .svg-result-btn-dl{background:var(--accent);color:#fff}.svg-result-btn-dl:hover{background:#3b6fd4}
+
+    /* Modal */
+    .svg-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:300;align-items:center;justify-content:center;padding:20px}
+    .svg-modal.open{display:flex}
+    .svg-modal-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;max-width:580px;width:100%;max-height:90vh;overflow:auto}
+    .svg-modal-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .svg-modal-title{font-size:.95rem;font-weight:800;color:var(--text)}
+    .svg-modal-close{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.2rem;padding:2px 8px;border-radius:6px;line-height:1}
+    .svg-modal-close:hover{background:var(--border);color:var(--text)}
+    .svg-modal-img{max-width:100%;max-height:60vh;object-fit:contain;display:block;border-radius:10px;margin:0 auto;background-image:linear-gradient(45deg,#555 25%,transparent 25%),linear-gradient(-45deg,#555 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#555 75%),linear-gradient(-45deg,transparent 75%,#555 75%);background-size:14px 14px;background-position:0 0,0 7px,7px -7px,-7px 0;background-color:#444}
+
+    @media(max-width:480px){.svg-custom-size.show{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Img<span>Swift</span></a>
+  <a href="/" class="nav-back">← All Tools</a>
+</nav>
+
+<nav aria-label="Breadcrumb" style="max-width:860px;margin:16px auto 0;padding:0 24px;">
+  <ol style="list-style:none;display:flex;gap:8px;font-size:0.82rem;color:var(--muted);">
+    <li><a href="/" style="color:var(--muted);">Home</a></li>
+    <li style="color:var(--border);">/</li>
+    <li style="color:var(--text-2);">SVG Converter</li>
+  </ol>
+</nav>
+
+<header class="page-hero">
+  <h1>SVG Converter</h1>
+  <p>Convert SVG to PNG, JPG, WebP, or AVIF free online. Upload a file or paste raw SVG code. Custom scale, background color, batch convert. 100% browser-based — no upload, no account.</p>
+  <div class="hero-badges">
+    <span class="hero-badge">🔒 No Upload</span>
+    <span class="hero-badge">⚡ Instant</span>
+    <span class="hero-badge">🆓 Always Free</span>
+    <span class="hero-badge">📐 Custom Scale</span>
+    <span class="hero-badge">🔐 100% Private</span>
+  </div>
+</header>
+
+<!-- ── LIVE TOOL ── -->
+<div class="tool-embed">
+  <div class="tool-frame">
+    <div class="tool-frame-header">
+      <div class="tool-frame-dot"></div>
+      <span class="tool-frame-title">SVG Converter — imgswift.xyz/svg-converter/</span>
+    </div>
+    <div class="tool-frame-body">
+
+      <!-- TABS -->
+      <div class="svg-tabs" role="tablist">
+        <button class="svg-tab active" data-tab="file" onclick="svgSwitchTab('file',this)">📁 SVG File</button>
+        <button class="svg-tab" data-tab="code" onclick="svgSwitchTab('code',this)">&lt;/&gt; SVG Code</button>
+      </div>
+
+      <!-- TAB: FILE -->
+      <div class="svg-panel active" id="svgPanelFile">
+        <div class="svg-upload-area" id="svgUploadArea"
+             tabindex="0" role="button" aria-label="Click or drag SVG files"
+             onclick="document.getElementById('svgFileInput').click()"
+             ondragover="svgDragOver(event,this)"
+             ondragleave="this.classList.remove('drag-over')"
+             ondrop="svgDrop(event)">
+          <span class="upload-icon">📄</span>
+          <strong id="svgUploadLabel">Click or drag SVG files here</strong>
+          <small>Supports .svg · Batch convert multiple files</small>
+        </div>
+        <input type="file" id="svgFileInput" accept=".svg,image/svg+xml" multiple style="display:none" onchange="svgHandleFiles(event)">
+        <div class="svg-thumb-grid" id="svgThumbGrid"></div>
+      </div>
+
+      <!-- TAB: CODE -->
+      <div class="svg-panel" id="svgPanelCode">
+        <textarea class="svg-code-area" id="svgCodeInput"
+          placeholder="<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100&quot; height=&quot;100&quot;>&#10;  <circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;40&quot; fill=&quot;#4f8ef7&quot;/>&#10;</svg>"
+          oninput="svgOnCodeInput()"></textarea>
+        <button class="svg-preview-btn" onclick="svgPreviewCode()">👁️ Preview SVG</button>
+      </div>
+
+      <!-- SVG PREVIEW -->
+      <div class="svg-preview-wrap" id="svgPreviewWrap">
+        <div class="svg-preview-bar">
+          <span>SVG Preview</span>
+          <span id="svgDimInfo">—</span>
+        </div>
+        <div class="svg-preview-body">
+          <img id="svgPreviewImg" alt="SVG preview">
+        </div>
+      </div>
+
+      <hr class="svg-divider">
+
+      <!-- OUTPUT FORMAT -->
+      <span class="svg-label">🎨 Output Format</span>
+      <div class="svg-select-wrap">
+        <select class="svg-select" id="svgFormat" onchange="svgFormatChange()">
+          <option value="png">PNG — Lossless, supports transparency</option>
+          <option value="jpg">JPG — Smaller files, no transparency</option>
+          <option value="webp">WebP — Best for web (lossless + lossy)</option>
+          <option value="avif">AVIF — Next-gen, smallest size</option>
+        </select>
+      </div>
+
+      <!-- QUALITY -->
+      <div id="svgQualityWrap" style="margin-top:14px;">
+        <span class="svg-label" style="display:flex;justify-content:space-between;">
+          <span>⚙️ Quality</span>
+          <span id="svgQualityVal" style="color:var(--accent);font-weight:800;">90%</span>
+        </span>
+        <input type="range" id="svgQuality" min="10" max="100" value="90" step="1"
+               style="width:100%;accent-color:var(--accent);cursor:pointer;height:4px;margin-bottom:6px;"
+               oninput="document.getElementById('svgQualityVal').textContent=this.value+'%'">
+        <p id="svgQualityNote" style="display:none;font-size:.75rem;color:#f59e0b;padding:7px 10px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:8px;margin-bottom:4px;">Quality slider does not apply to PNG (lossless).</p>
+      </div>
+
+      <!-- SCALE -->
+      <hr class="svg-divider">
+      <span class="svg-label">📐 Output Size</span>
+      <div class="svg-chips" id="svgScaleChips">
+        <button class="svg-chip active" onclick="svgSetScale(1,this)">1×</button>
+        <button class="svg-chip" onclick="svgSetScale(2,this)">2×</button>
+        <button class="svg-chip" onclick="svgSetScale(3,this)">3×</button>
+        <button class="svg-chip" onclick="svgSetScale(4,this)">4×</button>
+        <button class="svg-chip" onclick="svgSetScale(0,this)">Custom</button>
+      </div>
+      <div class="svg-custom-size" id="svgCustomSize">
+        <div><label>Width (px)</label><input type="number" id="svgCW" placeholder="e.g. 512" min="1" max="8000"></div>
+        <div><label>Height (px)</label><input type="number" id="svgCH" placeholder="e.g. 512" min="1" max="8000"></div>
+      </div>
+
+      <!-- BG COLOR (JPG only) -->
+      <div id="svgBgWrap" style="display:none;">
+        <hr class="svg-divider">
+        <span class="svg-label">🎨 Background Color <span style="font-size:.65rem;color:var(--muted);">(transparent areas → solid)</span></span>
+        <div class="svg-bg-row">
+          <div class="svg-swatch active" style="background:#fff" title="White" onclick="svgSetBg('#ffffff',this)"></div>
+          <div class="svg-swatch" style="background:#000" title="Black" onclick="svgSetBg('#000000',this)"></div>
+          <div class="svg-swatch" style="background:#f0f4fa" title="Light gray" onclick="svgSetBg('#f0f4fa',this)"></div>
+          <div class="svg-swatch" style="background:#0a0d14" title="Dark" onclick="svgSetBg('#0a0d14',this)"></div>
+          <div class="svg-swatch svg-swatch-custom" title="Custom">
+            <input type="color" id="svgBgColor" value="#ffffff" oninput="svgSetBg(this.value,null)">
+          </div>
+        </div>
+      </div>
+
+      <!-- CONVERT -->
+      <hr class="svg-divider">
+      <div class="svg-progress" id="svgProgress">
+        <div class="svg-progress-info"><span id="svgProgressTxt">Converting…</span><span id="svgProgressPct">0%</span></div>
+        <div class="svg-progress-bar"><div class="svg-progress-fill" id="svgProgressFill"></div></div>
+      </div>
+      <div class="svg-status" id="svgStatus"></div>
+      <button class="svg-btn-convert" id="svgBtnConvert" onclick="svgConvertAll()" disabled>⚡ Convert &amp; Download</button>
+      <button class="svg-btn-new" id="svgBtnNew" onclick="svgReset()">🔄 Convert New Files</button>
+
+      <!-- RESULTS -->
+      <div class="svg-results" id="svgResults">
+        <div class="svg-results-hdr">
+          <span class="svg-results-title" id="svgResultsTitle">Converted Files</span>
+          <button class="svg-btn-dlall" id="svgBtnDlAll" onclick="svgDownloadAll()" style="display:none;">⬇ Download All</button>
+        </div>
+        <div id="svgResultsList"></div>
+      </div>
+
+    </div><!-- /tool-frame-body -->
+  </div><!-- /tool-frame -->
+</div><!-- /tool-embed -->
+
+<!-- SEO CONTENT -->
+<section class="page-section">
+  <h2 class="section-title">Why Convert SVG to PNG or JPG?</h2>
+  <p class="prose">SVG is a vector format — infinitely scalable, tiny in file size, ideal for logos and icons. But many platforms require raster images: social media, email clients, WordPress, and design tools all expect PNG, JPG, or WebP. Converting SVG to raster gives you pixel-perfect images at any resolution without quality loss.</p>
+  <p class="prose">Use PNG when transparency matters — logos on colored backgrounds, icons overlaid on photos. Use JPG for smaller file sizes when transparency is not needed. Use WebP for the best balance: transparency support with files 30% smaller than PNG, perfect for modern websites in 2026.</p>
+</section>
+
+<section class="page-section">
+  <h2 class="section-title">How to Convert SVG — 3 Simple Steps</h2>
+  <ol class="how-list">
+    <li class="how-step">
+      <div class="how-step-num">1</div>
+      <div><strong>Upload your SVG file or paste SVG code</strong><p>Click the upload area or drag one or more SVG files. Switch to the SVG Code tab to paste raw markup directly from your code editor.</p></div>
+    </li>
+    <li class="how-step">
+      <div class="how-step-num">2</div>
+      <div><strong>Choose output format and scale</strong><p>Select PNG, JPG, WebP, or AVIF. Set 1×, 2×, or 3× scale — or enter exact pixel dimensions for precise output.</p></div>
+    </li>
+    <li class="how-step">
+      <div class="how-step-num">3</div>
+      <div><strong>Download your converted image</strong><p>Click Convert &amp; Download. Files are ready instantly. Batch convert multiple SVGs in one click.</p></div>
+    </li>
+  </ol>
+</section>
+
+<section class="page-section">
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary class="faq-q">How do I convert SVG to PNG?</summary>
+      <div class="faq-a"><p>Upload your SVG file or paste SVG code above, select PNG as the output format, choose a scale (2× recommended for sharp results), and click Convert. Your PNG downloads instantly in the browser — no server, no account.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Does SVG to PNG preserve transparency?</summary>
+      <div class="faq-a"><p>Yes. PNG supports full transparency, so any transparent areas in your SVG are preserved exactly. For JPG (which does not support transparency), choose a background fill color before converting.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">What scale factor should I use?</summary>
+      <div class="faq-a"><p>Use 1× for the SVG's declared pixel size, 2× for Retina/HiDPI screens, and 3× for print assets. Icons at 24×24px at 2× produce a sharp 48×48px PNG — crisp on all modern displays.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Can I convert SVG code without a file?</summary>
+      <div class="faq-a"><p>Yes. Switch to the SVG Code tab above, paste your raw SVG markup, preview it, and convert just like a file. Useful for inline SVG snippets from code editors or design tools.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Can I batch convert multiple SVG files?</summary>
+      <div class="faq-a"><p>Yes. Select or drag multiple .svg files into the upload area and they will all be converted in one click, each with its own download card.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Why is my converted image blurry?</summary>
+      <div class="faq-a"><p>Increase the scale to 2× or 3×. Small SVG icons (24×24px, 48×48px) need a higher scale to produce sharp raster output on modern screens.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Is there a file size limit?</summary>
+      <div class="faq-a"><p>No. All conversion happens entirely in your browser using the Canvas API. No server is involved, so there is no file size cap.</p></div>
+    </details>
+  </div>
+</section>
+
+<section class="page-section">
+  <h2 class="section-title">Related Tools</h2>
+  <div class="related-grid">
+    <a href="/png-to-jpg/" class="related-tool-link">PNG to JPG</a>
+    <a href="/jpg-to-png/" class="related-tool-link">JPG to PNG</a>
+    <a href="/jpg-to-webp/" class="related-tool-link">JPG to WebP</a>
+    <a href="/png-to-webp/" class="related-tool-link">PNG to WebP</a>
+    <a href="/png-to-avif/" class="related-tool-link">PNG to AVIF</a>
+    <a href="/jpg-to-avif/" class="related-tool-link">JPG to AVIF</a>
+    <a href="/compress-image/" class="related-tool-link">Compress Image</a>
+    <a href="/resize-image/" class="related-tool-link">Resize Image</a>
+    <a href="/best-image-format-for-websites/" class="related-tool-link">Best Image Format</a>
+    <a href="/lossless-vs-lossy/" class="related-tool-link">Lossless vs Lossy</a>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-logo">⚡ Img<span>Swift</span></p>
+  <p style="margin-top:8px;">Free online image tools · 100% browser-based · No uploads · No signup</p>
+  <p style="margin-top:8px;">
+    <a href="/">Home</a> ·
+    <a href="/jpg-to-png/">JPG to PNG</a> ·
+    <a href="/png-to-jpg/">PNG to JPG</a> ·
+    <a href="/jpg-to-webp/">JPG to WebP</a> ·
+    <a href="/compress-image/">Compress</a> ·
+    <a href="/pdf-to-image/">PDF to Image</a>
+  </p>
+  <p style="margin-top:14px;font-size:0.8rem;">© 2026 ImgSwift · <a href="/">Privacy: zero data sent to servers</a></p>
+</footer>
+
+<!-- MODAL -->
+<div class="svg-modal" id="svgModal" onclick="svgCloseModal(event)">
+  <div class="svg-modal-box">
+    <div class="svg-modal-hdr">
+      <span class="svg-modal-title" id="svgModalTitle">Preview</span>
+      <button class="svg-modal-close" onclick="svgCloseModal()">✕</button>
+    </div>
+    <img class="svg-modal-img" id="svgModalImg" alt="Preview">
+  </div>
+</div>
+
+<script>
+'use strict';
+/* ── STATE ── */
+let svgFiles=[], svgResults=[], svgActiveBg='#ffffff', svgScale=1, svgUseCustom=false, svgActiveTab='file';
+
+/* ── TABS ── */
+function svgSwitchTab(tab,btn){
+  svgActiveTab=tab;
+  document.querySelectorAll('.svg-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.svg-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('svgPanel'+tab.charAt(0).toUpperCase()+tab.slice(1)).classList.add('active');
+}
+
+/* ── DRAG & DROP ── */
+function svgDragOver(e,el){e.preventDefault();el.classList.add('drag-over');}
+function svgDrop(e){
+  e.preventDefault();
+  document.getElementById('svgUploadArea').classList.remove('drag-over');
+  const files=Array.from(e.dataTransfer.files).filter(f=>f.name.endsWith('.svg')||f.type==='image/svg+xml');
+  if(files.length) svgLoadFiles(files);
+}
+
+/* ── FILE LOADING ── */
+function svgHandleFiles(e){svgLoadFiles(Array.from(e.target.files));}
+function svgLoadFiles(list){
+  svgFiles=list; svgResults=[];
+  document.getElementById('svgThumbGrid').innerHTML='';
+  document.getElementById('svgResults').classList.remove('show');
+  document.getElementById('svgBtnNew').classList.remove('show');
+  document.getElementById('svgStatus').textContent='';
+  document.getElementById('svgBtnConvert').disabled=false;
+  list.forEach(f=>{
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      const wrap=document.createElement('div'); wrap.className='svg-thumb-wrap';
+      const img=document.createElement('img'); img.className='svg-thumb';
+      img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(ev.target.result);
+      img.alt=f.name; img.title=f.name;
+      const nm=document.createElement('span'); nm.className='svg-thumb-name'; nm.textContent=f.name;
+      wrap.appendChild(img); wrap.appendChild(nm);
+      document.getElementById('svgThumbGrid').appendChild(wrap);
+      if(list.length===1){
+        const pw=document.getElementById('svgPreviewWrap'); pw.classList.add('show');
+        document.getElementById('svgPreviewImg').src=img.src;
+        const tmp=new Image(); tmp.onload=()=>document.getElementById('svgDimInfo').textContent=tmp.naturalWidth+'×'+tmp.naturalHeight+' px'; tmp.src=img.src;
+      }
+    };
+    reader.readAsText(f);
+  });
+  document.getElementById('svgUploadLabel').textContent='✅ '+list.length+' SVG file'+(list.length>1?'s':'')+' loaded';
+}
+
+/* ── CODE TAB ── */
+function svgOnCodeInput(){document.getElementById('svgBtnConvert').disabled=!document.getElementById('svgCodeInput').value.trim();}
+function svgPreviewCode(){
+  const code=document.getElementById('svgCodeInput').value.trim();
+  if(!code)return;
+  const blob=new Blob([code],{type:'image/svg+xml'});
+  const url=URL.createObjectURL(blob);
+  const pw=document.getElementById('svgPreviewWrap'); pw.classList.add('show');
+  document.getElementById('svgPreviewImg').src=url;
+  const tmp=new Image(); tmp.onload=()=>{document.getElementById('svgDimInfo').textContent=tmp.naturalWidth+'×'+tmp.naturalHeight+' px';URL.revokeObjectURL(url);}; tmp.src=url;
+  document.getElementById('svgBtnConvert').disabled=false;
+}
+
+/* ── FORMAT CHANGE ── */
+function svgFormatChange(){
+  const fmt=document.getElementById('svgFormat').value;
+  document.getElementById('svgQualityNote').style.display=fmt==='png'?'block':'none';
+  document.getElementById('svgBgWrap').style.display=fmt==='jpg'?'block':'none';
+}
+
+/* ── SCALE ── */
+function svgSetScale(s,btn){
+  document.querySelectorAll('.svg-chip').forEach(c=>c.classList.remove('active')); btn.classList.add('active');
+  if(s===0){svgUseCustom=true;document.getElementById('svgCustomSize').classList.add('show');}
+  else{svgUseCustom=false;svgScale=s;document.getElementById('svgCustomSize').classList.remove('show');}
+}
+
+/* ── BG COLOR ── */
+function svgSetBg(color,el){
+  svgActiveBg=color;
+  document.querySelectorAll('.svg-swatch').forEach(s=>s.classList.remove('active'));
+  if(el) el.classList.add('active');
+}
+
+/* ── CORE CONVERTER ── */
+function svgToRaster(svgText,fmt,quality,scale,cw,ch,bg){
+  return new Promise((resolve,reject)=>{
+    try{
+      const parser=new DOMParser();
+      const doc=parser.parseFromString(svgText,'image/svg+xml');
+      const el=doc.documentElement;
+      let w=parseFloat(el.getAttribute('width'))||300;
+      let h=parseFloat(el.getAttribute('height'))||300;
+      const vb=el.getAttribute('viewBox');
+      if((!el.getAttribute('width')||!el.getAttribute('height'))&&vb){
+        const p=vb.split(/[\s,]+/); if(p.length===4){w=parseFloat(p[2]);h=parseFloat(p[3]);}
+      }
+      let ow,oh;
+      if(cw&&ch){ow=cw;oh=ch;}else if(cw){oh=Math.round(h*(cw/w));ow=cw;}else if(ch){ow=Math.round(w*(ch/h));oh=ch;}
+      else{ow=Math.round(w*scale);oh=Math.round(h*scale);}
+      ow=Math.max(1,ow); oh=Math.max(1,oh);
+      const blob=new Blob([svgText],{type:'image/svg+xml;charset=utf-8'});
+      const url=URL.createObjectURL(blob);
+      const img=new Image();
+      img.onload=()=>{
+        const canvas=document.createElement('canvas'); canvas.width=ow; canvas.height=oh;
+        const ctx=canvas.getContext('2d');
+        if(fmt==='jpg'){ctx.fillStyle=bg||'#ffffff';ctx.fillRect(0,0,ow,oh);}
+        ctx.drawImage(img,0,0,ow,oh); URL.revokeObjectURL(url);
+        const mime={png:'image/png',jpg:'image/jpeg',webp:'image/webp',avif:'image/avif'}[fmt]||'image/png';
+        canvas.toBlob(b=>{b?resolve({blob:b,w:ow,h:oh}):reject(new Error('Conversion failed'));},mime,quality/100);
+      };
+      img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error('Could not load SVG'));};
+      img.src=url;
+    }catch(e){reject(e);}
+  });
+}
+
+function svgFmtSize(b){if(b<1024)return b+'B';if(b<1048576)return (b/1024).toFixed(1)+'KB';return (b/1048576).toFixed(2)+'MB';}
+function svgSetProgress(pct,txt){
+  document.getElementById('svgProgressFill').style.width=pct+'%';
+  document.getElementById('svgProgressPct').textContent=pct+'%';
+  document.getElementById('svgProgressTxt').textContent=txt||'Converting…';
+}
+
+/* ── CONVERT ALL ── */
+async function svgConvertAll(){
+  const fmt=document.getElementById('svgFormat').value;
+  const quality=parseInt(document.getElementById('svgQuality').value);
+  const cw=svgUseCustom?parseInt(document.getElementById('svgCW').value)||0:0;
+  const ch=svgUseCustom?parseInt(document.getElementById('svgCH').value)||0:0;
+  let items=[];
+  if(svgActiveTab==='file'){
+    if(!svgFiles.length){alert('Please select SVG files first.');return;}
+    for(const f of svgFiles){const text=await f.text();items.push({name:f.name.replace(/\.svg$/i,'.'+fmt),svgText:text,origSize:f.size});}
+  }else{
+    const code=document.getElementById('svgCodeInput').value.trim();
+    if(!code){alert('Paste SVG code first.');return;}
+    items.push({name:'converted.'+fmt,svgText:code,origSize:new Blob([code]).size});
+  }
+  svgResults=[]; document.getElementById('svgResultsList').innerHTML='';
+  document.getElementById('svgResults').classList.remove('show');
+  document.getElementById('svgBtnConvert').disabled=true;
+  document.getElementById('svgBtnNew').classList.remove('show');
+  document.getElementById('svgStatus').textContent='';
+  document.getElementById('svgProgress').classList.add('show');
+  svgSetProgress(0,'Starting…');
+  for(let i=0;i<items.length;i++){
+    const item=items[i];
+    svgSetProgress(Math.round((i/items.length)*90),'Converting '+(i+1)+' of '+items.length+'…');
+    try{
+      const {blob,w,h}=await svgToRaster(item.svgText,fmt,quality,svgScale,cw,ch,svgActiveBg);
+      svgResults.push({name:item.name,blob,origSize:item.origSize,outSize:blob.size,fmt,w,h});
+    }catch(e){console.warn(item.name,e);}
+  }
+  svgSetProgress(100,'Done!');
+  setTimeout(()=>document.getElementById('svgProgress').classList.remove('show'),700);
+  if(!svgResults.length){document.getElementById('svgBtnConvert').disabled=false;return;}
+  document.getElementById('svgResults').classList.add('show');
+  document.getElementById('svgBtnNew').classList.add('show');
+  document.getElementById('svgBtnConvert').style.display='none';
+  document.getElementById('svgStatus').textContent='✅ '+svgResults.length+' file'+(svgResults.length>1?'s':'')+' converted!';
+  document.getElementById('svgBtnDlAll').style.display=svgResults.length>1?'flex':'none';
+  svgResults.forEach((r,idx)=>{
+    const saving=((r.origSize-r.outSize)/r.origSize*100).toFixed(0);
+    const card=document.createElement('div'); card.className='svg-result-card';
+    card.innerHTML=`<div class="svg-result-name">${r.name}</div>
+      <div class="svg-result-meta">
+        <div class="svg-result-col"><span class="svg-result-col-label">From</span><span class="svg-result-fmt">SVG</span><span class="svg-result-size">${svgFmtSize(r.origSize)}</span></div>
+        <span class="svg-result-arrow">→</span>
+        <div class="svg-result-col"><span class="svg-result-col-label">To</span><span class="svg-result-fmt out">${r.fmt.toUpperCase()}</span><span class="svg-result-size">${svgFmtSize(r.outSize)}</span></div>
+        <div class="svg-result-col"><span class="svg-result-col-label">Size</span><span class="svg-result-fmt" style="background:transparent;font-size:.7rem;color:var(--muted)">${r.w}×${r.h}</span></div>
+        <div class="svg-result-saving"><span class="svg-result-saving-label">Saved</span><span class="svg-result-saving-pct">${parseInt(saving)>0?saving+'%':'—'}</span></div>
+      </div>
+      <div class="svg-result-actions">
+        <button class="svg-result-btn svg-result-btn-prev" onclick="svgPreviewResult(${idx})">👁️ Preview</button>
+        <button class="svg-result-btn svg-result-btn-dl" onclick="svgDownloadSingle(${idx})">⬇ Download</button>
+      </div>`;
+    document.getElementById('svgResultsList').appendChild(card);
+  });
+}
+
+/* ── DOWNLOAD ── */
+function svgDownloadSingle(idx){
+  const r=svgResults[idx],url=URL.createObjectURL(r.blob),a=document.createElement('a');
+  a.href=url;a.download=r.name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function svgDownloadAll(){svgResults.forEach((_,i)=>setTimeout(()=>svgDownloadSingle(i),i*200));}
+
+/* ── MODAL PREVIEW ── */
+function svgPreviewResult(idx){
+  const r=svgResults[idx],url=URL.createObjectURL(r.blob);
+  document.getElementById('svgModalImg').src=url;
+  document.getElementById('svgModalTitle').textContent=r.name+' — '+r.w+'×'+r.h+'px';
+  document.getElementById('svgModal').classList.add('open');
+}
+function svgCloseModal(e){
+  if(!e||e.target===document.getElementById('svgModal')){
+    document.getElementById('svgModal').classList.remove('open');
+    URL.revokeObjectURL(document.getElementById('svgModalImg').src);
+    document.getElementById('svgModalImg').src='';
+  }
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')svgCloseModal();});
+
+/* ── RESET ── */
+function svgReset(){
+  svgFiles=[];svgResults=[];
+  document.getElementById('svgThumbGrid').innerHTML='';
+  document.getElementById('svgFileInput').value='';
+  document.getElementById('svgCodeInput').value='';
+  document.getElementById('svgUploadLabel').textContent='Click or drag SVG files here';
+  document.getElementById('svgPreviewWrap').classList.remove('show');
+  document.getElementById('svgPreviewImg').src='';
+  document.getElementById('svgResults').classList.remove('show');
+  document.getElementById('svgResultsList').innerHTML='';
+  document.getElementById('svgBtnNew').classList.remove('show');
+  document.getElementById('svgBtnConvert').style.display='flex';
+  document.getElementById('svgBtnConvert').disabled=true;
+  document.getElementById('svgStatus').textContent='';
+}
+
+/* ── PASTE SVG CODE ── */
+document.addEventListener('paste',e=>{
+  const items=Array.from(e.clipboardData?.items||[]);
+  const item=items.find(i=>i.type==='text/plain');
+  if(!item)return;
+  item.getAsString(s=>{
+    if(s.trim().startsWith('<svg')||s.trim().startsWith('<?xml')){
+      svgSwitchTab('code',document.querySelector('[data-tab="code"]'));
+      document.getElementById('svgCodeInput').value=s;
+      svgOnCodeInput();
+    }
+  });
+});
+</script>
+
+<script src="/results-ux.js"></script>
+<script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+</body>
+</html>

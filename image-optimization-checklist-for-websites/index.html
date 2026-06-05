@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Optimization Checklist for Websites 2026 | ImgSwift</title>
+  <meta name="description" content="20-step image optimization checklist for websites in 2026. Format selection, compression, lazy loading, alt text, CDN & Core Web Vitals — all covered.">
+  <meta name="keywords" content="image optimization checklist,website image optimization,optimize images website,image optimization steps,web image best practices 2026">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="https://imgswift.xyz/image-optimization-checklist-for-websites/">
+  <link rel="alternate" hreflang="en" href="https://imgswift.xyz/image-optimization-checklist-for-websites/">
+<link rel="alternate" hreflang="x-default" href="https://imgswift.xyz/image-optimization-checklist-for-websites/">
+
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://imgswift.xyz/image-optimization-checklist-for-websites/">
+  <meta property="og:title" content="Image Optimization Checklist for Websites 2026 — 20 Steps">
+  <meta property="og:description" content="20 actionable image optimization steps for websites: formats, compression, sizing, lazy loading, alt text, CDN, and Core Web Vitals.">
+  <meta property="og:image" content="https://imgswift.xyz/og/compress-image-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+  <meta property="og:site_name" content="ImgSwift">
+
+  <meta name="twitter:site" content="@imgswift">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Image Optimization Checklist for Websites 2026">
+  <meta name="twitter:image" content="https://imgswift.xyz/og/compress-image-og.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://imgswift.xyz/"},
+      {"@type":"ListItem","position":2,"name":"Image Optimization Checklist for Websites","item":"https://imgswift.xyz/image-optimization-checklist-for-websites/"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Image Optimization Checklist for Websites 2026 — 20 Steps",
+    "description": "A complete 20-step image optimization checklist for websites covering format, compression, responsive sizing, lazy loading, alt text, and Core Web Vitals.",
+    "url": "https://imgswift.xyz/image-optimization-checklist-for-websites/",
+    "publisher": {"@type":"Organization","name":"ImgSwift","url":"https://imgswift.xyz"},
+    "author": {"@type": "Person", "name": "ImgSwift Team", "url": "https://imgswift.xyz/about/"},
+    "datePublished": "2026-05-30",
+    "dateModified": "2026-05-31"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"What is the most important image optimization for websites?","acceptedAnswer":{"@type":"Answer","text":"Converting images to WebP or AVIF and resizing them to their display dimensions are the two highest-impact optimizations. Together, they typically reduce image payload by 50–80%, directly improving LCP scores and page load speed."}},
+      {"@type":"Question","name":"What image size is best for a website?","acceptedAnswer":{"@type":"Answer","text":"Images should be no larger than their display size. For a hero image displayed at 1200px, serve a 1200px (or 2400px for retina) image. For thumbnails displayed at 400px, serve a 400px or 800px image. Use the srcset attribute to serve appropriate sizes to different screen widths."}},
+      {"@type":"Question","name":"Should I use WebP or AVIF for my website?","acceptedAnswer":{"@type":"Answer","text":"AVIF offers better compression (typically ~50% smaller than JPG vs WebP's ~30%), but use the picture element to serve AVIF with a WebP fallback and JPG as the base fallback for maximum compatibility. AVIF is supported in all major browsers as of 2023, but serving fallbacks is still best practice."}},
+      {"@type":"Question","name":"Does image optimization affect SEO?","acceptedAnswer":{"@type":"Answer","text":"Yes, directly and indirectly. Directly: optimized images improve Core Web Vitals (particularly LCP), which are ranking signals. Indirectly: proper alt text, descriptive file names, and image sitemaps help Google understand and index your images, contributing to image search visibility and overall page relevance."}},
+      {"@type":"Question","name":"How do I check if my images are optimized?","acceptedAnswer":{"@type":"Answer","text":"Run your page through Google PageSpeed Insights (pagespeed.web.dev) — it flags specific images that need format conversion, sizing fixes, or lazy loading. Also check the Network tab in Chrome DevTools, filter by Img, and look for large file sizes or JPG/PNG formats where WebP could be used."}}
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="/icon-192.png" type="image/png">
+
+  <style>
+    .article-hero { max-width: 800px; margin: 0 auto 40px; padding: 48px 20px 0; }
+    .article-hero h1 { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+    .article-hero .subtitle { color: var(--text-2, #94a3b8); font-size: 1.1rem; line-height: 1.7; }
+    .article-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; font-size: 0.85rem; color: var(--text-2, #94a3b8); }
+    .article-body { max-width: 800px; margin: 0 auto; padding: 0 20px 80px; }
+    .toc { background: var(--card, rgba(255,255,255,0.04)); border: 1px solid var(--border, rgba(255,255,255,0.1)); border-radius: 14px; padding: 22px 26px; margin-bottom: 40px; }
+    .toc h2 { font-size: 0.85rem; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent, #6366f1); }
+    .toc ol { margin: 0; padding-left: 20px; }
+    .toc li { margin-bottom: 8px; }
+    .toc a { color: var(--text-2, #94a3b8); text-decoration: none; font-size: 0.93rem; }
+    .toc a:hover { color: var(--accent, #6366f1); }
+    .article-section { margin-bottom: 48px; }
+    .article-section h2 { font-size: 1.45rem; font-weight: 800; margin-bottom: 16px; border-bottom: 2px solid var(--border, rgba(255,255,255,0.08)); padding-bottom: 10px; }
+    .article-section h3 { font-size: 1.1rem; font-weight: 700; margin: 28px 0 10px; }
+    .article-section p { color: var(--text-2, #94a3b8); line-height: 1.8; margin-bottom: 14px; }
+    .tip-box { background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); border-radius: 12px; padding: 16px 20px; margin: 20px 0; color: var(--text-2, #94a3b8); font-size: 0.93rem; line-height: 1.75; }
+    .tip-box strong { color: var(--accent, #6366f1); }
+    .checklist-block { background: var(--card, rgba(255,255,255,0.04)); border: 1px solid var(--border, rgba(255,255,255,0.1)); border-radius: 14px; padding: 22px 24px; margin-bottom: 24px; }
+    .checklist-block h3 { font-size: 1rem; font-weight: 700; color: var(--accent, #6366f1); margin: 0 0 14px; text-transform: uppercase; font-size: 0.82rem; letter-spacing: 0.05em; }
+    .checklist { list-style: none; padding: 0; margin: 0; }
+    .checklist li { padding: 10px 0 10px 40px; position: relative; border-bottom: 1px solid var(--border, rgba(255,255,255,0.06)); color: var(--text-2, #94a3b8); line-height: 1.6; font-size: 0.92rem; }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist li .num { position: absolute; left: 0; top: 10px; width: 26px; height: 26px; background: var(--accent, #6366f1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800; color: #fff; }
+    .checklist li strong { color: var(--text, #f1f5f9); }
+    .checklist li .priority { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 0.72rem; font-weight: 700; margin-left: 6px; vertical-align: middle; }
+    .p-high { background: rgba(74,222,128,0.12); color: #4ade80; }
+    .p-med { background: rgba(251,191,36,0.12); color: #fbbf24; }
+    .p-low { background: rgba(148,163,184,0.12); color: #94a3b8; }
+    code { background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; font-size: 0.88em; font-family: monospace; color: #e2e8f0; }
+    .cta-banner { background: linear-gradient(135deg, rgba(79,142,247,0.1), rgba(123,91,246,0.1)); border: 1px solid rgba(79,142,247,0.3); border-radius: 16px; padding: 28px; text-align: center; margin: 40px 0; }
+    .cta-banner h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; }
+    .cta-banner p { color: var(--text-2, #94a3b8); margin-bottom: 18px; font-size: 0.93rem; }
+    .cta-btn { display: inline-block; background: linear-gradient(135deg, #4f8ef7, #7b5bf6); color: #fff; font-weight: 700; font-size: 1rem; padding: 12px 32px; border-radius: 12px; text-decoration: none; transition: opacity 0.2s; }
+    .cta-btn:hover { opacity: 0.9; text-decoration: none; }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { background: var(--card, rgba(255,255,255,0.04)); border: 1px solid var(--border, rgba(255,255,255,0.1)); border-radius: 12px; overflow: hidden; }
+    .faq-q { padding: 16px 20px; font-size: 0.97rem; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-q::after { content: "+"; font-size: 1.2rem; color: var(--accent, #6366f1); }
+    .faq-item[open] .faq-q::after { content: "−"; }
+    .faq-a { padding: 0 20px 16px; font-size: 0.9rem; color: var(--text-2, #94a3b8); line-height: 1.7; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+    .related-link { display: block; padding: 12px 14px; background: rgba(255,255,255,0.04); border: 1px solid var(--border, rgba(255,255,255,0.1)); border-radius: 10px; color: var(--accent, #6366f1); font-size: 0.875rem; font-weight: 600; text-align: center; transition: all 0.2s; }
+    .related-link:hover { background: rgba(79,142,247,0.1); text-decoration: none; }
+  </style>
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+
+<nav>
+  <a href="/" style="font-size:1.2rem;font-weight:800;text-decoration:none;color:var(--text);">Img<span style="background:linear-gradient(135deg,#4f8ef7,#7b5bf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Swift</span></a>
+  <a href="/" style="font-size:0.875rem;color:var(--muted,#607080);text-decoration:none;padding:6px 12px;border:1px solid var(--border);border-radius:8px;">← All Tools</a>
+</nav>
+
+<nav aria-label="Breadcrumb" style="max-width:800px;margin:16px auto 0;padding:0 20px;">
+  <ol style="list-style:none;display:flex;gap:8px;font-size:0.82rem;color:var(--muted,#607080);">
+    <li><a href="/" style="color:var(--muted,#607080);">Home</a></li>
+    <li style="color:var(--border);">/</li>
+    <li style="color:var(--text-2);">Image Optimization Checklist for Websites</li>
+  </ol>
+</nav>
+
+<header class="article-hero">
+  <h1>Image Optimization Checklist for Websites 2026</h1>
+  <p class="subtitle">20 actionable steps to optimize every image on your website — covering format, compression, sizing, responsive delivery, alt text, lazy loading, and Core Web Vitals.</p>
+  <div class="article-meta">
+    <span>🕒 5 min read</span>
+    <span>📅 Updated May 2026</span>
+    <span>✅ 20 actionable steps</span>
+  </div>
+</header>
+
+<main class="article-body">
+
+  <nav class="toc" aria-label="Table of contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#format">1–4: Format Selection</a></li>
+      <li><a href="#compression">5–8: Compression &amp; File Size</a></li>
+      <li><a href="#sizing">9–12: Sizing &amp; Responsive Delivery</a></li>
+      <li><a href="#loading">13–15: Loading Strategy</a></li>
+      <li><a href="#seo">16–18: SEO &amp; Metadata</a></li>
+      <li><a href="#delivery">19–20: Delivery &amp; Infrastructure</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </nav>
+
+  <section class="article-section" id="format">
+    <h2>Format Selection (Steps 1–4)</h2>
+    <div class="checklist-block">
+      <h3>Format</h3>
+      <ul class="checklist">
+        <li>
+          <span class="num">1</span>
+          <strong>Use WebP for all photos and general web images</strong> <span class="priority p-high">High Impact</span><br>
+          WebP achieves ~30% smaller files than JPG at equivalent perceptual quality. It's supported in all modern browsers. Convert with <a href="/jpg-to-webp/">ImgSwift JPG→WebP</a> or <a href="/png-to-webp/">PNG→WebP</a>.
+        </li>
+        <li>
+          <span class="num">2</span>
+          <strong>Use AVIF where maximum compression is needed</strong> <span class="priority p-high">High Impact</span><br>
+          AVIF is ~50% smaller than JPG. Serve it via the <code>&lt;picture&gt;</code> element with a WebP fallback. All major browsers support AVIF since 2023.
+        </li>
+        <li>
+          <span class="num">3</span>
+          <strong>Use PNG only for images requiring lossless quality or transparency</strong> <span class="priority p-med">Medium</span><br>
+          PNG makes sense for logos, icons, screenshots, and UI graphics where exact pixel values matter. For photos, PNG is wasteful — use WebP or AVIF instead.
+        </li>
+        <li>
+          <span class="num">4</span>
+          <strong>Never use GIF for new images</strong> <span class="priority p-med">Medium</span><br>
+          GIF is limited to 256 colors and produces large files. Replace animated GIFs with <code>&lt;video autoplay loop muted playsinline&gt;</code> using WebM/MP4, which is 5–10x smaller.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="article-section" id="compression">
+    <h2>Compression &amp; File Size (Steps 5–8)</h2>
+    <div class="checklist-block">
+      <h3>Compression</h3>
+      <ul class="checklist">
+        <li>
+          <span class="num">5</span>
+          <strong>Compress all images before uploading</strong> <span class="priority p-high">High Impact</span><br>
+          Run every image through a compressor before adding it to your site. Use <a href="/compress-image/">ImgSwift Compress</a> — quality 75–85 for photos, 85–90 for product images with fine detail.
+        </li>
+        <li>
+          <span class="num">6</span>
+          <strong>Target under 200 KB for most web images</strong> <span class="priority p-high">High Impact</span><br>
+          Hero images should be under 300 KB. Card thumbnails under 80 KB. Icons under 20 KB. These are starting targets — adjust based on visual quality requirements.
+        </li>
+        <li>
+          <span class="num">7</span>
+          <strong>Strip EXIF metadata from all published images</strong> <span class="priority p-med">Medium</span><br>
+          Camera photos embed GPS coordinates, device info, and timestamps in EXIF metadata — adding unnecessary bytes and potentially exposing private data. Use <a href="/remove-exif-data/">ImgSwift EXIF Remover</a>.
+        </li>
+        <li>
+          <span class="num">8</span>
+          <strong>Use lossless compression for PNG icons and logos</strong> <span class="priority p-med">Medium</span><br>
+          For PNG files, use a lossless optimizer (like ImgSwift's compress tool at quality 100) or run through tools like pngquant which uses quantization to reduce palette size without visible quality loss.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="article-section" id="sizing">
+    <h2>Sizing &amp; Responsive Delivery (Steps 9–12)</h2>
+    <div class="checklist-block">
+      <h3>Sizing</h3>
+      <ul class="checklist">
+        <li>
+          <span class="num">9</span>
+          <strong>Resize images to their display dimensions before uploading</strong> <span class="priority p-high">High Impact</span><br>
+          Never upload a 4000px image for an 800px display slot. Use <a href="/resize-image/">ImgSwift Resize</a> to export at the correct dimensions. For retina displays, export at 2x the CSS display size.
+        </li>
+        <li>
+          <span class="num">10</span>
+          <strong>Use srcset for responsive images</strong> <span class="priority p-high">High Impact</span><br>
+          Provide multiple resolutions and let the browser pick the right one: <code>srcset="img-400.webp 400w, img-800.webp 800w, img-1600.webp 1600w"</code> paired with a <code>sizes</code> attribute.
+        </li>
+        <li>
+          <span class="num">11</span>
+          <strong>Always specify width and height attributes on every img element</strong> <span class="priority p-high">High Impact</span><br>
+          This prevents layout shift (CLS) by letting the browser reserve space before the image loads. It's the single easiest CLS fix available.
+        </li>
+        <li>
+          <span class="num">12</span>
+          <strong>Add CSS max-width: 100% to prevent overflow on small screens</strong> <span class="priority p-low">Low</span><br>
+          Even with width/height set, add <code>img { max-width: 100%; height: auto; }</code> globally to prevent images from breaking the layout on narrow viewports.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="article-section" id="loading">
+    <h2>Loading Strategy (Steps 13–15)</h2>
+    <div class="checklist-block">
+      <h3>Loading</h3>
+      <ul class="checklist">
+        <li>
+          <span class="num">13</span>
+          <strong>Add loading="lazy" to all below-the-fold images</strong> <span class="priority p-high">High Impact</span><br>
+          This defers download of images not visible in the viewport, reducing initial page weight and improving LCP. Apply to all images except the hero/LCP image.
+        </li>
+        <li>
+          <span class="num">14</span>
+          <strong>Preload the LCP (hero) image and add fetchpriority="high"</strong> <span class="priority p-high">High Impact</span><br>
+          Add <code>&lt;link rel="preload" as="image" href="hero.webp"&gt;</code> in the <code>&lt;head&gt;</code> and <code>fetchpriority="high"</code> on the img element. This is the most impactful single LCP optimization.
+        </li>
+        <li>
+          <span class="num">15</span>
+          <strong>Never lazy load the LCP image</strong> <span class="priority p-high">High Impact</span><br>
+          Applying <code>loading="lazy"</code> to the hero image delays the LCP metric and directly worsens your Core Web Vitals score. Check this carefully after any template changes.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="article-section" id="seo">
+    <h2>SEO &amp; Metadata (Steps 16–18)</h2>
+    <div class="checklist-block">
+      <h3>SEO</h3>
+      <ul class="checklist">
+        <li>
+          <span class="num">16</span>
+          <strong>Write descriptive alt text for every image</strong> <span class="priority p-high">High Impact</span><br>
+          Alt text is how Google understands image content. Be specific and descriptive. Keep it under 125 characters. Include keywords naturally but don't stuff. Decorative images should have <code>alt=""</code>.
+        </li>
+        <li>
+          <span class="num">17</span>
+          <strong>Use descriptive, keyword-relevant file names</strong> <span class="priority p-med">Medium</span><br>
+          Name files <code>fresh-sourdough-bread.webp</code>, not <code>IMG_4892.webp</code>. Use hyphens, not underscores. This is a minor but free signal for Google Image Search.
+        </li>
+        <li>
+          <span class="num">18</span>
+          <strong>Add image entries to your XML sitemap</strong> <span class="priority p-med">Medium</span><br>
+          Use <code>image:image</code> extensions in your sitemap to help Google discover and index all your images, especially important for e-commerce product images and portfolios.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="article-section" id="delivery">
+    <h2>Delivery &amp; Infrastructure (Steps 19–20)</h2>
+    <div class="checklist-block">
+      <h3>Delivery</h3>
+      <ul class="checklist">
+        <li>
+          <span class="num">19</span>
+          <strong>Serve images from a CDN</strong> <span class="priority p-med">Medium</span><br>
+          A CDN serves images from edge nodes geographically close to each user, reducing latency. Most modern hosting platforms (Netlify, Vercel, Cloudflare Pages) include CDN delivery automatically.
+        </li>
+        <li>
+          <span class="num">20</span>
+          <strong>Set long Cache-Control headers for images</strong> <span class="priority p-med">Medium</span><br>
+          Images rarely change — set <code>Cache-Control: max-age=31536000, immutable</code> (1 year) so repeat visitors load images instantly from browser cache. Use a content hash in filenames to bust cache on updates.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    <h3>Start Optimizing Now</h3>
+    <p>Convert to WebP, compress, resize, and strip EXIF data — all free in your browser.</p>
+    <a href="/" class="cta-btn">Open ImgSwift →</a>
+  </div>
+
+  <section class="article-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q">What is the most important image optimization for websites?</summary>
+        <p class="faq-a">Converting to WebP/AVIF and resizing to display dimensions are the two highest-impact steps — they typically reduce image payload by 50–80%, directly improving LCP and PageSpeed scores.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">What image size is best for a website?</summary>
+        <p class="faq-a">Images should match their display size. Hero images: serve at 1200–2400px wide. Card thumbnails: 400–800px. Icons: 64–128px. Use srcset to serve appropriate sizes to different screen widths.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Should I use WebP or AVIF for my website?</summary>
+        <p class="faq-a">Use both via the picture element: AVIF as the primary source, WebP as fallback, JPG as the base. AVIF is ~50% smaller than JPG; WebP is ~30% smaller. This approach gets maximum compression for supporting browsers while ensuring universal compatibility.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Does image optimization affect SEO?</summary>
+        <p class="faq-a">Yes — both directly through Core Web Vitals (LCP is a ranking signal) and indirectly through alt text, file names, and image sitemaps which help Google understand and index your images.</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">How do I check if my images are optimized?</summary>
+        <p class="faq-a">Run your page through Google PageSpeed Insights (pagespeed.web.dev). It flags unoptimized images, oversized images, and lazy loading issues with specific file-by-file recommendations.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="article-section">
+    <h2>Related Tools &amp; Guides</h2>
+    <div class="related-grid">
+      <a href="/compress-image/" class="related-link">Compress Image</a>
+      <a href="/jpg-to-webp/" class="related-link">JPG → WebP</a>
+      <a href="/png-to-avif/" class="related-link">PNG → AVIF</a>
+      <a href="/resize-image/" class="related-link">Resize Image</a>
+      <a href="/remove-exif-data/" class="related-link">Remove EXIF</a>
+      <a href="/image-seo-checklist/" class="related-link">Image SEO Checklist</a>
+      <a href="/how-to-optimize-images-for-google-pagespeed/" class="related-link">PageSpeed Guide</a>
+      <a href="/how-to-optimize-images-for-core-web-vitals/" class="related-link">Core Web Vitals Guide</a>
+    </div>
+  </section>
+
+</main>
+
+<footer style="background:var(--surface);border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--muted);font-size:0.85rem;margin-top:48px;">
+  <div style="font-weight:800;font-size:1.1rem;color:var(--text);margin-bottom:10px;">Img<span style="background:linear-gradient(135deg,#4f8ef7,#7b5bf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Swift</span></div>
+  <p style="margin-bottom:8px;">Free image tools — all processing happens in your browser.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+    <a href="/" style="color:var(--muted);">Home</a>
+    <a href="/compress-image/" style="color:var(--muted);">Compress</a>
+    <a href="/jpg-to-webp/" style="color:var(--muted);">JPG→WebP</a>
+    <a href="/resize-image/" style="color:var(--muted);">Resize</a>
+  </div>
+</footer>
+
+
+<script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+</body>
+</html>

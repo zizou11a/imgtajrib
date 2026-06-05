@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lazy Loading Images: The Complete 2025 Guide (with Code) | ImgSwift</title>
+  <meta name="description" content="Learn how to implement lazy loading for images using native HTML, JavaScript Intersection Observer, and popular frameworks. Boost page speed, Core Web Vitals, and SEO with practical code examples." />
+  <meta name="keywords" content="lazy loading images, image lazy loading, lazy load javascript, intersection observer, loading=lazy, core web vitals images, page speed images" />
+  <link rel="canonical" href="https://imgswift.com/lazy-loading-images-guide" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Lazy Loading Images: The Complete 2025 Guide" />
+  <meta property="og:description" content="Implement lazy loading with native HTML, Intersection Observer, and React/Next.js — with real code examples and performance benchmarks." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://imgswift.com/lazy-loading-images-guide" />
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Lazy Loading Images: The Complete 2025 Guide",
+    "description": "A complete developer guide to lazy loading images — native HTML, Intersection Observer API, React, Next.js, and WordPress — with code examples and Core Web Vitals impact.",
+    "author": { "@type": "Organization", "name": "ImgSwift" },
+    "publisher": { "@type": "Organization", "name": "ImgSwift", "url": "https://imgswift.com" },
+    "datePublished": "2025-01-01",
+    "dateModified": "2025-06-01",
+    "mainEntityOfPage": "https://imgswift.com/lazy-loading-images-guide"
+  }
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is lazy loading for images?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lazy loading is a technique that delays loading images until they are about to enter the user's viewport. Instead of downloading all images when the page loads, the browser only fetches images the user is actually about to see — reducing initial load time and bandwidth usage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does lazy loading hurt SEO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No — when implemented correctly, lazy loading improves SEO by boosting Core Web Vitals scores (LCP, FID, CLS). Google's crawler can handle native lazy loading (loading='lazy') correctly. Avoid lazy loading above-the-fold hero images, as this will hurt LCP scores."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between loading='lazy' and Intersection Observer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "loading='lazy' is a native HTML attribute supported by all modern browsers — it requires zero JavaScript and is the recommended default. Intersection Observer is a JavaScript API that gives you more control: custom thresholds, animation triggers, and support for older browsers that don't support the native attribute."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I lazy load all images on a page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Never lazy load above-the-fold images — especially your hero image or LCP element. Lazy loading these delays their render and hurts your Largest Contentful Paint score. Only lazy load images that appear below the fold (i.e., not visible on initial page load)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does lazy loading improve page speed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Results vary by page, but studies show lazy loading typically reduces initial page weight by 30–70% on image-heavy pages. Google's own research found that implementing lazy loading on Chrome reduced image bytes by 27% on average across all page loads."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #0f0f0f;
+      --ink-soft: #3a3a3a;
+      --ink-muted: #6b6b6b;
+      --paper: #faf9f6;
+      --paper-warm: #f4f1eb;
+      --paper-mid: #ede9e0;
+      --accent: #1a5fa8;
+      --accent-soft: #ddeaf8;
+      --accent-light: #f0f5fc;
+      --green: #1a6b3c;
+      --green-soft: #e8f4ee;
+      --red: #c0392b;
+      --red-soft: #fdecea;
+      --amber: #b45309;
+      --amber-soft: #fffbeb;
+      --border: #ddd9cf;
+      --shadow: 0 2px 12px rgba(15,15,15,0.06);
+      --shadow-lg: 0 8px 40px rgba(15,15,15,0.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    /* ─── NAV ─── */
+    .nav {
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 58px;
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif; font-size: 22px; font-weight: 800;
+      color: var(--ink); text-decoration: none; letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--ink); color: var(--paper) !important;
+      padding: 8px 18px; border-radius: 6px; font-size: 13px !important;
+    }
+    .nav-cta:hover { background: var(--accent); color: white !important; }
+
+    /* ─── BREADCRUMB ─── */
+    .breadcrumb {
+      max-width: 820px; margin: 0 auto;
+      padding: 16px 24px 0; font-size: 13px; color: var(--ink-muted);
+    }
+    .breadcrumb a { color: var(--ink-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { margin: 0 6px; }
+
+    /* ─── HERO ─── */
+    .hero { max-width: 820px; margin: 0 auto; padding: 48px 24px 40px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--accent-light); color: var(--accent);
+      font-size: 12px; font-weight: 600; padding: 5px 12px;
+      border-radius: 20px; margin-bottom: 20px;
+      text-transform: uppercase; letter-spacing: 0.6px;
+    }
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(32px, 5vw, 52px); font-weight: 800;
+      line-height: 1.12; letter-spacing: -1.5px; color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-intro {
+      font-size: 18px; line-height: 1.75; color: var(--ink-soft);
+      max-width: 680px; margin-bottom: 28px;
+    }
+    .hero-meta {
+      display: flex; align-items: center; gap: 20px;
+      font-size: 13px; color: var(--ink-muted); flex-wrap: wrap;
+    }
+    .hero-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--border); }
+
+    /* ─── TOC ─── */
+    .toc-box { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+    .toc {
+      background: var(--paper-warm); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px 28px;
+    }
+    .toc-title {
+      font-family: 'Fraunces', serif; font-size: 15px; font-weight: 600;
+      color: var(--ink); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 7px; font-size: 14px; }
+    .toc a { color: var(--ink-soft); text-decoration: none; font-weight: 500; }
+    .toc a:hover { color: var(--accent); }
+
+    /* ─── ARTICLE ─── */
+    .article { max-width: 820px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    .article h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(24px, 3.5vw, 34px); font-weight: 700;
+      letter-spacing: -0.8px; color: var(--ink);
+      margin: 56px 0 18px; padding-top: 8px;
+    }
+    .article h2:first-child { margin-top: 0; }
+
+    .article h3 {
+      font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600;
+      color: var(--ink); margin: 36px 0 12px;
+    }
+
+    .article p { color: var(--ink-soft); margin-bottom: 18px; font-size: 17px; }
+    .article ul, .article ol { padding-left: 22px; margin-bottom: 20px; }
+    .article li { color: var(--ink-soft); margin-bottom: 10px; font-size: 17px; line-height: 1.65; }
+    .article a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    .article strong { color: var(--ink); }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 52px 0; }
+
+    /* ─── CALLOUTS ─── */
+    .callout { border-radius: 10px; padding: 20px 24px; margin: 28px 0; font-size: 16px; }
+    .callout-good  { background: var(--green-soft); border-left: 4px solid var(--green); }
+    .callout-bad   { background: var(--red-soft);   border-left: 4px solid var(--red); }
+    .callout-info  { background: var(--accent-light); border-left: 4px solid var(--accent); }
+    .callout-tip   { background: var(--amber-soft);  border-left: 4px solid var(--amber); }
+    .callout-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.8px; margin-bottom: 8px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .callout-good .callout-label { color: var(--green); }
+    .callout-bad  .callout-label { color: var(--red); }
+    .callout-info .callout-label { color: var(--accent); }
+    .callout-tip  .callout-label { color: var(--amber); }
+    .callout p { margin: 0; color: var(--ink); line-height: 1.65; }
+    .callout code { background: rgba(0,0,0,0.07); padding: 1px 5px; border-radius: 3px; font-size: 14px; font-family: 'Courier New', monospace; }
+
+    /* ─── CODE BLOCKS ─── */
+    .code-wrap { margin: 24px 0; border-radius: 12px; overflow: hidden; border: 1px solid #2a2a2a; }
+    .code-header {
+      background: #1a1a1a; padding: 10px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .code-lang {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.8px; color: #888;
+    }
+    .code-dots { display: flex; gap: 6px; }
+    .code-dots span { width: 10px; height: 10px; border-radius: 50%; }
+    .code-dots .d1 { background: #ff5f57; }
+    .code-dots .d2 { background: #febc2e; }
+    .code-dots .d3 { background: #28c840; }
+
+    .code-block {
+      background: #141414; color: #e4e2df;
+      padding: 22px 24px; font-family: 'Courier New', monospace;
+      font-size: 14px; line-height: 1.75; overflow-x: auto;
+      margin: 0;
+    }
+    .cm { color: #5c7a5c; }
+    .tag-c { color: #7bb8d4; }
+    .attr { color: #c9956a; }
+    .val { color: #98c379; }
+    .kw { color: #c586c0; }
+    .fn { color: #7bb8d4; }
+    .str { color: #98c379; }
+    .num { color: #d19a66; }
+
+    /* ─── COMPARISON TABLE ─── */
+    .table-wrap { overflow-x: auto; margin: 28px 0; border-radius: 10px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    thead { background: var(--paper-mid); }
+    th {
+      text-align: left; padding: 14px 18px; font-weight: 600;
+      font-size: 13px; text-transform: uppercase; letter-spacing: 0.4px;
+      color: var(--ink-soft); white-space: nowrap;
+    }
+    td { padding: 14px 18px; border-top: 1px solid var(--border); color: var(--ink-soft); vertical-align: top; line-height: 1.5; }
+    tr:hover td { background: var(--paper-warm); }
+
+    .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; white-space: nowrap; }
+    .tag-yes   { background: var(--green-soft); color: var(--green); }
+    .tag-no    { background: var(--red-soft); color: var(--red); }
+    .tag-maybe { background: #fef9c3; color: #854d0e; }
+    .tag-blue  { background: var(--accent-soft); color: var(--accent); }
+
+    /* ─── STAT ROW ─── */
+    .stat-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin: 32px 0;
+    }
+    @media (max-width: 600px) { .stat-row { grid-template-columns: 1fr; } }
+    .stat-card {
+      background: var(--paper-warm); border: 1px solid var(--border);
+      border-radius: 12px; padding: 22px 20px; text-align: center;
+    }
+    .stat-num {
+      font-family: 'Fraunces', serif; font-size: 36px; font-weight: 800;
+      color: var(--accent); letter-spacing: -1px; display: block; margin-bottom: 6px;
+    }
+    .stat-label { font-size: 13px; color: var(--ink-muted); line-height: 1.4; }
+
+    /* ─── STEP LIST ─── */
+    .steps { list-style: none; padding: 0; margin: 24px 0; counter-reset: steps; }
+    .steps li {
+      counter-increment: steps;
+      display: flex; gap: 18px; padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .steps li:last-child { border-bottom: none; }
+    .steps li::before {
+      content: counter(steps);
+      min-width: 32px; height: 32px; border-radius: 50%;
+      background: var(--accent); color: white;
+      font-size: 14px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 3px;
+    }
+    .step-content strong { display: block; color: var(--ink); font-size: 17px; margin-bottom: 5px; }
+    .step-content p { color: var(--ink-soft); font-size: 15px; margin: 0; line-height: 1.6; }
+
+    /* ─── CHECKLIST ─── */
+    .checklist { list-style: none; padding: 0; margin: 24px 0; }
+    .checklist li {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 16px;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .icon { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+    .icon-check { background: var(--green-soft); color: var(--green); }
+    .icon-x     { background: var(--red-soft); color: var(--red); }
+
+    /* ─── INLINE LINK CARD ─── */
+    .link-card {
+      display: flex; align-items: center; gap: 16px;
+      background: var(--accent-light); border: 1px solid var(--accent-soft);
+      border-radius: 10px; padding: 16px 20px;
+      text-decoration: none; color: inherit; margin: 28px 0;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .link-card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+    .link-card-icon { font-size: 24px; flex-shrink: 0; }
+    .link-card-text strong { display: block; color: var(--ink); font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+    .link-card-text span { color: var(--ink-muted); font-size: 13px; }
+    .link-card-arrow { margin-left: auto; color: var(--accent); font-size: 18px; }
+
+    /* ─── FAQ ─── */
+    .faq-list { margin: 0; padding: 0; list-style: none; }
+    .faq-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
+    .faq-q {
+      width: 100%; text-align: left; padding: 18px 22px;
+      background: var(--paper-warm); border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600;
+      color: var(--ink); display: flex; justify-content: space-between; align-items: center;
+      transition: background .2s;
+    }
+    .faq-q:hover { background: var(--paper-mid); }
+    .faq-q .arrow {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--accent-soft); color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; flex-shrink: 0; transition: transform .3s;
+    }
+    .faq-item.open .arrow { transform: rotate(180deg); }
+    .faq-a {
+      display: none; padding: 18px 22px 20px; background: white;
+      font-size: 16px; color: var(--ink-soft); line-height: 1.7;
+      border-top: 1px solid var(--border);
+    }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a code { background: rgba(0,0,0,0.07); padding: 1px 5px; border-radius: 3px; font-size: 14px; font-family: 'Courier New', monospace; }
+
+    /* ─── CTA ─── */
+    .cta-banner {
+      background: var(--ink); color: white;
+      border-radius: 16px; padding: 40px; text-align: center; margin: 60px 0 0;
+    }
+    .cta-banner h2 {
+      font-family: 'Fraunces', serif; font-size: 28px; font-weight: 700;
+      color: white; letter-spacing: -0.5px; margin-bottom: 12px;
+    }
+    .cta-banner p { color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 24px; }
+    .cta-btn {
+      display: inline-block; background: var(--accent); color: white;
+      padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 16px;
+      text-decoration: none; transition: opacity .2s, transform .2s;
+    }
+    .cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ─── RELATED ─── */
+    .related-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 20px;
+    }
+    @media (max-width: 640px) { .related-grid { grid-template-columns: 1fr; } }
+    .related-card {
+      background: var(--paper-warm); border: 1px solid var(--border);
+      border-radius: 10px; padding: 20px; text-decoration: none; color: inherit;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .related-card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+    .related-cat { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: var(--accent); margin-bottom: 8px; }
+    .related-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 600; color: var(--ink); line-height: 1.35; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink); color: rgba(255,255,255,0.55);
+      text-align: center; padding: 28px 24px; font-size: 13px;
+    }
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    footer a:hover { color: white; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero { padding: 32px 20px 28px; }
+      .article { padding: 32px 20px 60px; }
+      .toc-box { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Img<span>Swift</span></a>
+    <ul class="nav-links">
+      <li><a href="/compress-image">Compress</a></li>
+      <li><a href="/convert-image">Convert</a></li>
+      <li><a href="/resize-image">Resize</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/" class="nav-cta">Try for Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  <span>›</span>
+  <a href="/blog">Blog</a>
+  <span>›</span>
+  Lazy Loading Images Guide
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">⚡ Performance Guide</div>
+  <h1>Lazy Loading Images:<br><em>The Complete 2025 Guide</em></h1>
+  <p class="hero-intro">
+    Lazy loading is one of the highest-impact performance techniques available — and it takes less than five minutes to implement. This guide covers native HTML, Intersection Observer, React, Next.js, and WordPress, with working code you can copy today.
+  </p>
+  <div class="hero-meta">
+    <span>By ImgSwift Team</span>
+    <div class="dot"></div>
+    <span>Updated June 2025</span>
+    <div class="dot"></div>
+    <span>14 min read</span>
+    <div class="dot"></div>
+    <span>~2,900 words</span>
+  </div>
+</header>
+
+<!-- TOC -->
+<div class="toc-box">
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-title">📖 In This Guide</div>
+    <ol>
+      <li><a href="#what-is-lazy-loading">What Is Lazy Loading (and Why Does It Matter)?</a></li>
+      <li><a href="#native-html">Method 1: Native HTML — <code>loading="lazy"</code></a></li>
+      <li><a href="#intersection-observer">Method 2: Intersection Observer API</a></li>
+      <li><a href="#frameworks">Method 3: React, Next.js &amp; WordPress</a></li>
+      <li><a href="#core-web-vitals">Lazy Loading &amp; Core Web Vitals</a></li>
+      <li><a href="#what-not-to-lazy-load">What NOT to Lazy Load</a></li>
+      <li><a href="#checklist">Implementation Checklist</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </nav>
+</div>
+
+<!-- ARTICLE -->
+<article class="article">
+
+  <!-- STAT CARDS -->
+  <div class="stat-row">
+    <div class="stat-card">
+      <span class="stat-num">27%</span>
+      <div class="stat-label">Reduction in image bytes from native lazy loading (Google Chrome data)</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">96.4%</span>
+      <div class="stat-label">Browser support for <code>loading="lazy"</code> as of 2025</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">~2.5s</span>
+      <div class="stat-label">Average LCP improvement on image-heavy pages after lazy loading</div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- SECTION 1 -->
+  <h2 id="what-is-lazy-loading">1. What Is Lazy Loading (and Why Does It Matter)?</h2>
+
+  <p>By default, browsers load every image on a page — even images that are hundreds of pixels below the fold, far outside what the user can see. On a page with 30 images, that means 30 network requests fire simultaneously the moment the page starts loading, even though the user might never scroll far enough to see most of them.</p>
+
+  <p><strong>Lazy loading</strong> flips this logic. Instead of fetching all images upfront, the browser waits until an image is about to enter the viewport, then loads it just-in-time. Images above the fold load immediately as before; everything else waits until the user scrolls toward it.</p>
+
+  <p>The performance benefits are compounding:</p>
+
+  <ul>
+    <li><strong>Faster initial page load</strong> — fewer bytes downloaded on first request</li>
+    <li><strong>Lower bandwidth costs</strong> — users who don't scroll don't pay for images they never see</li>
+    <li><strong>Better Core Web Vitals</strong> — particularly LCP (Largest Contentful Paint) and FID</li>
+    <li><strong>Reduced server load</strong> — fewer simultaneous image requests on page arrival</li>
+    <li><strong>Better mobile experience</strong> — critical on slower connections and data-limited plans</li>
+  </ul>
+
+  <div class="callout callout-info">
+    <div class="callout-label">🔗 Related Guide</div>
+    <p>Before lazy loading, make sure your images are properly compressed and sized. Serving a 4MB image lazily is still a 4MB image. See our guide on <a href="/image-compression-guide">how to compress images without losing quality</a>.</p>
+  </div>
+
+  <!-- Inline link to alt-text -->
+  <a href="/alt-text-best-practices" class="link-card">
+    <div class="link-card-icon">📋</div>
+    <div class="link-card-text">
+      <strong>Also in this series: Alt Text Best Practices</strong>
+      <span>Complete guide with 50+ examples — accessibility, SEO, and every image type.</span>
+    </div>
+    <div class="link-card-arrow">→</div>
+  </a>
+
+  <hr class="divider" />
+
+  <!-- SECTION 2 -->
+  <h2 id="native-html">2. Method 1: Native HTML — <code>loading="lazy"</code></h2>
+
+  <p>The simplest and most recommended way to lazy load images is the native HTML <code>loading</code> attribute. No JavaScript. No libraries. Just add one attribute to your <code>&lt;img&gt;</code> tag.</p>
+
+  <div class="code-wrap">
+    <div class="code-header">
+      <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+      <span class="code-lang">HTML</span>
+    </div>
+    <pre class="code-block"><span class="cm">&lt;!-- Before: eager (browser default) --&gt;</span>
+<span class="tag-c">&lt;img</span> <span class="attr">src</span>=<span class="val">"hero-image.jpg"</span> <span class="attr">alt</span>=<span class="val">"Product hero image"</span> <span class="tag-c">/&gt;</span>
+
+<span class="cm">&lt;!-- After: lazy loaded --&gt;</span>
+<span class="tag-c">&lt;img</span>
+  <span class="attr">src</span>=<span class="val">"product-thumbnail.jpg"</span>
+  <span class="attr">alt</span>=<span class="val">"Blue leather wallet, front view"</span>
+  <span class="attr">loading</span>=<span class="val">"lazy"</span>
+  <span class="attr">width</span>=<span class="val">"400"</span>
+  <span class="attr">height</span>=<span class="val">"300"</span>
+<span class="tag-c">/&gt;</span></pre>
+  </div>
+
+  <p>That's it. The browser handles everything else automatically.</p>
+
+  <h3>The Three Values of <code>loading</code></h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Value</th><th>Behavior</th><th>When to Use</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>loading="lazy"</code></td>
+          <td>Defers loading until image is near viewport</td>
+          <td>All below-the-fold images</td>
+        </tr>
+        <tr>
+          <td><code>loading="eager"</code></td>
+          <td>Loads immediately (browser default)</td>
+          <td>Above-the-fold images, hero images</td>
+        </tr>
+        <tr>
+          <td><code>loading="auto"</code></td>
+          <td>Browser decides (same as no attribute)</td>
+          <td>Don't use — unpredictable</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Why You Must Include <code>width</code> and <code>height</code></h3>
+
+  <p>When you lazy load an image, the browser doesn't know its dimensions until it loads. Without declared dimensions, the browser allocates no space for the image — causing a layout shift when it finally loads. This is called <strong>Cumulative Layout Shift (CLS)</strong>, and it's a Core Web Vitals metric that hurts both user experience and SEO.</p>
+
+  <div class="callout callout-bad">
+    <div class="callout-label">✗ Causes Layout Shift (Bad for CLS)</div>
+    <p><code>&lt;img src="photo.jpg" alt="Team photo" loading="lazy"&gt;</code><br>
+    No dimensions declared — browser can't reserve space. Layout shifts when image loads.</p>
+  </div>
+
+  <div class="callout callout-good">
+    <div class="callout-label">✓ No Layout Shift (Good for CLS)</div>
+    <p><code>&lt;img src="photo.jpg" alt="Team photo" loading="lazy" width="800" height="533"&gt;</code><br>
+    Browser reserves exact space. Page layout stays stable as image loads.</p>
+  </div>
+
+  <h3>Browser Support in 2025</h3>
+  <p><code>loading="lazy"</code> is supported by all major browsers — Chrome, Firefox, Safari, Edge, and Opera — with global coverage of <strong>96.4%</strong> as of mid-2025. For the remaining 3.6% (mostly older Safari and IE), images simply load eagerly as they did before. No fallback code needed.</p>
+
+  <hr class="divider" />
+
+  <!-- SECTION 3 -->
+  <h2 id="intersection-observer">3. Method 2: Intersection Observer API</h2>
+
+  <p>The native <code>loading="lazy"</code> attribute is great for static images, but the Intersection Observer API gives you fine-grained control: custom thresholds, animation triggers when images enter view, conditional loading based on connection speed, and support for non-<code>&lt;img&gt;</code> elements like background images.</p>
+
+  <h3>Basic Intersection Observer Setup</h3>
+
+  <div class="code-wrap">
+    <div class="code-header">
+      <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+      <span class="code-lang">JavaScript</span>
+    </div>
+    <pre class="code-block"><span class="cm">// Step 1: Mark images with data-src instead of src</span>
+<span class="cm">//   &lt;img data-src="photo.jpg" alt="..." class="lazy-img" /&gt;</span>
+
+<span class="cm">// Step 2: Create the observer</span>
+<span class="kw">const</span> observer = <span class="kw">new</span> <span class="fn">IntersectionObserver</span>((entries) => {
+  entries.<span class="fn">forEach</span>(entry => {
+    <span class="kw">if</span> (entry.isIntersecting) {
+      <span class="kw">const</span> img = entry.target;
+
+      <span class="cm">// Swap data-src → src to trigger the load</span>
+      img.src = img.dataset.src;
+
+      <span class="cm">// Optional: swap srcset for responsive images</span>
+      <span class="kw">if</span> (img.dataset.srcset) {
+        img.srcset = img.dataset.srcset;
+      }
+
+      img.classList.<span class="fn">remove</span>(<span class="str">'lazy-img'</span>);
+      observer.<span class="fn">unobserve</span>(img); <span class="cm">// Stop watching once loaded</span>
+    }
+  });
+}, {
+  rootMargin: <span class="str">'0px 0px 200px 0px'</span>, <span class="cm">// Load 200px before entering viewport</span>
+  threshold: <span class="num">0.01</span>
+});
+
+<span class="cm">// Step 3: Observe all lazy images</span>
+document.<span class="fn">querySelectorAll</span>(<span class="str">'img.lazy-img'</span>).<span class="fn">forEach</span>(img => {
+  observer.<span class="fn">observe</span>(img);
+});</pre>
+  </div>
+
+  <h3>Adding a Fade-In Animation</h3>
+  <p>A common refinement is to fade images in smoothly as they load, rather than having them pop in abruptly:</p>
+
+  <div class="code-wrap">
+    <div class="code-header">
+      <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+      <span class="code-lang">CSS + JavaScript</span>
+    </div>
+    <pre class="code-block"><span class="cm">/* CSS: Start images invisible */</span>
+img.lazy-img {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+<span class="cm">/* JS: Add loaded class after image loads */</span>
+img.src = img.dataset.src;
+img.addEventListener(<span class="str">'load'</span>, () => {
+  img.classList.<span class="fn">add</span>(<span class="str">'loaded'</span>);
+});
+
+<span class="cm">/* CSS: Fade in on load */</span>
+img.loaded {
+  opacity: 1;
+}</pre>
+  </div>
+
+  <h3>Lazy Loading CSS Background Images</h3>
+  <p>CSS <code>background-image</code> properties can't use the native <code>loading</code> attribute. Intersection Observer handles this case:</p>
+
+  <div class="code-wrap">
+    <div class="code-header">
+      <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+      <span class="code-lang">HTML + JavaScript</span>
+    </div>
+    <pre class="code-block"><span class="cm">&lt;!-- HTML: Store URL in data attribute --&gt;</span>
+<span class="tag-c">&lt;div</span>
+  <span class="attr">class</span>=<span class="val">"hero-banner lazy-bg"</span>
+  <span class="attr">data-bg</span>=<span class="val">"https://imgswift.com/images/hero-bg.webp"</span>
+<span class="tag-c">&gt;&lt;/div&gt;</span>
+
+<span class="cm">/* JS: Apply background when in viewport */</span>
+<span class="kw">const</span> bgObserver = <span class="kw">new</span> <span class="fn">IntersectionObserver</span>((entries) => {
+  entries.<span class="fn">forEach</span>(entry => {
+    <span class="kw">if</span> (entry.isIntersecting) {
+      <span class="kw">const</span> el = entry.target;
+      el.style.backgroundImage = <span class="str">`url('${el.dataset.bg}')`</span>;
+      el.classList.<span class="fn">remove</span>(<span class="str">'lazy-bg'</span>);
+      bgObserver.<span class="fn">unobserve</span>(el);
+    }
+  });
+});
+
+document.<span class="fn">querySelectorAll</span>(<span class="str">'.lazy-bg'</span>).<span class="fn">forEach</span>(el => bgObserver.<span class="fn">observe</span>(el));</pre>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- SECTION 4 -->
+  <h2 id="frameworks">4. Method 3: React, Next.js &amp; WordPress</h2>
+
+  <h3>React — Manual Implementation</h3>
+
+  <div class="code-wrap">
+    <div class="code-header">
+      <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+      <span class="code-lang">React JSX</span>
+    </div>
+    <pre class="code-block"><span class="cm">// Simple: native loading attribute works in React out of the box</span>
+<span class="kw">function</span> <span class="fn">ProductImage</span>({ src, alt, width, height }) {
+  <span class="kw">return</span> (
+    <span class="tag-c">&lt;img</span>
+      <span class="attr">src</span>={src}
+      <span class="attr">alt</span>={alt}
+      <span class="attr">loading</span>=<span class="val">"lazy"</span>
+      <span class="attr">width</span>={width}
+      <span class="attr">height</span>={height}
+      <span class="attr">decoding</span>=<span class="val">"async"</span>
+    <span class="tag-c">/&gt;</span>
+  );
+}
+
+<span class="cm">// Advanced: custom hook with Intersection Observer</span>
+<span class="kw">import</span> { useRef, useState, useEffect } from <span class="str">'react'</span>;
+
+<span class="kw">function</span> <span class="fn">useLazyImage</span>(src) {
+  <span class="kw">const</span> [imageSrc, setImageSrc] = <span class="fn">useState</span>(<span class="kw">null</span>);
+  <span class="kw">const</span> imgRef = <span class="fn">useRef</span>();
+
+  <span class="fn">useEffect</span>(() => {
+    <span class="kw">const</span> observer = <span class="kw">new</span> <span class="fn">IntersectionObserver</span>(([entry]) => {
+      <span class="kw">if</span> (entry.isIntersecting) {
+        <span class="fn">setImageSrc</span>(src);
+        observer.<span class="fn">disconnect</span>();
+      }
+    });
+    <span class="kw">if</span> (imgRef.current) observer.<span class="fn">observe</span>(imgRef.current);
+    <span class="kw">return</span> () => observer.<span class="fn">disconnect</span>();
+  }, [src]);
+
+  <span class="kw">return</span> { imgRef, imageSrc };
+}</pre>
+  </div>
+
+  <h3>Next.js — Use the Built-In Image Component</h3>
+  <p>Next.js has lazy loading built into its <code>Image</code> component. It's the recommended approach for all Next.js projects — it handles lazy loading, responsive sizes, WebP conversion, and CLS prevention automatically.</p>
+
+  <div class="code-wrap">
+    <div class="code-header">
+      <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+      <span class="code-lang">Next.js</span>
+    </div>
+    <pre class="code-block"><span class="kw">import</span> Image from <span class="str">'next/image'</span>;
+
+<span class="cm">// Lazy loaded by default (all below-fold images)</span>
+<span class="kw">function</span> <span class="fn">ProductCard</span>() {
+  <span class="kw">return</span> (
+    <span class="tag-c">&lt;Image</span>
+      <span class="attr">src</span>=<span class="val">"/product-photo.jpg"</span>
+      <span class="attr">alt</span>=<span class="val">"Blue ceramic coffee mug, 12oz"</span>
+      <span class="attr">width</span>={<span class="num">400</span>}
+      <span class="attr">height</span>={<span class="num">400</span>}
+      <span class="cm">// loading="lazy" is default — no need to write it</span>
+    <span class="tag-c">/&gt;</span>
+  );
+}
+
+<span class="cm">// Hero / LCP image: disable lazy loading, add priority</span>
+<span class="kw">function</span> <span class="fn">HeroBanner</span>() {
+  <span class="kw">return</span> (
+    <span class="tag-c">&lt;Image</span>
+      <span class="attr">src</span>=<span class="val">"/hero.jpg"</span>
+      <span class="attr">alt</span>=<span class="val">"ImgSwift image compression tool interface"</span>
+      <span class="attr">width</span>={<span class="num">1200</span>}
+      <span class="attr">height</span>={<span class="num">600</span>}
+      <span class="attr">priority</span>  <span class="cm">// Eager loads + preloads in &lt;head&gt;</span>
+    <span class="tag-c">/&gt;</span>
+  );
+}</pre>
+  </div>
+
+  <h3>WordPress</h3>
+  <p>WordPress added native lazy loading to all images (via <code>loading="lazy"</code>) starting from version 5.5. If you're on WP 5.5+, <strong>it's already enabled</strong> — no plugin needed.</p>
+
+  <p>For WordPress sites, the main thing to check:</p>
+  <ul>
+    <li>Your theme should not override or remove the <code>loading</code> attribute via custom filters.</li>
+    <li>The featured image and any image in the first viewport section should use <code>loading="eager"</code> or <code>fetchpriority="high"</code> to ensure fast LCP.</li>
+    <li>Use a caching plugin (WP Rocket, W3 Total Cache) that respects lazy loading and doesn't strip the attribute.</li>
+  </ul>
+
+  <hr class="divider" />
+
+  <!-- SECTION 5 -->
+  <h2 id="core-web-vitals">5. Lazy Loading &amp; Core Web Vitals</h2>
+
+  <p>Google's Core Web Vitals are the primary performance metrics that influence search rankings. Lazy loading directly impacts two of the three:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Metric</th><th>What It Measures</th><th>Lazy Loading Impact</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>LCP</strong><br><small>Largest Contentful Paint</small></td>
+          <td>Time until the largest above-fold element renders</td>
+          <td><span class="tag tag-yes">Improves</span> — if hero image is NOT lazy loaded. <span class="tag tag-no">Hurts</span> if hero IS lazy loaded.</td>
+        </tr>
+        <tr>
+          <td><strong>CLS</strong><br><small>Cumulative Layout Shift</small></td>
+          <td>Visual stability — how much elements shift</td>
+          <td><span class="tag tag-yes">Improves</span> when lazy images have declared <code>width</code> and <code>height</code>. <span class="tag tag-no">Hurts</span> without dimensions.</td>
+        </tr>
+        <tr>
+          <td><strong>INP</strong><br><small>Interaction to Next Paint</small></td>
+          <td>Responsiveness to user interaction</td>
+          <td><span class="tag tag-blue">Indirect</span> — lighter initial load = main thread less busy = faster interactions.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>The LCP Rule — Critical to Get Right</h3>
+
+  <p>The most common lazy loading mistake is accidentally applying it to the LCP image — usually your hero banner or the first large image on the page. Lazy loading this element delays its render and directly tanks your LCP score.</p>
+
+  <div class="callout callout-bad">
+    <div class="callout-label">✗ Don't Do This — Hurts LCP</div>
+    <p><code>&lt;img src="hero.jpg" alt="Hero" loading="lazy"&gt;</code><br>
+    If this is the largest above-fold element, lazy loading it makes Google think your page is slow to render.</p>
+  </div>
+
+  <div class="callout callout-good">
+    <div class="callout-label">✓ Do This — Helps LCP</div>
+    <p><code>&lt;img src="hero.jpg" alt="Hero" loading="eager" fetchpriority="high"&gt;</code><br>
+    Explicitly eager-load and prioritize your LCP image. <code>fetchpriority="high"</code> tells the browser to download this before other resources.</p>
+  </div>
+
+  <p>To find your LCP element, run a Lighthouse audit in Chrome DevTools and look for the "LCP element" in the Performance section. Whatever element it identifies is the one that must never be lazy loaded.</p>
+
+  <hr class="divider" />
+
+  <!-- SECTION 6 -->
+  <h2 id="what-not-to-lazy-load">6. What NOT to Lazy Load</h2>
+
+  <p>Lazy loading has clear limits. Applying it to the wrong images causes measurable performance regressions. Here's a full breakdown:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Image Type</th><th>Lazy Load?</th><th>Reason</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hero / banner image</td>
+          <td><span class="tag tag-no">Never</span></td>
+          <td>Usually the LCP element — lazy loading kills your LCP score</td>
+        </tr>
+        <tr>
+          <td>Above-the-fold images (first viewport)</td>
+          <td><span class="tag tag-no">Never</span></td>
+          <td>User sees these immediately — loading them lazily causes flicker</td>
+        </tr>
+        <tr>
+          <td>Logo</td>
+          <td><span class="tag tag-no">Never</span></td>
+          <td>In the header — always visible, should load instantly</td>
+        </tr>
+        <tr>
+          <td>Product thumbnail grid (below fold)</td>
+          <td><span class="tag tag-yes">Yes</span></td>
+          <td>Classic lazy load candidate — save bytes until user scrolls</td>
+        </tr>
+        <tr>
+          <td>Blog post inline images</td>
+          <td><span class="tag tag-yes">Yes</span></td>
+          <td>Deep in the article — user must scroll to reach them</td>
+        </tr>
+        <tr>
+          <td>Footer images</td>
+          <td><span class="tag tag-yes">Yes</span></td>
+          <td>Far below fold — ideal candidate</td>
+        </tr>
+        <tr>
+          <td>Avatar images in comment sections</td>
+          <td><span class="tag tag-yes">Yes</span></td>
+          <td>Often dozens of images — lazy loading saves significant bandwidth</td>
+        </tr>
+        <tr>
+          <td>Carousel / slider images</td>
+          <td><span class="tag tag-maybe">Careful</span></td>
+          <td>Lazy load only slides 2+; slide 1 must load immediately</td>
+        </tr>
+        <tr>
+          <td>Open Graph image</td>
+          <td><span class="tag tag-no">N/A</span></td>
+          <td>Not a page image — defined in meta tags, not rendered</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- SECTION 7 -->
+  <h2 id="checklist">7. Lazy Loading Implementation Checklist</h2>
+
+  <p>Use this checklist before deploying lazy loading on any page. Every item protects against a real performance regression or accessibility issue.</p>
+
+  <ul class="checklist">
+    <li>
+      <span class="icon icon-check">✓</span>
+      <div><strong>Hero / LCP image is NOT lazy loaded.</strong> Confirm in Lighthouse which element is your LCP. Ensure it has <code>loading="eager"</code> (or no loading attribute) and ideally <code>fetchpriority="high"</code>.</div>
+    </li>
+    <li>
+      <span class="icon icon-check">✓</span>
+      <div><strong>All lazy images have width and height attributes.</strong> This prevents CLS. Even rough dimensions help — the browser just needs the aspect ratio to reserve space.</div>
+    </li>
+    <li>
+      <span class="icon icon-check">✓</span>
+      <div><strong>Every lazy image has meaningful alt text.</strong> <code>loading="lazy"</code> doesn't change alt text requirements. Screen readers still read alt text when the image does load. See our <a href="/alt-text-best-practices">alt text best practices guide</a> for complete examples.</div>
+    </li>
+    <li>
+      <span class="icon icon-check">✓</span>
+      <div><strong>Images use modern formats (WebP/AVIF).</strong> Lazy loading reduces request count; modern formats reduce file size. Together they're the biggest image performance win available.</div>
+    </li>
+    <li>
+      <span class="icon icon-check">✓</span>
+      <div><strong>srcset is used for responsive images.</strong> Combine lazy loading with srcset so mobile users get appropriately sized images, not a 2000px photo scaled down.</div>
+    </li>
+    <li>
+      <span class="icon icon-check">✓</span>
+      <div><strong>Intersection Observer has a root margin buffer.</strong> Set <code>rootMargin: '0px 0px 300px 0px'</code> so images start loading 300px before they enter view — prevents visible loading lag on fast scrollers.</div>
+    </li>
+    <li>
+      <span class="icon icon-check">✓</span>
+      <div><strong>Lighthouse score verified after implementation.</strong> Run a before/after Lighthouse audit in Chrome DevTools to confirm LCP improved, CLS didn't worsen, and no new errors appeared.</div>
+    </li>
+    <li>
+      <span class="icon icon-x">✗</span>
+      <div><strong>Don't lazy load above-fold images in a carousel.</strong> The first slide must load eagerly. Apply <code>loading="lazy"</code> only to slides 2 and beyond.</div>
+    </li>
+    <li>
+      <span class="icon icon-x">✗</span>
+      <div><strong>Don't rely on JS-only lazy loading without a noscript fallback.</strong> If a user has JavaScript disabled, JS-based lazy loading shows broken images. Provide <code>&lt;noscript&gt;</code> fallbacks or use native <code>loading="lazy"</code>.</div>
+    </li>
+  </ul>
+
+  <!-- Inline link back to alt-text -->
+  <a href="/alt-text-best-practices" class="link-card" style="margin-top:36px;">
+    <div class="link-card-icon">📋</div>
+    <div class="link-card-text">
+      <strong>Complete Alt Text Best Practices Guide</strong>
+      <span>Every lazy-loaded image still needs quality alt text. Learn how to write it — with 50+ examples.</span>
+    </div>
+    <div class="link-card-arrow">→</div>
+  </a>
+
+  <hr class="divider" />
+
+  <!-- SECTION 8 — FAQ -->
+  <h2 id="faq">8. Frequently Asked Questions</h2>
+
+  <ul class="faq-list">
+    <li class="faq-item">
+      <button class="faq-q">What is lazy loading for images? <span class="arrow">▾</span></button>
+      <div class="faq-a">
+        Lazy loading is a technique that delays loading images until they are about to enter the user's viewport. Instead of downloading all images when the page loads, the browser only fetches images the user is actually about to see — reducing initial load time, bandwidth usage, and improving Core Web Vitals scores.
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-q">Does lazy loading hurt SEO? <span class="arrow">▾</span></button>
+      <div class="faq-a">
+        No — when implemented correctly, lazy loading <em>improves</em> SEO by boosting Core Web Vitals scores. Google's crawler handles native <code>loading="lazy"</code> correctly and can still index lazy-loaded images. The critical rule: never lazy load your LCP image (usually the hero). That will hurt LCP scores and your rankings.
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-q">What's the difference between loading="lazy" and Intersection Observer? <span class="arrow">▾</span></button>
+      <div class="faq-a">
+        <code>loading="lazy"</code> is a native HTML attribute — zero JavaScript, supported by 96%+ of browsers. Use it as your default. Intersection Observer is a JavaScript API that gives you more control: custom loading thresholds, fade-in animations, lazy loading of CSS backgrounds, and logic based on user behavior or connection speed. Use Intersection Observer when you need features beyond basic deferred loading.
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-q">Should I lazy load all images on a page? <span class="arrow">▾</span></button>
+      <div class="faq-a">
+        Never lazy load above-the-fold images. The hero image, top navigation images, and any image visible on initial load should load eagerly. For hero images, add <code>fetchpriority="high"</code> to tell the browser to prioritize them. Only images below the fold — product grids, article body images, footer images — should use <code>loading="lazy"</code>.
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-q">How much does lazy loading improve page speed? <span class="arrow">▾</span></button>
+      <div class="faq-a">
+        Results vary by page composition, but Google's own data showed that enabling lazy loading in Chrome reduced image bytes by an average of 27% across all page loads. On image-heavy pages (e-commerce, galleries, blogs), the improvement is often 40–70% reduction in initial page weight. Combine with image compression and modern formats (WebP) for maximum gains.
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-q">Do lazy loaded images still need alt text? <span class="arrow">▾</span></button>
+      <div class="faq-a">
+        Yes — always. The <code>loading</code> attribute doesn't change accessibility requirements. Screen readers still read the <code>alt</code> attribute when the image loads. Search engines index lazy-loaded images and use alt text to understand them. Every image, lazy-loaded or not, needs descriptive alt text. See our complete <a href="/alt-text-best-practices">alt text best practices guide</a> for writing rules and 50+ examples.
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-q">Does WordPress automatically add lazy loading? <span class="arrow">▾</span></button>
+      <div class="faq-a">
+        Yes — since WordPress 5.5 (released August 2020), WordPress automatically adds <code>loading="lazy"</code> to all images inserted via the block editor or classic editor. If you're on WP 5.5 or later, your images are already being lazy loaded. Check that your theme doesn't override this with a custom filter, and ensure your hero/featured images are excluded from lazy loading for LCP performance.
+      </div>
+    </li>
+  </ul>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <h2>Compress Before You Lazy Load</h2>
+    <p>A well-optimized 80KB image loads fast even on slow connections. Start with compression, then add lazy loading for maximum performance.</p>
+    <a href="/" class="cta-btn">Compress Images Free →</a>
+  </div>
+
+  <!-- RELATED ARTICLES -->
+  <section style="margin-top: 60px;">
+    <h2 style="font-family:'Fraunces',serif;font-size:24px;font-weight:700;margin-bottom:6px;">Related Guides</h2>
+    <p style="color:var(--ink-muted);font-size:15px;margin-bottom:20px;">More ways to make your images faster and better for search.</p>
+    <div class="related-grid">
+      <a href="/alt-text-best-practices" class="related-card">
+        <div class="related-cat">Accessibility & SEO</div>
+        <div class="related-title">Alt Text Best Practices: The Complete 2025 Guide</div>
+      </a>
+      <a href="/image-compression-guide" class="related-card">
+        <div class="related-cat">Performance</div>
+        <div class="related-title">How to Compress Images Without Losing Quality</div>
+      </a>
+      <a href="/webp-vs-jpeg" class="related-card">
+        <div class="related-cat">Formats</div>
+        <div class="related-title">WebP vs JPEG: Which Format Is Better in 2025?</div>
+      </a>
+    </div>
+  </section>
+
+</article>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 ImgSwift · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/blog">Blog</a> · <a href="/sitemap.xml">Sitemap</a></p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>

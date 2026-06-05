@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact ImgSwift — Report a Bug or Suggest a Feature</title>
+  <meta name="description" content="Get in touch with the ImgSwift team. Report a bug, suggest a feature, send an editorial correction, or just say hello. We read every message.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="author" content="ImgSwift">
+  <link rel="canonical" href="https://imgswift.xyz/contact/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://imgswift.xyz/contact/">
+  <meta property="og:title" content="Contact Us – ImgSwift">
+  <meta property="og:description" content="Get in touch with the ImgSwift team. Bug reports, feature requests, editorial corrections, and more.">
+  <meta property="og:image" content="https://imgswift.xyz/og/default-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+  <meta property="og:site_name" content="ImgSwift">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@imgswift">
+  <meta name="twitter:title" content="Contact Us – ImgSwift">
+  <meta name="twitter:description" content="Get in touch with the ImgSwift team.">
+  <meta name="twitter:image" content="https://imgswift.xyz/og/default-og.png">
+  <meta name="theme-color" content="#080c12">
+  <link rel="alternate" hreflang="en" href="https://imgswift.xyz/contact/">
+  <link rel="alternate" hreflang="x-default" href="https://imgswift.xyz/contact/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact ImgSwift",
+    "url": "https://imgswift.xyz/contact/",
+    "description": "Get in touch with the ImgSwift team for bug reports, feature requests, editorial corrections, and general enquiries.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ImgSwift",
+      "url": "https://imgswift.xyz/",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "url": "https://imgswift.xyz/contact/"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://imgswift.xyz/" },
+        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://imgswift.xyz/contact/" }
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does ImgSwift upload my images?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. All processing happens entirely in your browser. Your images never leave your device." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is ImgSwift free to use?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. ImgSwift is 100% free for personal and commercial use. No signup or credit card required." }
+      },
+      {
+        "@type": "Question",
+        "name": "What image formats does ImgSwift support?",
+        "acceptedAnswer": { "@type": "Answer", "text": "ImgSwift supports JPG, PNG, WebP, AVIF, GIF, PDF, and more. Check the homepage for the full list of conversion tools." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to get a response?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We aim to respond within 2–3 business days for general enquiries, and within 24 hours for bug reports." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I suggest a new tool or format?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Absolutely! Feature requests are welcome. Use the contact form and select 'Feature Request' as the topic." }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #080c12; --surface: #0f1620; --card: #141c28; --card2: #1a2236;
+      --border: #1e2d42; --border2: #253349;
+      --accent: #4f8ef7; --accent-d: #3b6fd4;
+      --accent-g: linear-gradient(135deg, #4f8ef7, #7b5bf6);
+      --pink: #f472b6; --green: #2dd4a0; --yellow: #f59e0b; --red: #f87171;
+      --text: #e2eaf6; --text-2: #b0bdd0; --muted: #607080;
+      --shadow: 0 24px 64px rgba(0,0,0,0.55);
+      --radius: 18px; --radius-sm: 10px;
+      --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    [data-theme="light"] {
+      --bg: #f0f4fa; --surface: #ffffff; --card: #ffffff; --card2: #f5f7ff;
+      --border: #dde3f0; --border2: #c8d0e4; --text: #0f172a; --text-2: #475569;
+      --muted: #94a3b8; --shadow: 0 24px 64px rgba(0,0,0,0.10);
+    }
+    [data-theme="light"] nav { background: rgba(240,244,250,0.92); }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; line-height: 1.7; }
+    body::before { content: ''; position: fixed; inset: 0; z-index: -1; background: radial-gradient(ellipse 70% 50% at 20% 10%, rgba(79,142,247,0.07) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 90%, rgba(123,91,246,0.06) 0%, transparent 60%); pointer-events: none; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(8,12,18,0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); z-index: 100; }
+    .nav-logo { font-size: 19px; font-weight: 900; color: var(--text); letter-spacing: -0.3px; display: flex; align-items: center; gap: 7px; text-decoration: none; }
+    .nav-logo-icon { width: 30px; height: 30px; border-radius: 8px; background: var(--accent-g); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+    .nav-logo span { color: var(--accent); }
+    .theme-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border2); background: var(--surface); color: var(--text-2); cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+    .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .page-wrap { max-width: 960px; margin: 0 auto; padding: 60px 24px 80px; }
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 48px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { color: var(--text-2); font-weight: 600; }
+    .bc-sep { opacity: 0.4; }
+    .page-hero { text-align: center; margin-bottom: 56px; }
+    .eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); padding: 4px 14px; border-radius: 999px; background: rgba(79,142,247,0.1); border: 1px solid rgba(79,142,247,0.25); margin-bottom: 18px; }
+    .page-hero h1 { font-size: clamp(26px, 4.5vw, 40px); font-weight: 900; letter-spacing: -0.8px; line-height: 1.15; margin-bottom: 16px; }
+    .page-hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--accent), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { font-size: 15px; color: var(--text-2); max-width: 540px; margin: 0 auto; line-height: 1.8; }
+
+    /* MAIN LAYOUT */
+    .contact-layout { display: grid; grid-template-columns: 1fr 340px; gap: 32px; align-items: flex-start; }
+    @media (max-width: 760px) { .contact-layout { grid-template-columns: 1fr; } }
+
+    /* FORM */
+    .form-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 36px 32px; }
+    .form-card h2 { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+    .form-card > p { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 700; color: var(--text-2); margin-bottom: 7px; }
+    .form-group label span { color: var(--accent); }
+    .form-control {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 14px;
+      padding: 12px 16px;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .form-control:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,142,247,0.12); }
+    .form-control::placeholder { color: var(--muted); }
+    textarea.form-control { resize: vertical; min-height: 130px; }
+    select.form-control { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23607080' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    .url-field { display: none; }
+    .url-field.visible { display: block; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+    .char-count { font-size: 11px; color: var(--muted); text-align: right; margin-top: 4px; }
+    .submit-btn {
+      width: 100%;
+      padding: 14px 28px;
+      border: none;
+      background: var(--accent-g);
+      color: #fff;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 800;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: var(--transition);
+      margin-top: 8px;
+    }
+    .submit-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .submit-btn:active { transform: translateY(0); }
+    /* SUCCESS STATE */
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .success-state.visible { display: block; }
+    .success-icon { font-size: 56px; margin-bottom: 16px; }
+    .success-state h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .success-state p { font-size: 14px; color: var(--muted); }
+
+    /* SIDEBAR */
+    .sidebar { display: flex; flex-direction: column; gap: 20px; }
+    .sidebar-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+    .sidebar-card h3 { font-size: 14px; font-weight: 800; margin-bottom: 16px; color: var(--text); display: flex; align-items: center; gap: 8px; }
+    .contact-method { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .contact-method:last-child { border-bottom: none; padding-bottom: 0; }
+    .contact-method:first-of-type { padding-top: 0; }
+    .cm-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .cm-label { font-size: 12px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 3px; }
+    .cm-value { font-size: 13px; color: var(--text-2); line-height: 1.5; }
+    .cm-value a { color: var(--accent); text-decoration: none; }
+    .cm-value a:hover { text-decoration: underline; }
+    .response-times { display: flex; flex-direction: column; gap: 10px; }
+    .rt-item { display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+    .rt-label { color: var(--muted); }
+    .rt-time { font-weight: 700; color: var(--text-2); font-size: 12px; background: var(--card2); border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; }
+
+    /* FAQ */
+    .faq-section { margin-top: 56px; }
+    .faq-section h2 { font-size: 22px; font-weight: 800; margin-bottom: 24px; }
+    .faq-item { border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 10px; overflow: hidden; }
+    .faq-question {
+      width: 100%;
+      background: var(--card);
+      border: none;
+      padding: 18px 20px;
+      text-align: left;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: background var(--transition);
+    }
+    .faq-question:hover { background: var(--card2); }
+    .faq-chevron { font-size: 11px; color: var(--muted); transition: transform var(--transition); flex-shrink: 0; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer { display: none; padding: 0 20px 18px; background: var(--card); font-size: 14px; color: var(--text-2); line-height: 1.8; }
+    .faq-item.open .faq-answer { display: block; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 0; }
+    .footer-inner { max-width: 860px; margin: 0 auto; padding: 28px 24px 20px; display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .footer-logo { font-size: 17px; font-weight: 900; color: var(--text); display: block; margin-bottom: 6px; }
+    .footer-logo span { color: var(--accent); }
+    .footer-brand p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+    .footer-links { display: flex; gap: 32px; flex-wrap: wrap; }
+    .footer-col { display: flex; flex-direction: column; gap: 6px; }
+    .footer-col strong { font-size: 11px; font-weight: 800; letter-spacing: 0.8px; text-transform: uppercase; color: var(--text-2); margin-bottom: 2px; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom { border-top: 1px solid var(--border); text-align: center; padding: 14px 24px; font-size: 12px; color: var(--muted); }
+    .footer-bottom a { color: var(--muted); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--accent); }
+  </style>
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <a href="/" class="nav-logo" aria-label="ImgSwift home">
+    <span class="nav-logo-icon" aria-hidden="true">⚡</span>
+    Img<span>Swift</span>
+  </a>
+  <button class="theme-btn" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode" title="Toggle theme">🌙</button>
+</nav>
+
+<main class="page-wrap">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span class="bc-sep">›</span>
+    <span>Contact</span>
+  </nav>
+
+  <header class="page-hero">
+    <span class="eyebrow">Get in Touch</span>
+    <h1>We'd Love to <em>Hear From You</em></h1>
+    <p>Bug reports, feature requests, editorial corrections, or just saying hello — we read every message.</p>
+  </header>
+
+  <div class="contact-layout">
+
+    <!-- FORM -->
+    <div class="form-card">
+      <h2>Send a Message</h2>
+      <p>Fill in the form below and we'll get back to you as soon as possible.</p>
+
+      <div id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name <span>*</span></label>
+            <input type="text" id="firstName" class="form-control" placeholder="Sara" required autocomplete="given-name">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" class="form-control" placeholder="K." autocomplete="family-name">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address <span>*</span></label>
+          <input type="email" id="email" class="form-control" placeholder="you@example.com" required autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <label for="topic">Topic <span>*</span></label>
+          <select id="topic" class="form-control" required onchange="handleTopicChange(this)">
+            <option value="" disabled selected>Select a topic…</option>
+            <option value="bug">🐛 Bug Report</option>
+            <option value="feature">💡 Feature Request</option>
+            <option value="editorial">📝 Editorial Correction</option>
+            <option value="privacy">🔒 Privacy Question</option>
+            <option value="business">🤝 Business Enquiry</option>
+            <option value="other">💬 Other</option>
+          </select>
+        </div>
+
+        <div class="form-group url-field" id="urlField">
+          <label for="pageUrl">Page URL <span>*</span></label>
+          <input type="url" id="pageUrl" class="form-control" placeholder="https://imgswift.xyz/…">
+          <div style="font-size:12px;color:var(--muted);margin-top:5px;">Which page contains the error or issue?</div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message <span>*</span></label>
+          <textarea id="message" class="form-control" placeholder="Describe your issue or question in as much detail as you can…" required oninput="updateCharCount(this)"></textarea>
+          <div class="char-count"><span id="charCount">0</span> / 2000 characters</div>
+        </div>
+
+        <button type="button" class="submit-btn" onclick="submitForm()">
+          <span>✉️</span> Send Message
+        </button>
+      </div>
+
+      <div class="success-state" id="successState">
+        <div class="success-icon">🎉</div>
+        <h3>Message Sent!</h3>
+        <p>Thanks for reaching out. We'll get back to you within 2–3 business days.</p>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <h3>📬 Other Ways to Reach Us</h3>
+        <div class="contact-method">
+          <div class="cm-icon">🐦</div>
+          <div>
+            <div class="cm-label">Twitter / X</div>
+            <div class="cm-value"><a href="https://twitter.com/imgswift" rel="noopener" target="_blank">@imgswift</a><br>Quickest for short questions</div>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="cm-icon">📝</div>
+          <div>
+            <div class="cm-label">Write for Us</div>
+            <div class="cm-value">Want to contribute a guide? <a href="/authors/">See our authors page</a></div>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="cm-icon">📋</div>
+          <div>
+            <div class="cm-label">Editorial Issues</div>
+            <div class="cm-value">Factual errors in an article? Use the form and select "Editorial Correction"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>⏱️ Response Times</h3>
+        <div class="response-times">
+          <div class="rt-item">
+            <span class="rt-label">🐛 Bug reports</span>
+            <span class="rt-time">≤ 24 hours</span>
+          </div>
+          <div class="rt-item">
+            <span class="rt-label">📝 Editorial corrections</span>
+            <span class="rt-time">1–2 days</span>
+          </div>
+          <div class="rt-item">
+            <span class="rt-label">💡 Feature requests</span>
+            <span class="rt-time">2–3 days</span>
+          </div>
+          <div class="rt-item">
+            <span class="rt-label">💬 General enquiries</span>
+            <span class="rt-time">2–5 days</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>📄 Useful Links</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="/about/" style="font-size:13px;color:var(--text-2);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-2)'">👥 About ImgSwift</a>
+          <a href="/editorial-policy/" style="font-size:13px;color:var(--text-2);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-2)'">📰 Editorial Policy</a>
+          <a href="/privacy-policy/" style="font-size:13px;color:var(--text-2);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-2)'">🔒 Privacy Policy</a>
+          <a href="/terms-of-use/" style="font-size:13px;color:var(--text-2);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-2)'">📋 Terms of Use</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <button class="faq-question">
+        Does ImgSwift upload my images to a server?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-answer">No. ImgSwift processes all images locally in your browser using the Canvas API and WebAssembly. Your files never leave your device and are never sent to any server — not even ours. This is a technical guarantee, not just a policy.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <button class="faq-question">
+        Is ImgSwift free to use for commercial projects?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-answer">Yes. ImgSwift is 100% free for both personal and commercial use. You don't need to sign up, pay, or credit us when using images processed with our tools. See our <a href="/terms-of-use/" style="color:var(--accent)">Terms of Use</a> for full details.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <button class="faq-question">
+        What image formats does ImgSwift support?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-answer">ImgSwift supports JPG, PNG, WebP, AVIF, GIF, BMP, and PDF. You can convert between most of these formats, as well as compress, resize, crop, watermark, and remove EXIF metadata. Check the homepage for the full list of tools.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <button class="faq-question">
+        I found a factual error in one of your guides. How do I report it?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-answer">We appreciate editorial corrections! Use the contact form above, select "Editorial Correction" as the topic, and include the URL of the page with the error. We review all corrections promptly and publish updated articles with a revision note. See our <a href="/editorial-policy/" style="color:var(--accent)">Editorial Policy</a> for more.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <button class="faq-question">
+        Can I suggest a new tool or image format?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-answer">Absolutely. Feature requests are one of the main ways we decide what to build next. Use the contact form and select "Feature Request". The most frequently requested features get prioritised — so the more detail you provide, the better!</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">⚡ Img<span>Swift</span></span>
+      <p>100% browser-based · No data uploaded · No signup needed</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer links">
+      <div class="footer-col">
+        <strong>Tools</strong>
+        <a href="/jpg-to-webp/">JPG to WebP</a>
+        <a href="/png-to-jpg/">PNG to JPG</a>
+        <a href="/compress-image/">Compress Image</a>
+        <a href="/resize-image/">Resize Image</a>
+      </div>
+      <div class="footer-col">
+        <strong>Guides</strong>
+        <a href="/jpg-vs-png/">JPG vs PNG</a>
+        <a href="/best-image-format/">Best Image Format</a>
+        <a href="/how-image-compression-works/">How Compression Works</a>
+      </div>
+      <div class="footer-col">
+        <strong>Company</strong>
+        <a href="/about/">About Us</a>
+        <a href="/editorial-policy/">Editorial Policy</a>
+        <a href="/authors/">Authors</a>
+        <a href="/contact/">Contact</a>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 ImgSwift · <a href="/privacy-policy/">Privacy Policy</a> · <a href="/terms-of-use/">Terms of Use</a> · Free online image tools</p>
+  </div>
+</footer>
+
+<script>
+  function toggleTheme() {
+    const t = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t === 'dark' ? '' : 'light');
+    document.getElementById('themeToggle').textContent = t === 'light' ? '🌙' : '☀️';
+  }
+
+  function handleTopicChange(select) {
+    const urlField = document.getElementById('urlField');
+    const showUrl = ['bug', 'editorial'].includes(select.value);
+    urlField.classList.toggle('visible', showUrl);
+  }
+
+  function updateCharCount(textarea) {
+    const count = textarea.value.length;
+    document.getElementById('charCount').textContent = count;
+    if (count > 2000) textarea.value = textarea.value.substring(0, 2000);
+  }
+
+  function submitForm() {
+    const firstName = document.getElementById('firstName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const topic = document.getElementById('topic').value;
+    const message = document.getElementById('message').value.trim();
+
+    if (!firstName) { alert('Please enter your first name.'); return; }
+    if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+    if (!topic) { alert('Please select a topic.'); return; }
+    if (!message) { alert('Please enter a message.'); return; }
+
+    // Hide form, show success
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('successState').classList.add('visible');
+  }
+
+  function toggleFaq(item) {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+
+<script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+</body>
+</html>

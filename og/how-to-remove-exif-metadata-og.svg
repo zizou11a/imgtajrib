@@ -1,0 +1,51 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080c12"/>
+      <stop offset="100%" style="stop-color:#0f1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4f8ef7"/>
+      <stop offset="100%" style="stop-color:#7b5bf6"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4f8ef7;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#7b5bf6;stop-opacity:0.05"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#1e2d42" stroke-width="0.5"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.5"/>
+
+  <!-- Glow blob top-right -->
+  <ellipse cx="950" cy="120" rx="280" ry="200" fill="url(#glow)"/>
+  <!-- Glow blob bottom-left -->
+  <ellipse cx="180" cy="520" rx="200" ry="150" fill="url(#glow)" opacity="0.6"/>
+
+  <!-- Top accent bar -->
+  <rect x="72" y="68" width="120" height="5" rx="3" fill="url(#accent)"/>
+
+  <!-- Brand -->
+  <text x="72" y="120" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="28" fill="#4f8ef7">⚡ ImgSwift</text>
+
+  <!-- Main title line 1 -->
+  <text x="72" y="310" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="72" fill="#e2eaf6">How to Remove</text>
+  <!-- Main title line 2 -->
+  <text x="72" y="390" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="64" fill="url(#accent)">EXIF Metadata</text>
+
+  <!-- Tagline -->
+  <text x="72" y="460" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="26" fill="#607080">Free · Browser-Based · No Upload Required</text>
+
+  <!-- Bottom border -->
+  <rect x="0" y="620" width="1200" height="10" fill="url(#accent)" opacity="0.4"/>
+
+  <!-- Corner decoration -->
+  <circle cx="1100" cy="550" r="80" fill="none" stroke="#4f8ef7" stroke-width="1" opacity="0.2"/>
+  <circle cx="1100" cy="550" r="50" fill="none" stroke="#7b5bf6" stroke-width="1" opacity="0.15"/>
+</svg>

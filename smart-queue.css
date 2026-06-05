@@ -1,0 +1,1 @@
+.queue-status-label{font-size:11px;color:var(--muted);text-align:center;margin-top:5px;letter-spacing:0.01em;animation:queueLabelFade 0.3s ease}@keyframes queueLabelFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}

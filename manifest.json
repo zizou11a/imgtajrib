@@ -1,0 +1,66 @@
+{
+  "name": "ImgSwift – Image Converter & Compressor",
+  "short_name": "ImgSwift",
+  "description": "Convert & compress images free. JPG, PNG, WebP, PDF. 100% browser-based.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080c12",
+  "theme_color": "#4f8ef7",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "categories": [
+    "utilities",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Convert Image",
+      "short_name": "Convert",
+      "url": "/#convert",
+      "description": "Convert images to JPG, PNG, WebP and more"
+    },
+    {
+      "name": "Compress Image",
+      "short_name": "Compress",
+      "url": "/#compress",
+      "description": "Compress images up to 90%"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "label": "ImgSwift image converter",
+      "form_factor": "wide"
+    }
+  ],
+  "id": "/",
+  "prefer_related_applications": false
+}

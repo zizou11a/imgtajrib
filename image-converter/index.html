@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Online Image Converter — Convert JPG, PNG, WebP, AVIF | ImgSwift</title>
+<meta name="description" content="Convert images between any format instantly — JPG, PNG, WebP, AVIF, PDF and more. Free, fast, and 100% in your browser. No upload, no account needed.">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://imgswift.xyz/image-converter/">
+<link rel="alternate" hreflang="en" href="https://imgswift.xyz/image-converter/">
+<link rel="alternate" hreflang="x-default" href="https://imgswift.xyz/image-converter/">
+
+<meta property="og:title" content="Free Online Image Converter — JPG, PNG, WebP, AVIF | ImgSwift">
+<meta property="og:description" content="Convert images between any format instantly in your browser. No uploads, no account. JPG, PNG, WebP, AVIF, PDF and more.">
+<meta property="og:url" content="https://imgswift.xyz/image-converter/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://imgswift.xyz/og/jpg-to-webp-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://imgswift.xyz/og/default-og.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Free Online Image Converter",
+  "description": "Convert images between JPG, PNG, WebP, AVIF, PDF and more formats instantly in your browser.",
+  "url": "https://imgswift.xyz/image-converter/",
+  "author": {"@type": "Person", "name": "ImgSwift Team", "url": "https://imgswift.xyz/about/"},
+  "publisher": {"@type": "Organization", "name": "ImgSwift", "url": "https://imgswift.xyz"},
+  "datePublished": "2026-06-01",
+  "dateModified": "2026-06-01"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://imgswift.xyz/"},
+    {"@type": "ListItem", "position": 2, "name": "Image Hub", "item": "https://imgswift.xyz/hub/"},
+    {"@type": "ListItem", "position": 3, "name": "Image Converter", "item": "https://imgswift.xyz/image-converter/"}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What image formats can I convert with ImgSwift?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ImgSwift supports converting between JPG, PNG, WebP, AVIF, PDF, and more. All conversions happen entirely in your browser — your files never leave your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the image converter free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every image converter on ImgSwift is completely free with no file size limits, no account required, and no watermarks added to your output."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which format should I convert to for the web?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For modern websites, WebP and AVIF offer the best file size savings. WebP is 25–35% smaller than JPG/PNG. AVIF goes even further — typically 40–55% smaller than JPG at the same quality. Both are supported by all major browsers as of 2024."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does image conversion reduce quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Converting to a lossy format like JPG or WebP involves some quality trade-off that you control via the quality slider. Converting to a lossless format like PNG preserves every pixel exactly. Converting between two lossy formats (e.g. JPG → WebP) applies the compression once — quality loss is not compounded."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0d14;
+    --surface: #111520;
+    --card: #161c2e;
+    --border: #1e2a42;
+    --accent: #3b82f6;
+    --accent2: #22d3ee;
+    --gold: #f59e0b;
+    --green: #10b981;
+    --purple: #a78bfa;
+    --red: #f87171;
+    --text: #e2e8f0;
+    --muted: #64748b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    line-height: 1.7;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* NAV */
+  nav {
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+    position: sticky;
+    top: 0;
+    background: rgba(10,13,20,0.92);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+
+  nav .container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-logo {
+    font-weight: 800;
+    font-size: 17px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.3px;
+  }
+
+  .nav-logo span { color: var(--accent2); }
+
+  .nav-sep { color: var(--border); font-size: 18px; }
+
+  .nav-current {
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  /* HERO */
+  .hero {
+    padding: 72px 0 56px;
+    text-align: center;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(34,211,238,0.08);
+    border: 1px solid rgba(34,211,238,0.2);
+    color: var(--accent2);
+    border-radius: 100px;
+    padding: 5px 16px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 18px;
+  }
+
+  h1 span {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto 32px;
+    line-height: 1.65;
+  }
+
+  /* TRUST STRIP */
+  .trust-strip {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .trust-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+  }
+
+  /* FORMAT QUICK-PICK */
+  .quickpick {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 40px 0;
+    text-align: center;
+  }
+
+  .quickpick-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+
+  .format-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .fmt-btn {
+    display: inline-block;
+    padding: 8px 18px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text);
+    background: var(--card);
+    transition: all 0.15s;
+    letter-spacing: 0.3px;
+  }
+
+  .fmt-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent2);
+    background: rgba(59,130,246,0.07);
+    transform: translateY(-1px);
+  }
+
+  /* SECTION */
+  .section {
+    padding: 48px 0 8px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .section-icon { font-size: 22px; }
+
+  h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+  }
+
+  .section-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: -16px;
+    margin-bottom: 24px;
+    max-width: 700px;
+  }
+
+  /* TOOL GRID */
+  .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .tool-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all 0.18s;
+  }
+
+  .tool-card:hover {
+    border-color: var(--accent);
+    background: rgba(59,130,246,0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  }
+
+  .tool-card-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(59,130,246,0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .tool-card-icon.green { background: rgba(16,185,129,0.1); }
+  .tool-card-icon.purple { background: rgba(167,139,250,0.1); }
+  .tool-card-icon.gold { background: rgba(245,158,11,0.1); }
+
+  .tool-card-name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .tool-card-desc {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* COMPARISON TABLE */
+  .compare-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  th {
+    background: var(--surface);
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  td {
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(30,42,66,0.6);
+    vertical-align: middle;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  tr:hover td { background: rgba(255,255,255,0.015); }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  .tag-green { background: rgba(16,185,129,0.15); color: var(--green); }
+  .tag-blue  { background: rgba(59,130,246,0.15); color: #60a5fa; }
+  .tag-gold  { background: rgba(245,158,11,0.15); color: var(--gold); }
+  .tag-red   { background: rgba(248,113,113,0.15); color: var(--red); }
+  .tag-muted { background: rgba(100,116,139,0.12); color: var(--muted); }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 2px; }
+
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--card);
+  }
+
+  .faq-q {
+    width: 100%;
+    text-align: left;
+    padding: 18px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .faq-q:hover { color: var(--accent2); }
+
+  .faq-arrow {
+    font-size: 18px;
+    color: var(--muted);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+  .faq-a {
+    display: none;
+    padding: 0 22px 18px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+    border-top: 1px solid var(--border);
+  }
+
+  .faq-item.open .faq-a { display: block; }
+
+  /* PROSE */
+  .prose {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #94a3b8;
+    max-width: 800px;
+  }
+
+  .prose h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 28px 0 10px;
+  }
+
+  .prose p { margin-bottom: 16px; }
+
+  .prose a {
+    color: var(--accent2);
+    text-decoration: none;
+  }
+
+  .prose a:hover { text-decoration: underline; }
+
+  .prose ul {
+    margin: 12px 0 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .prose li::marker { color: var(--accent); }
+
+  /* CTA */
+  .cta-block {
+    background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(34,211,238,0.04));
+    border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 20px;
+    padding: 52px 40px;
+    text-align: center;
+    margin: 56px 0 0;
+  }
+
+  .cta-block h2 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .cta-block p {
+    color: var(--muted);
+    margin-bottom: 28px;
+    font-size: 15px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent), #2563eb);
+    color: #fff;
+    font-weight: 700;
+    padding: 14px 36px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 15px;
+    transition: opacity 0.15s, transform 0.15s;
+    box-shadow: 0 4px 20px rgba(59,130,246,0.3);
+  }
+
+  .cta-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+  /* STAT STRIP */
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin: 40px 0;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  footer {
+    margin-top: 80px;
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+    line-height: 2.2;
+  }
+
+  footer a {
+    color: var(--muted);
+    text-decoration: none;
+    margin: 0 10px;
+  }
+
+  footer a:hover { color: var(--text); }
+
+  @media (max-width: 640px) {
+    .tool-grid { grid-template-columns: 1fr 1fr; }
+    .stat-strip { grid-template-columns: 1fr 1fr; }
+    .cta-block { padding: 36px 24px; }
+    .quickpick { padding: 22px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/" class="nav-logo">Img<span>Swift</span></a>
+    <span class="nav-sep">/</span>
+    <a href="/hub/" style="font-size:14px;color:var(--muted);text-decoration:none;">Hub</a>
+    <span class="nav-sep">/</span>
+    <span class="nav-current">Image Converter</span>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">Free · No Upload · Instant</div>
+    <h1>Online <span>Image Converter</span><br>for Every Format</h1>
+    <p class="hero-sub">
+      Convert between JPG, PNG, WebP, AVIF, PDF and more — entirely in your browser.
+      No file uploads. No account. No watermarks. Just fast, private conversions.
+    </p>
+    <div class="trust-strip">
+      <div class="trust-item"><div class="trust-dot"></div>100% browser-based</div>
+      <div class="trust-item"><div class="trust-dot"></div>Files never leave your device</div>
+      <div class="trust-item"><div class="trust-dot"></div>No size limits</div>
+      <div class="trust-item"><div class="trust-dot"></div>Always free</div>
+    </div>
+  </section>
+
+  <!-- QUICK FORMAT PICK -->
+  <div class="quickpick">
+    <div class="quickpick-label">Jump directly to a conversion</div>
+    <div class="format-row">
+      <a href="/jpg-to-png/" class="fmt-btn">JPG → PNG</a>
+      <a href="/png-to-jpg/" class="fmt-btn">PNG → JPG</a>
+      <a href="/jpg-to-webp/" class="fmt-btn">JPG → WebP</a>
+      <a href="/png-to-webp/" class="fmt-btn">PNG → WebP</a>
+      <a href="/jpg-to-avif/" class="fmt-btn">JPG → AVIF</a>
+      <a href="/png-to-avif/" class="fmt-btn">PNG → AVIF</a>
+      <a href="/webp-to-jpg/" class="fmt-btn">WebP → JPG</a>
+      <a href="/webp-to-png/" class="fmt-btn">WebP → PNG</a>
+      <a href="/avif-to-jpg/" class="fmt-btn">AVIF → JPG</a>
+      <a href="/avif-to-png/" class="fmt-btn">AVIF → PNG</a>
+      <a href="/jpg-to-pdf/" class="fmt-btn">JPG → PDF</a>
+      <a href="/pdf-to-image/" class="fmt-btn">PDF → Image</a>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stat-strip">
+    <div class="stat-card">
+      <div class="stat-number">12+</div>
+      <div class="stat-label">Format pairs</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">~55%</div>
+      <div class="stat-label">Avg size saved (AVIF)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">0</div>
+      <div class="stat-label">Files uploaded</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">∞</div>
+      <div class="stat-label">File size limit</div>
+    </div>
+  </div>
+
+  <!-- FROM JPG -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-icon">📸</span>
+      <div>
+        <h2>Convert from JPG / JPEG</h2>
+      </div>
+    </div>
+    <p class="section-sub">JPG is the most common photo format. Convert it to a modern format to save bandwidth, or to PNG for a lossless copy.</p>
+    <div class="tool-grid">
+      <a href="/jpg-to-png/" class="tool-card">
+        <div class="tool-card-icon green">🖼️</div>
+        <div>
+          <div class="tool-card-name">JPG → PNG</div>
+          <div class="tool-card-desc">Lossless with transparency</div>
+        </div>
+      </a>
+      <a href="/jpg-to-webp/" class="tool-card">
+        <div class="tool-card-icon">🌐</div>
+        <div>
+          <div class="tool-card-name">JPG → WebP</div>
+          <div class="tool-card-desc">30% smaller for modern browsers</div>
+        </div>
+      </a>
+      <a href="/jpg-to-avif/" class="tool-card">
+        <div class="tool-card-icon purple">⚡</div>
+        <div>
+          <div class="tool-card-name">JPG → AVIF</div>
+          <div class="tool-card-desc">Up to 55% smaller than JPG</div>
+        </div>
+      </a>
+      <a href="/jpg-to-pdf/" class="tool-card">
+        <div class="tool-card-icon gold">📄</div>
+        <div>
+          <div class="tool-card-name">JPG → PDF</div>
+          <div class="tool-card-desc">Bundle images as a document</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FROM PNG -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-icon">🖼️</span>
+      <div>
+        <h2>Convert from PNG</h2>
+      </div>
+    </div>
+    <p class="section-sub">PNG is ideal for logos, screenshots, and images with transparency. Convert to smaller formats for web delivery.</p>
+    <div class="tool-grid">
+      <a href="/png-to-jpg/" class="tool-card">
+        <div class="tool-card-icon">📸</div>
+        <div>
+          <div class="tool-card-name">PNG → JPG</div>
+          <div class="tool-card-desc">Smaller files for photos &amp; web</div>
+        </div>
+      </a>
+      <a href="/png-to-webp/" class="tool-card">
+        <div class="tool-card-icon">🌐</div>
+        <div>
+          <div class="tool-card-name">PNG → WebP</div>
+          <div class="tool-card-desc">Transparency + 30% savings</div>
+        </div>
+      </a>
+      <a href="/png-to-avif/" class="tool-card">
+        <div class="tool-card-icon purple">⚡</div>
+        <div>
+          <div class="tool-card-name">PNG → AVIF</div>
+          <div class="tool-card-desc">Best compression for 2026</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FROM WEBP / AVIF -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-icon">🌐</span>
+      <div>
+        <h2>Convert from WebP &amp; AVIF</h2>
+      </div>
+    </div>
+    <p class="section-sub">Need to go backwards — from a next-gen format to a universally compatible one? These tools convert WebP and AVIF back to standard formats.</p>
+    <div class="tool-grid">
+      <a href="/webp-to-jpg/" class="tool-card">
+        <div class="tool-card-icon">📸</div>
+        <div>
+          <div class="tool-card-name">WebP → JPG</div>
+          <div class="tool-card-desc">Maximum compatibility</div>
+        </div>
+      </a>
+      <a href="/webp-to-png/" class="tool-card">
+        <div class="tool-card-icon green">🖼️</div>
+        <div>
+          <div class="tool-card-name">WebP → PNG</div>
+          <div class="tool-card-desc">Lossless with transparency</div>
+        </div>
+      </a>
+      <a href="/webp-to-avif/" class="tool-card">
+        <div class="tool-card-icon purple">⚡</div>
+        <div>
+          <div class="tool-card-name">WebP → AVIF</div>
+          <div class="tool-card-desc">Upgrade to next-gen format</div>
+        </div>
+      </a>
+      <a href="/avif-to-jpg/" class="tool-card">
+        <div class="tool-card-icon">📸</div>
+        <div>
+          <div class="tool-card-name">AVIF → JPG</div>
+          <div class="tool-card-desc">Legacy-compatible output</div>
+        </div>
+      </a>
+      <a href="/avif-to-png/" class="tool-card">
+        <div class="tool-card-icon green">🖼️</div>
+        <div>
+          <div class="tool-card-name">AVIF → PNG</div>
+          <div class="tool-card-desc">Lossless export</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- PDF CONVERSIONS -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-icon">📄</span>
+      <div>
+        <h2>PDF &amp; Document Conversions</h2>
+      </div>
+    </div>
+    <p class="section-sub">Convert images to PDF documents, or extract images from PDFs — all without uploading your files.</p>
+    <div class="tool-grid">
+      <a href="/jpg-to-pdf/" class="tool-card">
+        <div class="tool-card-icon gold">📄</div>
+        <div>
+          <div class="tool-card-name">JPG → PDF</div>
+          <div class="tool-card-desc">Bundle as a document</div>
+        </div>
+      </a>
+      <a href="/pdf-to-image/" class="tool-card">
+        <div class="tool-card-icon gold">🖼️</div>
+        <div>
+          <div class="tool-card-name">PDF → Image</div>
+          <div class="tool-card-desc">Extract pages as images</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FORMAT COMPARISON TABLE -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-icon">📊</span>
+      <div>
+        <h2>Format Comparison at a Glance</h2>
+      </div>
+    </div>
+    <p class="section-sub">Not sure which format to convert to? This table summarises the trade-offs for 2026.</p>
+    <div class="compare-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Format</th>
+            <th>Best for</th>
+            <th>Compression</th>
+            <th>Transparency</th>
+            <th>Browser support</th>
+            <th>Lossy / Lossless</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>JPG</strong></td>
+            <td>Photos, legacy compatibility</td>
+            <td><span class="tag tag-muted">Baseline</span></td>
+            <td>❌</td>
+            <td><span class="tag tag-green">Universal</span></td>
+            <td>Lossy only</td>
+          </tr>
+          <tr>
+            <td><strong>PNG</strong></td>
+            <td>Logos, screenshots, text images</td>
+            <td><span class="tag tag-muted">Moderate</span></td>
+            <td>✅</td>
+            <td><span class="tag tag-green">Universal</span></td>
+            <td>Lossless only</td>
+          </tr>
+          <tr>
+            <td><strong>WebP</strong></td>
+            <td>Web photos &amp; UI elements</td>
+            <td><span class="tag tag-blue">~30% vs JPG</span></td>
+            <td>✅</td>
+            <td><span class="tag tag-green">All modern</span></td>
+            <td>Both</td>
+          </tr>
+          <tr>
+            <td><strong>AVIF</strong></td>
+            <td>Highest-efficiency web images</td>
+            <td><span class="tag tag-green">~55% vs JPG</span></td>
+            <td>✅</td>
+            <td><span class="tag tag-blue">All modern</span></td>
+            <td>Both</td>
+          </tr>
+          <tr>
+            <td><strong>PDF</strong></td>
+            <td>Documents, print, sharing</td>
+            <td><span class="tag tag-muted">Variable</span></td>
+            <td>❌</td>
+            <td><span class="tag tag-green">Universal</span></td>
+            <td>Both</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-icon">❓</span>
+      <div>
+        <h2>Frequently Asked Questions</h2>
+      </div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Are my images actually private — do they get uploaded?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          No. Every conversion on ImgSwift runs entirely in your browser using JavaScript. Your images are never sent to any server. They stay on your device from start to finish. This is why there are no file size limits and no waiting for uploads.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Which format should I choose for a website?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          For photos: use <strong>AVIF</strong> as your primary format — it's typically 40–55% smaller than JPG at the same quality. Add a WebP fallback for any browser that doesn't yet support AVIF. For logos and icons with transparency: use <strong>WebP lossless</strong> or PNG. For maximum compatibility with no trade-offs: JPEG and PNG still work everywhere.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Does converting to WebP or AVIF reduce quality?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          You control the quality. ImgSwift provides a quality slider (1–100) before you convert. At 80–85 quality, WebP and AVIF are visually indistinguishable from the original JPEG — while being significantly smaller. At 100, lossless mode preserves every pixel exactly.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What's the difference between lossy and lossless conversion?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          <strong>Lossy</strong> compression discards some image data to achieve a smaller file size. JPEG is always lossy; WebP and AVIF support both modes. <strong>Lossless</strong> compression keeps every pixel bit-for-bit identical to the original. PNG is always lossless. Use lossless when you need to edit the image again later, or when it contains legible text. Use lossy for photos and final web delivery.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I convert multiple images at once?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          Yes. All ImgSwift converters support batch processing — drag in multiple files at once and they will all be converted and downloaded as a ZIP. The number of files you can process at once is limited only by your device's memory.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROSE -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-icon">💡</span>
+      <div>
+        <h2>Which Image Format Should You Use in 2026?</h2>
+      </div>
+    </div>
+    <div class="prose">
+      <p>
+        Images are typically the largest assets on any webpage — often accounting for 50–70% of total page weight.
+        Choosing the right format and converting correctly can cut that weight in half, directly improving
+        Core Web Vitals, load times, and search rankings.
+      </p>
+
+      <h3>AVIF: the 2026 standard for photos</h3>
+      <p>
+        AVIF (AV1 Image File Format) is now supported by all major browsers and delivers the highest compression
+        efficiency available. At equivalent visual quality, AVIF files are typically 40–55% smaller than JPEGs and
+        20–30% smaller than WebP. Use our <a href="/jpg-to-avif/">JPG to AVIF</a> or
+        <a href="/png-to-avif/">PNG to AVIF</a> converters to upgrade your image library.
+      </p>
+
+      <h3>WebP: the safe universal choice</h3>
+      <p>
+        WebP is supported by all modern browsers and offers around 25–35% smaller file sizes than JPEG with
+        comparable quality. Unlike JPEG, WebP supports both lossy and lossless compression as well as transparency —
+        making it a single format solution for both photos and logos. Convert any image to WebP with our
+        <a href="/jpg-to-webp/">JPG to WebP</a> or <a href="/png-to-webp/">PNG to WebP</a> tools.
+      </p>
+
+      <h3>PNG: when lossless matters</h3>
+      <p>
+        PNG produces perfect copies with no quality loss, making it the right choice for screenshots,
+        images with text, diagrams, and anything you plan to edit further. If file size is a concern,
+        convert PNG to <a href="/png-to-webp/">lossless WebP</a> for up to 25% savings with zero quality difference.
+      </p>
+
+      <h3>JPG: legacy compatibility</h3>
+      <p>
+        JPEG remains useful when you need guaranteed compatibility with older systems, email clients, or software
+        that doesn't support modern formats. It also has strong hardware decoding support on mobile devices,
+        which can be relevant for very large photo libraries.
+      </p>
+
+      <h3>The quick decision rule</h3>
+      <ul>
+        <li><strong>Photo for web →</strong> AVIF (WebP fallback)</li>
+        <li><strong>Logo or icon with transparency →</strong> WebP lossless (PNG fallback)</li>
+        <li><strong>Screenshot or text image →</strong> PNG</li>
+        <li><strong>Maximum compatibility →</strong> JPEG or PNG</li>
+        <li><strong>Document workflow →</strong> PDF</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h2>Start Converting — Free &amp; Instant</h2>
+    <p>All tools run in your browser. Your files never leave your device.</p>
+    <a href="/" class="cta-btn">Open ImgSwift →</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">
+    <a href="/">Home</a>
+    <a href="/hub/">Hub</a>
+    <a href="/image-converter/">Converter</a>
+    <a href="/jpg-vs-png/">JPG vs PNG</a>
+    <a href="/best-image-format-for-websites/">Best Format Guide</a>
+    <a href="/compress-image/">Compress</a>
+    <a href="/resize-image/">Resize</a>
+    <br><br>
+    © 2026 ImgSwift · All image processing happens in your browser.
+  </div>
+</footer>
+
+<link rel="manifest" href="/manifest.json">
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    item.classList.toggle('open');
+  }
+</script>
+<script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+</body>
+</html>

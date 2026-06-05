@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Caching Guide: How to Cache Images for Faster Websites in 2026 | ImgSwift</title>
+  <meta name="description" content="Learn how to cache images correctly using Cache-Control headers, CDN edge caching, Service Workers, and cache-busting strategies. Boost page speed and reduce server load." />
+  <meta name="keywords" content="image caching, cache-control images, browser caching images, CDN image cache, cache-busting images, service worker image cache, http caching images, image cache headers" />
+  <link rel="canonical" href="https://imgswift.xyz/image-caching-guide/" />
+
+  <meta property="og:title" content="Image Caching Guide: How to Cache Images for Faster Websites in 2026" />
+  <meta property="og:description" content="Master browser caching, CDN edge caching, and cache-busting for images — with real HTTP headers, code examples, and a full checklist." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://imgswift.xyz/image-caching-guide/" />
+  <meta property="og:image" content="https://imgswift.xyz/og/compress-image-og.png" />
+  <meta property="og:site_name" content="ImgSwift" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@imgswift" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://imgswift.xyz/"},
+      {"@type":"ListItem","position":2,"name":"Image Caching Guide","item":"https://imgswift.xyz/image-caching-guide/"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Image Caching Guide: How to Cache Images for Faster Websites in 2026",
+    "description": "A complete guide to caching images correctly — browser cache-control headers, CDN edge caching, cache-busting, and Service Worker strategies.",
+    "author": { "@type": "Organization", "name": "ImgSwift" },
+    "publisher": { "@type": "Organization", "name": "ImgSwift", "url": "https://imgswift.xyz" },
+    "datePublished": "2025-01-01",
+    "dateModified": "2026-06-01",
+    "mainEntityOfPage": "https://imgswift.xyz/image-caching-guide/"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"How long should images be cached?","acceptedAnswer":{"@type":"Answer","text":"Images should typically be cached for 1 year (max-age=31536000) when using content-addressable filenames (hash-based URLs). For images served at static, non-versioned URLs, use a shorter TTL (1–7 days) combined with must-revalidate to allow forced updates when needed."}},
+      {"@type":"Question","name":"What is cache-busting for images?","acceptedAnswer":{"@type":"Answer","text":"Cache-busting is the practice of changing an image's URL whenever its content changes, forcing browsers and CDNs to fetch the new version instead of serving the cached one. The most reliable method is content-hashing: appending a hash of the file's contents to the filename (e.g. hero.a3f9b2.webp)."}},
+      {"@type":"Question","name":"Does image caching affect SEO?","acceptedAnswer":{"@type":"Answer","text":"Yes, indirectly but significantly. Properly cached images improve page load speed, which directly affects Core Web Vitals (LCP in particular). Google uses Core Web Vitals as a ranking signal. Faster repeat visits from cached images also reduce bounce rates, which correlates with better rankings."}},
+      {"@type":"Question","name":"What Cache-Control header should I use for images?","acceptedAnswer":{"@type":"Answer","text":"For versioned/hashed image URLs: Cache-Control: public, max-age=31536000, immutable. For non-versioned URLs: Cache-Control: public, max-age=86400, must-revalidate. The 'immutable' directive tells browsers not to revalidate during the max-age window even on hard refresh, saving a round-trip."}},
+      {"@type":"Question","name":"What is the difference between browser cache and CDN cache?","acceptedAnswer":{"@type":"Answer","text":"Browser cache stores images locally on the user's device — subsequent page loads don't re-download cached images. CDN cache stores images on edge servers geographically close to users — the image still travels over the network, but from a nearby CDN node instead of your origin server. Both are important and work together."}},
+      {"@type":"Question","name":"Can I cache images with a Service Worker?","acceptedAnswer":{"@type":"Answer","text":"Yes. A Service Worker can intercept image fetch requests and serve them from a Cache Storage API cache, giving you full programmatic control over caching strategy (cache-first, stale-while-revalidate, network-first). This enables offline image serving and granular per-image cache policies beyond what HTTP headers alone provide."}}
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="/icon-192.png" type="image/png" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <style>
+    /* ── Page-level overrides ── */
+    .article-wrap { max-width: 820px; margin: 0 auto; padding: 0 20px 80px; }
+
+    .breadcrumb-bar {
+      max-width: 820px; margin: 16px auto 0; padding: 0 20px;
+      font-size: 0.82rem; color: var(--muted);
+    }
+    .breadcrumb-bar ol { list-style: none; display: flex; gap: 8px; }
+    .breadcrumb-bar a { color: var(--muted); text-decoration: none; }
+    .breadcrumb-bar a:hover { color: var(--accent); }
+
+    .article-hero { max-width: 820px; margin: 0 auto; padding: 48px 20px 0; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(79,142,247,0.1); color: var(--accent);
+      font-size: 11px; font-weight: 700; padding: 5px 12px;
+      border-radius: 20px; margin-bottom: 20px;
+      text-transform: uppercase; letter-spacing: 0.6px;
+      border: 1px solid rgba(79,142,247,0.25);
+    }
+    .article-hero h1 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 900;
+      line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.5px;
+    }
+    .article-hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--accent), #7b5bf6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .article-subtitle { color: var(--text-2); font-size: 1.05rem; line-height: 1.75; margin-bottom: 20px; max-width: 680px; }
+    .article-meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.82rem; color: var(--muted); margin-bottom: 36px; }
+    .article-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--border); align-self: center; }
+
+    /* TOC */
+    .toc { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px 26px; margin-bottom: 40px; }
+    .toc h2 { font-size: 0.82rem; font-weight: 800; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); }
+    .toc ol { margin: 0; padding-left: 20px; }
+    .toc li { margin-bottom: 8px; }
+    .toc a { color: var(--text-2); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+    .toc a:hover { color: var(--accent); }
+
+    /* Sections */
+    .article-section { margin-bottom: 52px; }
+    .article-section h2 {
+      font-size: 1.4rem; font-weight: 900; margin-bottom: 16px;
+      border-bottom: 1px solid var(--border); padding-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+    .article-section h3 { font-size: 1.05rem; font-weight: 800; margin: 28px 0 10px; color: var(--text); }
+    .article-section p { color: var(--text-2); line-height: 1.8; margin-bottom: 14px; font-size: 0.97rem; }
+    .article-section ul, .article-section ol { padding-left: 22px; margin-bottom: 20px; }
+    .article-section li { color: var(--text-2); margin-bottom: 10px; font-size: 0.95rem; line-height: 1.7; }
+    .article-section a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    .article-section strong { color: var(--text); }
+
+    hr.section-divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+    /* Callouts */
+    .callout { border-radius: 10px; padding: 16px 20px; margin: 20px 0; font-size: 0.9rem; line-height: 1.7; }
+    .callout-good  { background: rgba(45,212,160,0.08); border-left: 3px solid var(--green); }
+    .callout-bad   { background: rgba(248,113,113,0.08); border-left: 3px solid var(--red); }
+    .callout-info  { background: rgba(79,142,247,0.08); border-left: 3px solid var(--accent); }
+    .callout-tip   { background: rgba(245,158,11,0.08); border-left: 3px solid var(--yellow); }
+    .callout-label { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
+    .callout-good  .callout-label { color: var(--green); }
+    .callout-bad   .callout-label { color: var(--red); }
+    .callout-info  .callout-label { color: var(--accent); }
+    .callout-tip   .callout-label { color: var(--yellow); }
+    .callout p { margin: 0; color: var(--text-2); }
+    .callout code { background: rgba(255,255,255,0.08); padding: 1px 5px; border-radius: 3px; font-size: 0.85em; font-family: monospace; color: var(--text); }
+
+    /* Table */
+    .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 10px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    thead { background: var(--card2); }
+    th { text-align: left; padding: 12px 16px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.4px; color: var(--text-2); white-space: nowrap; }
+    td { padding: 12px 16px; border-top: 1px solid var(--border); color: var(--text-2); vertical-align: top; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .tag { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; }
+    .tag-yes    { background: rgba(45,212,160,0.12); color: var(--green); }
+    .tag-no     { background: rgba(248,113,113,0.12); color: var(--red); }
+    .tag-maybe  { background: rgba(245,158,11,0.12); color: var(--yellow); }
+
+    /* Code block */
+    .code-wrap { margin: 20px 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--border2); }
+    .code-header { background: var(--card2); padding: 9px 18px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
+    .code-dots { display: flex; gap: 6px; }
+    .code-dots span { width: 10px; height: 10px; border-radius: 50%; }
+    .code-dots .d1 { background: #ff5f57; } .code-dots .d2 { background: #febc2e; } .code-dots .d3 { background: #28c840; }
+    .code-lang { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); }
+    .code-block { background: #0d1117; color: #e4e2df; padding: 18px 20px; font-family: monospace; font-size: 0.82rem; line-height: 1.75; overflow-x: auto; margin: 0; }
+    .cm { color: #5c7a5c; } .tc { color: #7bb8d4; } .at { color: #c9956a; } .vl { color: #98c379; } .kw { color: #c678dd; } .nm { color: #e5c07b; }
+
+    /* Checklist */
+    .checklist { list-style: none; padding: 0; margin: 20px 0; }
+    .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.93rem; }
+    .checklist li:last-child { border-bottom: none; }
+    .ci { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0; margin-top: 2px; }
+    .ci-check { background: rgba(45,212,160,0.12); color: var(--green); }
+    .ci-x { background: rgba(248,113,113,0.12); color: var(--red); }
+
+    /* Stat cards */
+    .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 28px 0; }
+    @media (max-width: 600px) { .stat-row { grid-template-columns: 1fr; } }
+    .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 900; color: var(--accent); letter-spacing: -1px; display: block; margin-bottom: 5px; }
+    .stat-label { font-size: 0.8rem; color: var(--muted); line-height: 1.4; }
+
+    /* Step cards */
+    .step-list { list-style: none; padding: 0; margin: 0; counter-reset: step-counter; }
+    .step-item { display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .step-item:last-child { border-bottom: none; }
+    .step-num {
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, #4f8ef7, #7b5bf6);
+      color: #fff; font-size: 0.78rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-body h4 { font-size: 0.97rem; font-weight: 800; margin-bottom: 6px; color: var(--text); }
+    .step-body p { font-size: 0.88rem; color: var(--text-2); line-height: 1.65; margin: 0; }
+
+    /* FAQ */
+    .faq-list { list-style: none; padding: 0; margin: 0; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 0; font-size: 0.97rem; font-weight: 700; cursor: pointer;
+      color: var(--text); list-style: none; gap: 12px;
+    }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-q::after { content: "+"; font-size: 1.1rem; font-weight: 900; color: var(--accent); flex-shrink: 0; }
+    details[open] .faq-q::after { content: "−"; }
+    .faq-a { padding: 0 0 18px; }
+    .faq-a p { color: var(--text-2); font-size: 0.93rem; line-height: 1.75; margin: 0; }
+    .faq-a code { background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 3px; font-size: 0.85em; font-family: monospace; color: var(--text); }
+
+    /* CTA */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(79,142,247,0.12), rgba(123,91,246,0.12));
+      border: 1px solid rgba(79,142,247,0.25); border-radius: 16px;
+      padding: 36px 32px; text-align: center; margin-top: 52px;
+    }
+    .cta-banner h3 { font-size: 1.2rem; font-weight: 900; margin-bottom: 10px; }
+    .cta-banner p { color: var(--text-2); font-size: 0.95rem; margin-bottom: 22px; }
+    .cta-btn {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-weight: 800; font-size: 0.95rem; padding: 13px 28px;
+      border-radius: 10px; text-decoration: none; transition: opacity .15s;
+    }
+    .cta-btn:hover { opacity: 0.88; }
+
+    /* Related */
+    .related-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }
+    @media (max-width: 580px) { .related-grid { grid-template-columns: 1fr; } }
+    .related-link {
+      display: block; background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 18px; text-decoration: none;
+      transition: border-color .15s;
+    }
+    .related-link:hover { border-color: var(--accent); }
+    .related-cat { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; color: var(--accent); margin-bottom: 6px; }
+    .related-title { font-size: 0.88rem; font-weight: 700; color: var(--text); line-height: 1.4; }
+  </style>
+</head>
+<body>
+
+<!-- NAV (matches site global nav) -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Img<span>Swift</span></a>
+    <div class="nav-links">
+      <a href="/compress-image/">Compress</a>
+      <a href="/resize-image/">Resize</a>
+      <a href="/jpg-to-webp/">JPG→WebP</a>
+      <a href="/png-to-avif/">PNG→AVIF</a>
+    </div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb-bar" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li>›</li>
+    <li>Image Caching Guide</li>
+  </ol>
+</nav>
+
+<!-- HERO -->
+<div class="article-hero">
+  <div class="hero-badge">⚡ Performance Guide</div>
+  <h1>Image Caching Guide: <em>Faster Pages on Every Repeat Visit</em></h1>
+  <p class="article-subtitle">Learn how to cache images correctly using Cache-Control headers, CDN edge caching, and cache-busting strategies — so browsers and CDNs serve your images instantly without hitting your origin server.</p>
+  <div class="article-meta">
+    <span>By ImgSwift</span>
+    <span class="dot"></span>
+    <span>Updated June 2026</span>
+    <span class="dot"></span>
+    <span>12 min read</span>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-wrap">
+
+  <!-- STAT ROW -->
+  <div class="stat-row">
+    <div class="stat-card">
+      <span class="stat-num">~80%</span>
+      <span class="stat-label">of page weight is images on a typical website</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">0ms</span>
+      <span class="stat-label">network time for a properly cached image on repeat visit</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">1 yr</span>
+      <span class="stat-label">recommended max-age for versioned image URLs</span>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <nav class="toc" aria-label="Table of contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#how-caching-works">How Image Caching Works</a></li>
+      <li><a href="#cache-control">Cache-Control Headers for Images</a></li>
+      <li><a href="#cache-busting">Cache-Busting Strategies</a></li>
+      <li><a href="#cdn-caching">CDN Edge Caching</a></li>
+      <li><a href="#etag-revalidation">ETags and Conditional Requests</a></li>
+      <li><a href="#service-worker">Service Worker Image Caching</a></li>
+      <li><a href="#server-configs">Server Configuration Examples</a></li>
+      <li><a href="#common-mistakes">Common Caching Mistakes</a></li>
+      <li><a href="#checklist">Full Caching Checklist</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </nav>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 1 -->
+  <section class="article-section" id="how-caching-works">
+    <h2>1. How Image Caching Works</h2>
+
+    <p>When a browser fetches an image, the server responds with HTTP headers that tell the browser — and any CDN in between — how to store and reuse that response. On the next request for the same URL, the browser can serve the image from its local cache without making a network request at all.</p>
+
+    <p>There are two distinct layers of caching for images:</p>
+
+    <ul>
+      <li><strong>Browser cache (client-side):</strong> The image is stored on the user's device. Repeat page loads serve it directly from disk — zero network time, zero server load.</li>
+      <li><strong>CDN cache (edge-side):</strong> The image is stored on CDN edge servers close to the user. Even on a first visit, the image is served from a nearby node rather than your origin server, dramatically reducing latency.</li>
+    </ul>
+
+    <p>Both layers are controlled by HTTP response headers. Getting those headers right is the entire game.</p>
+
+    <h3>The Cache Decision Flow</h3>
+    <p>When a browser needs an image, it follows this decision tree:</p>
+
+    <ol>
+      <li><strong>Is it in the browser cache and still fresh?</strong> Serve immediately. No network request.</li>
+      <li><strong>Is it in the browser cache but stale?</strong> Send a conditional request (with <code>If-None-Match</code> or <code>If-Modified-Since</code>) to revalidate. If unchanged, server returns <code>304 Not Modified</code> — still no re-download.</li>
+      <li><strong>Not in cache?</strong> Full request to CDN or origin. CDN may have it cached — if so, it responds without hitting your origin. Otherwise, origin serves it and CDN stores it for future requests.</li>
+    </ol>
+
+    <div class="callout callout-info">
+      <div class="callout-label">ℹ️ Why This Matters for Core Web Vitals</div>
+      <p>Properly cached images directly improve LCP on repeat visits. If your hero image loads from disk cache instead of the network, LCP can drop from 1.5s to under 100ms. Google's Core Web Vitals field data includes repeat visits, so caching affects your real ranking signal.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 2 -->
+  <section class="article-section" id="cache-control">
+    <h2>2. Cache-Control Headers for Images</h2>
+
+    <p>The <code>Cache-Control</code> header is the primary tool for controlling how images are cached. It supersedes the older <code>Expires</code> header and gives you precise control over caching behavior.</p>
+
+    <h3>The Two Patterns You'll Actually Use</h3>
+
+    <p>For images, there are really only two patterns worth knowing:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>URL Type</th><th>Recommended Header</th><th>TTL</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Versioned / hashed</strong> (e.g. <code>hero.a3f9b2.webp</code>)</td><td><code>public, max-age=31536000, immutable</code></td><td>1 year</td></tr>
+          <tr><td><strong>Non-versioned</strong> (e.g. <code>logo.png</code>)</td><td><code>public, max-age=86400, must-revalidate</code></td><td>1 day</td></tr>
+          <tr><td><strong>User-specific / private</strong></td><td><code>private, max-age=3600</code></td><td>1 hour</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Key Directives Explained</h3>
+
+    <ul>
+      <li><strong><code>public</code>:</strong> The response can be stored by any cache — browser, CDN, proxy. Required for CDN caching.</li>
+      <li><strong><code>private</code>:</strong> Only the end user's browser may cache it. CDNs and proxies must not store it.</li>
+      <li><strong><code>max-age=N</code>:</strong> Cache is considered fresh for N seconds. After that, the browser must revalidate.</li>
+      <li><strong><code>immutable</code>:</strong> Tells the browser the resource will never change during its <code>max-age</code> window. Prevents unnecessary revalidation requests on reload. Use only with hashed/versioned URLs.</li>
+      <li><strong><code>must-revalidate</code>:</strong> Once stale, the cache must not serve the resource without revalidating with the server (even if the server appears unreachable).</li>
+      <li><strong><code>no-cache</code>:</strong> The cache must revalidate on every request before serving. The resource can still be stored and a 304 response avoids re-download.</li>
+      <li><strong><code>no-store</code>:</strong> The response must not be stored anywhere. Use only for genuinely sensitive content — never for images.</li>
+    </ul>
+
+    <div class="callout callout-good">
+      <div class="callout-label">✓ Best Practice — Versioned Images</div>
+      <p>Use <code>Cache-Control: public, max-age=31536000, immutable</code> on all images served at content-hashed URLs. This is the gold standard: browsers cache forever, CDNs cache forever, and you always control freshness through the URL, not the TTL.</p>
+    </div>
+
+    <div class="callout callout-bad">
+      <div class="callout-label">✗ Avoid — no-store on Images</div>
+      <p>Never set <code>Cache-Control: no-store</code> on images. It forces a full re-download on every page load and completely defeats browser caching. This is a surprisingly common misconfiguration in security-conscious environments where the header is applied globally to all responses.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 3 -->
+  <section class="article-section" id="cache-busting">
+    <h2>3. Cache-Busting Strategies</h2>
+
+    <p>The paradox of aggressive caching is that when you update an image, cached browsers won't see the new version until the TTL expires. Cache-busting solves this by making updated images appear at new URLs, forcing browsers to fetch fresh.</p>
+
+    <h3>Method 1: Content Hashing (Recommended)</h3>
+    <p>Append a hash of the file's contents to the filename. When the image changes, the hash changes, and the URL changes — guaranteed cache invalidation.</p>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <span class="code-lang">File naming</span>
+      </div>
+      <pre class="code-block"><span class="cm"># Original</span>
+hero.webp
+
+<span class="cm"># After content hashing (Webpack, Vite, etc.)</span>
+hero.<span class="vl">a3f9b2c1</span>.webp   <span class="cm"># v1</span>
+hero.<span class="vl">d7e4f8a2</span>.webp   <span class="cm"># v2 (image changed, hash changed)</span></pre>
+    </div>
+
+    <p>Most build tools (Webpack, Vite, Parcel) support content hashing out of the box via their output filename configuration.</p>
+
+    <h3>Method 2: Version Query String</h3>
+    <p>Append a version parameter to the URL. Simpler to implement manually, but some CDNs and proxies ignore query strings when caching — making it less reliable than filename hashing.</p>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <span class="code-lang">HTML</span>
+      </div>
+      <pre class="code-block"><span class="cm">&lt;!-- Query string versioning (less reliable with some CDNs) --&gt;</span>
+<span class="tc">&lt;img</span> <span class="at">src</span>=<span class="vl">"/images/hero.webp?v=2"</span> <span class="at">alt</span>=<span class="vl">"Hero"</span> <span class="tc">/&gt;</span></pre>
+    </div>
+
+    <h3>Method 3: CDN Cache Purge</h3>
+    <p>If you can't change the URL, most CDNs (Cloudflare, Fastly, CloudFront) offer an API to manually purge specific cached objects. This is useful for CMS-managed images where filenames are fixed.</p>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">💡 Vite / Next.js Users</div>
+      <p>Vite automatically appends content hashes to build assets. Next.js uses content hashing for <code>next/image</code> and static imports. If you're using either framework, content-hashed image URLs are likely already handled — just make sure your server sets <code>max-age=31536000, immutable</code> for those paths.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 4 -->
+  <section class="article-section" id="cdn-caching">
+    <h2>4. CDN Edge Caching</h2>
+
+    <p>A CDN caches your images on edge nodes distributed globally. When a user requests an image, it's served from the nearest node — often within milliseconds. Your origin server only receives the first request from each CDN region.</p>
+
+    <h3>How CDNs Cache Images</h3>
+    <p>CDNs respect your origin's <code>Cache-Control</code> headers by default. If your origin sends <code>public, max-age=31536000</code>, the CDN will cache the image for up to one year. Most CDNs also let you set <strong>edge cache TTLs</strong> independently of browser cache TTLs via their dashboard or configuration rules.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>CDN</th><th>Default Behavior</th><th>Override Method</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cloudflare</td><td>Respects origin Cache-Control</td><td>Cache Rules in dashboard</td></tr>
+          <tr><td>AWS CloudFront</td><td>Respects origin Cache-Control</td><td>Cache Policies per behavior</td></tr>
+          <tr><td>Fastly</td><td>Respects origin Cache-Control</td><td>VCL or Compute@Edge</td></tr>
+          <tr><td>Bunny.net</td><td>Respects origin Cache-Control</td><td>Per-zone cache TTL setting</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Vary Header and CDN Caching</h3>
+    <p>If you serve different image formats based on the <code>Accept</code> header (e.g., WebP to Chrome, JPEG to Safari via server-side negotiation), you must include <code>Vary: Accept</code> in your response. Without it, a CDN might cache the WebP version and serve it to browsers that don't support WebP.</p>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <span class="code-lang">HTTP Response Headers</span>
+      </div>
+      <pre class="code-block"><span class="cm"># When serving format-negotiated images server-side</span>
+<span class="at">Cache-Control</span>: <span class="vl">public, max-age=31536000, immutable</span>
+<span class="at">Vary</span>: <span class="vl">Accept</span>
+<span class="at">Content-Type</span>: <span class="vl">image/webp</span></pre>
+    </div>
+
+    <div class="callout callout-info">
+      <div class="callout-label">ℹ️ Prefer &lt;picture&gt; Over Server Negotiation</div>
+      <p>Using a <code>&lt;picture&gt;</code> element with separate <code>srcset</code> per format is simpler than server-side Accept negotiation and avoids <code>Vary</code> complexity. Each format lives at its own URL, each cached independently with clean, simple headers.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 5 -->
+  <section class="article-section" id="etag-revalidation">
+    <h2>5. ETags and Conditional Requests</h2>
+
+    <p>When a cached image becomes stale (its <code>max-age</code> has passed), the browser doesn't automatically re-download it. Instead, it sends a conditional request to check whether the image has changed. If it hasn't, the server returns a lightweight <code>304 Not Modified</code> response — no image bytes transferred.</p>
+
+    <h3>ETag (Entity Tag)</h3>
+    <p>An <code>ETag</code> is a unique identifier for a specific version of a resource. The server sends it with the original response; the browser sends it back in subsequent requests via <code>If-None-Match</code>.</p>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <span class="code-lang">HTTP Exchange</span>
+      </div>
+      <pre class="code-block"><span class="cm"># First request — server responds with ETag</span>
+<span class="kw">HTTP/1.1 200 OK</span>
+<span class="at">Cache-Control</span>: <span class="vl">public, max-age=86400</span>
+<span class="at">ETag</span>: <span class="vl">"a3f9b2c1d7e4"</span>
+<span class="at">Content-Type</span>: <span class="vl">image/webp</span>
+
+<span class="cm"># After max-age expires — browser revalidates</span>
+<span class="kw">GET /images/hero.webp HTTP/1.1</span>
+<span class="at">If-None-Match</span>: <span class="vl">"a3f9b2c1d7e4"</span>
+
+<span class="cm"># Image unchanged — server returns 304 (no body)</span>
+<span class="kw">HTTP/1.1 304 Not Modified</span>
+<span class="at">Cache-Control</span>: <span class="vl">public, max-age=86400</span>
+<span class="at">ETag</span>: <span class="vl">"a3f9b2c1d7e4"</span></pre>
+    </div>
+
+    <p>Most web servers (Nginx, Apache, Caddy) generate ETags automatically for static files. You generally don't need to configure them manually — but make sure they aren't being stripped by a reverse proxy misconfiguration.</p>
+
+    <h3>Last-Modified as Fallback</h3>
+    <p>If ETags aren't available, browsers fall back to <code>Last-Modified</code> / <code>If-Modified-Since</code> for revalidation. This is less precise than ETags (timestamp resolution is seconds) but still prevents re-downloading unchanged images.</p>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 6 -->
+  <section class="article-section" id="service-worker">
+    <h2>6. Service Worker Image Caching</h2>
+
+    <p>A Service Worker is a JavaScript file that runs in the background and can intercept network requests — including image requests. This gives you full programmatic control over caching that goes beyond what HTTP headers alone can provide.</p>
+
+    <h3>When to Use Service Worker Caching for Images</h3>
+    <ul>
+      <li>You need <strong>offline support</strong> — images must be available when the user has no connection.</li>
+      <li>You want <strong>stale-while-revalidate</strong> behavior — serve cached immediately, then update in background.</li>
+      <li>You need <strong>per-image cache policies</strong> that differ from your site-wide Cache-Control headers.</li>
+    </ul>
+
+    <h3>Cache-First Strategy (Best for Static Images)</h3>
+    <p>Serve from cache if available; fall back to network. Ideal for images that rarely or never change.</p>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <span class="code-lang">JavaScript (Service Worker)</span>
+      </div>
+      <pre class="code-block"><span class="kw">const</span> <span class="nm">IMAGE_CACHE</span> = <span class="vl">'images-v1'</span>;
+
+self.<span class="nm">addEventListener</span>(<span class="vl">'fetch'</span>, <span class="kw">event</span> => {
+  <span class="kw">const</span> { request } = event;
+
+  <span class="cm">// Only handle image requests</span>
+  <span class="kw">if</span> (!request.destination === <span class="vl">'image'</span>) <span class="kw">return</span>;
+
+  event.<span class="nm">respondWith</span>(
+    caches.<span class="nm">open</span>(<span class="nm">IMAGE_CACHE</span>).<span class="nm">then</span>(<span class="kw">async</span> cache => {
+      <span class="kw">const</span> cached = <span class="kw">await</span> cache.<span class="nm">match</span>(request);
+      <span class="kw">if</span> (cached) <span class="kw">return</span> cached; <span class="cm">// Cache hit — serve immediately</span>
+
+      <span class="cm">// Cache miss — fetch from network and store</span>
+      <span class="kw">const</span> response = <span class="kw">await</span> fetch(request);
+      cache.<span class="nm">put</span>(request, response.<span class="nm">clone</span>());
+      <span class="kw">return</span> response;
+    })
+  );
+});</pre>
+    </div>
+
+    <h3>Stale-While-Revalidate (Best for Frequently Updated Images)</h3>
+    <p>Serve cached immediately for speed, then fetch fresh in the background. The next request gets the updated version.</p>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <span class="code-lang">JavaScript (Service Worker)</span>
+      </div>
+      <pre class="code-block">event.<span class="nm">respondWith</span>(
+  caches.<span class="nm">open</span>(<span class="nm">IMAGE_CACHE</span>).<span class="nm">then</span>(<span class="kw">async</span> cache => {
+    <span class="kw">const</span> cached = <span class="kw">await</span> cache.<span class="nm">match</span>(request);
+
+    <span class="cm">// Always fetch in background to refresh cache</span>
+    <span class="kw">const</span> networkFetch = fetch(request).<span class="nm">then</span>(response => {
+      cache.<span class="nm">put</span>(request, response.<span class="nm">clone</span>());
+      <span class="kw">return</span> response;
+    });
+
+    <span class="cm">// Return cached immediately, or wait for network</span>
+    <span class="kw">return</span> cached || networkFetch;
+  })
+);</pre>
+    </div>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">💡 Use Workbox</div>
+      <p>Google's <strong>Workbox</strong> library provides pre-built caching strategies (<code>CacheFirst</code>, <code>StaleWhileRevalidate</code>, <code>NetworkFirst</code>) as one-liners. For most projects, Workbox is easier and more reliable than hand-rolled Service Worker cache logic.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 7 -->
+  <section class="article-section" id="server-configs">
+    <h2>7. Server Configuration Examples</h2>
+
+    <p>Here are ready-to-use cache header configurations for the most common web servers and platforms.</p>
+
+    <h3>Nginx</h3>
+    <div class="code-wrap">
+      <div class="code-header">
+        <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <span class="code-lang">Nginx Config</span>
+      </div>
+      <pre class="code-block"><span class="cm"># Long cache for versioned/hashed assets</span>
+<span class="kw">location</span> ~* <span class="vl">\.(webp|avif|jpg|jpeg|png|gif|svg|ico)$</span> {
+  <span class="at">expires</span> <span class="vl">1y</span>;
+  <span class="at">add_header</span> <span class="nm">Cache-Control</span> <span class="vl">"public, max-age=31536000, immutable"</span>;
+  <span class="at">access_log</span> <span class="vl">off</span>;
+}
+
+<span class="cm"># Shorter cache for non-versioned images (e.g. CMS uploads)</span>
+<span class="kw">location</span> <span class="vl">/uploads/</span> {
+  <span class="at">expires</span> <span class="vl">7d</span>;
+  <span class="at">add_header</span> <span class="nm">Cache-Control</span> <span class="vl">"public, max-age=604800, must-revalidate"</span>;
+}</pre>
+    </div>
+
+    <h3>Apache (.htaccess)</h3>
+    <div class="code-wrap">
+      <div class="code-header">
+        <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <span class="code-lang">.htaccess</span>
+      </div>
+      <pre class="code-block"><span class="tc">&lt;IfModule</span> <span class="at">mod_expires.c</span><span class="tc">&gt;</span>
+  <span class="nm">ExpiresActive</span> <span class="vl">On</span>
+  <span class="nm">ExpiresByType</span> <span class="at">image/webp</span>   <span class="vl">"access plus 1 year"</span>
+  <span class="nm">ExpiresByType</span> <span class="at">image/avif</span>   <span class="vl">"access plus 1 year"</span>
+  <span class="nm">ExpiresByType</span> <span class="at">image/jpeg</span>   <span class="vl">"access plus 1 year"</span>
+  <span class="nm">ExpiresByType</span> <span class="at">image/png</span>    <span class="vl">"access plus 1 year"</span>
+  <span class="nm">ExpiresByType</span> <span class="at">image/gif</span>    <span class="vl">"access plus 1 year"</span>
+  <span class="nm">ExpiresByType</span> <span class="at">image/svg+xml</span> <span class="vl">"access plus 1 year"</span>
+<span class="tc">&lt;/IfModule&gt;</span>
+
+<span class="tc">&lt;IfModule</span> <span class="at">mod_headers.c</span><span class="tc">&gt;</span>
+  <span class="tc">&lt;FilesMatch</span> <span class="vl">"\.(webp|avif|jpe?g|png|gif|svg|ico)$"</span><span class="tc">&gt;</span>
+    <span class="nm">Header</span> <span class="at">set</span> <span class="vl">Cache-Control "public, max-age=31536000, immutable"</span>
+  <span class="tc">&lt;/FilesMatch&gt;</span>
+<span class="tc">&lt;/IfModule&gt;</span></pre>
+    </div>
+
+    <h3>Cloudflare (Cache Rules)</h3>
+    <p>In Cloudflare's dashboard under <strong>Caching → Cache Rules</strong>, create a rule matching <code>http.request.uri.path matches "\.(webp|avif|jpg|jpeg|png|gif|svg)$"</code> with Edge Cache TTL set to 1 year. Enable <strong>Browser Cache TTL</strong> to respect your origin's <code>Cache-Control</code> header.</p>
+
+    <h3>Vercel / Next.js</h3>
+    <div class="code-wrap">
+      <div class="code-header">
+        <div class="code-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+        <span class="code-lang">vercel.json</span>
+      </div>
+      <pre class="code-block">{
+  <span class="at">"headers"</span>: [
+    {
+      <span class="at">"source"</span>: <span class="vl">"/(.*)\\.(?:webp|avif|jpg|jpeg|png|gif|svg|ico)"</span>,
+      <span class="at">"headers"</span>: [
+        {
+          <span class="at">"key"</span>: <span class="vl">"Cache-Control"</span>,
+          <span class="at">"value"</span>: <span class="vl">"public, max-age=31536000, immutable"</span>
+        }
+      ]
+    }
+  ]
+}</pre>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 8 -->
+  <section class="article-section" id="common-mistakes">
+    <h2>8. Common Image Caching Mistakes</h2>
+
+    <ul class="step-list">
+      <li class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Setting no-store or no-cache on all responses</h4>
+          <p>Applying a global security header like <code>Cache-Control: no-store</code> to all routes prevents images from being cached at all. Always scope restrictive cache headers to sensitive routes (auth, user data) and use aggressive caching for static assets.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Using long max-age without cache-busting</h4>
+          <p>Setting <code>max-age=31536000</code> on non-versioned URLs means users can be stuck with stale images for up to a year after you update them. Always pair long TTLs with content-hashed filenames or ensure a CDN purge workflow is in place.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Omitting the public directive</h4>
+          <p>Without <code>public</code> in your <code>Cache-Control</code> header, CDNs may refuse to cache the response. By default, responses that include cookies or authorization are treated as private. Always explicitly add <code>public</code> for images served to all users.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Relying on query string cache-busting with a CDN that ignores query strings</h4>
+          <p>Some CDN configurations (and older proxies) cache based on the path only, ignoring query strings. <code>hero.jpg?v=2</code> may be served from the <code>hero.jpg?v=1</code> cache. Use filename-based versioning for guaranteed cache invalidation across all caches.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h4>Serving different formats at the same URL without Vary: Accept</h4>
+          <p>If your server sends WebP to Chrome and JPEG to Safari at the same URL without <code>Vary: Accept</code>, a CDN may cache the WebP and serve it to Safari users. Always set <code>Vary: Accept</code> when doing server-side format negotiation — or use separate URLs per format via <code>&lt;picture&gt;</code>.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <h4>Not verifying cache headers are actually being sent</h4>
+          <p>Always verify with browser DevTools (Network tab → select image → Response Headers) or <code>curl -I https://yoursite.com/image.webp</code>. It's common for CDNs, reverse proxies, or frameworks to strip or override cache headers set at the origin.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 9 — CHECKLIST -->
+  <section class="article-section" id="checklist">
+    <h2>9. Full Image Caching Checklist</h2>
+
+    <ul class="checklist">
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>All images served with Cache-Control headers.</strong> Verified via DevTools or <code>curl -I</code> on actual image URLs.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Versioned/hashed image URLs use <code>max-age=31536000, immutable</code>.</strong> Build tool configured to append content hashes to image filenames.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Non-versioned URLs use a shorter TTL</strong> (1–7 days) with <code>must-revalidate</code>. CMS upload paths, profile images, etc.</div>
+      </li>
+      <li>
+        <span class="ci ci-x">✗</span>
+        <div><strong>No <code>no-store</code> or missing cache headers on image routes.</strong> Checked that global security headers don't apply to static asset paths.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong><code>public</code> directive is set</strong> on all images served to anonymous users so CDNs can cache them.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>CDN is configured to cache images.</strong> Edge cache TTL set. CDN is not in pass-through mode for image paths.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>ETags or Last-Modified headers are present</strong> for revalidation of non-versioned images. Not stripped by proxy.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Format-negotiated images include <code>Vary: Accept</code></strong> — or format switching is handled via <code>&lt;picture&gt;</code> with separate URLs per format.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Cache-busting workflow exists</strong> for updating images. Either content-hashed filenames, or a CDN purge script/automation is in place.</div>
+      </li>
+      <li>
+        <span class="ci ci-check">✓</span>
+        <div><strong>Verified in a real browser.</strong> DevTools → Network → Disable cache OFF → reload → check image Status shows <code>200</code> first load and <code>304</code> or <code>from disk cache</code> on repeat.</div>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SECTION 10 — FAQ -->
+  <section class="article-section" id="faq">
+    <h2>10. Frequently Asked Questions</h2>
+
+    <ul class="faq-list">
+      <li class="faq-item">
+        <details>
+          <summary class="faq-q">How long should images be cached?</summary>
+          <div class="faq-a"><p>Images at content-hashed URLs (e.g. <code>hero.a3f9b2.webp</code>) should be cached for 1 year — <code>max-age=31536000</code>. Since the URL changes whenever the image changes, there's no risk of serving stale content. For images at static, non-versioned URLs (CMS uploads, profile photos), use 1–7 days with <code>must-revalidate</code> to balance freshness and performance.</p></div>
+        </details>
+      </li>
+      <li class="faq-item">
+        <details>
+          <summary class="faq-q">What is cache-busting for images?</summary>
+          <div class="faq-a"><p>Cache-busting is the practice of changing an image's URL whenever its content changes, forcing browsers and CDNs to fetch the new version. The most reliable method is content hashing: appending a hash of the file's contents to the filename (e.g. <code>hero.a3f9b2.webp</code>). When the image changes, the hash changes, the URL changes, and every cache treats it as a new resource.</p></div>
+        </details>
+      </li>
+      <li class="faq-item">
+        <details>
+          <summary class="faq-q">Does image caching affect SEO?</summary>
+          <div class="faq-a"><p>Yes, significantly. Properly cached images improve page load speed on repeat visits, which directly improves LCP — a Core Web Vital and Google ranking signal. Google's field data (Chrome User Experience Report) captures repeat visits, so caching improves your actual ranking score. Additionally, faster repeat load times reduce bounce rates, which correlates with better organic performance.</p></div>
+        </details>
+      </li>
+      <li class="faq-item">
+        <details>
+          <summary class="faq-q">What Cache-Control header should I use for images?</summary>
+          <div class="faq-a"><p>For versioned/hashed URLs: <code>Cache-Control: public, max-age=31536000, immutable</code>. The <code>immutable</code> directive prevents browsers from revalidating during the <code>max-age</code> window, saving unnecessary round trips. For non-versioned URLs: <code>Cache-Control: public, max-age=86400, must-revalidate</code>. Never use <code>no-store</code> on images — it forces a full re-download on every single page load.</p></div>
+        </details>
+      </li>
+      <li class="faq-item">
+        <details>
+          <summary class="faq-q">What is the difference between browser cache and CDN cache?</summary>
+          <div class="faq-a"><p>Browser cache stores images on the user's local device — repeat page loads serve them with zero network time. CDN cache stores images on edge servers close to users — even on first visit, the image travels a short distance from a nearby CDN node rather than your origin server. Both are controlled by <code>Cache-Control</code> headers and both are important. They work together: CDN reduces latency on first visit; browser cache eliminates network latency on repeat visits.</p></div>
+        </details>
+      </li>
+      <li class="faq-item">
+        <details>
+          <summary class="faq-q">Can I cache images with a Service Worker?</summary>
+          <div class="faq-a"><p>Yes. A Service Worker intercepts image fetch requests and can serve them from the Cache Storage API, enabling offline support and custom per-image caching strategies beyond what HTTP headers alone allow. Common strategies are Cache-First (always serve from cache if available) and Stale-While-Revalidate (serve cached immediately, refresh in background). For most projects, Google's Workbox library makes Service Worker image caching straightforward to implement.</p></div>
+        </details>
+      </li>
+      <li class="faq-item">
+        <details>
+          <summary class="faq-q">How do I check if my images are being cached?</summary>
+          <div class="faq-a"><p>In Chrome DevTools: open the Network tab, make sure "Disable cache" is unchecked, reload the page, click an image request, and inspect the Response Headers for <code>Cache-Control</code>, <code>ETag</code>, and <code>Last-Modified</code>. On a second load, the Status column should show <code>304</code> (revalidated) or <code>200 (from disk cache)</code> / <code>200 (from memory cache)</code>. You can also run <code>curl -I https://yoursite.com/image.webp</code> to inspect headers directly.</p></div>
+        </details>
+      </li>
+    </ul>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-banner">
+    <h3>Optimize Your Images Before Caching Them</h3>
+    <p>Smaller images cache faster and load faster on first visit too. Convert to WebP or AVIF free — no upload, no account needed.</p>
+    <a href="/" class="cta-btn">Convert Images Free →</a>
+  </div>
+
+  <!-- RELATED -->
+  <section style="margin-top:52px;">
+    <h2 style="font-size:1.1rem;font-weight:900;margin-bottom:6px;">Related Guides</h2>
+    <p style="color:var(--muted);font-size:0.85rem;margin-bottom:16px;">More resources to help you optimize images for performance and Core Web Vitals.</p>
+    <div class="related-grid">
+      <a href="/lcp-image-optimization/" class="related-link">
+        <div class="related-cat">Performance</div>
+        <div class="related-title">LCP Image Optimization: How to Fix Largest Contentful Paint in 2026</div>
+      </a>
+      <a href="/lazy-loading-images-guide/" class="related-link">
+        <div class="related-cat">Performance</div>
+        <div class="related-title">Lazy Loading Images: The Complete 2026 Guide (with Code)</div>
+      </a>
+      <a href="/seo-friendly-image-names/" class="related-link">
+        <div class="related-cat">SEO</div>
+        <div class="related-title">SEO-Friendly Image Names: How to Name Images for Better Rankings</div>
+      </a>
+      <a href="/alt-text-best-practices/" class="related-link">
+        <div class="related-cat">SEO & Accessibility</div>
+        <div class="related-title">Alt Text Best Practices: The Complete 2026 Guide</div>
+      </a>
+    </div>
+  </section>
+
+</div><!-- /article-wrap -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">Img<span>Swift</span></span>
+      <p>Free image tools — compress, convert, resize, and optimize images directly in your browser.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <strong>Tools</strong>
+        <a href="/compress-image/">Compress Image</a>
+        <a href="/resize-image/">Resize Image</a>
+        <a href="/jpg-to-webp/">JPG to WebP</a>
+        <a href="/png-to-avif/">PNG to AVIF</a>
+      </div>
+      <div class="footer-col">
+        <strong>Guides</strong>
+        <a href="/lcp-image-optimization/">LCP Optimization</a>
+        <a href="/alt-text-best-practices/">Alt Text Guide</a>
+        <a href="/lazy-loading-images-guide/">Lazy Loading</a>
+        <a href="/image-caching-guide/">Image Caching</a>
+      </div>
+      <div class="footer-col">
+        <strong>Company</strong>
+        <a href="/terms-of-use/">Terms of Use</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 ImgSwift · Free Image Tools</div>
+</footer>
+
+</body>
+</html>

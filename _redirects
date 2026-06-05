@@ -1,0 +1,235 @@
+# ImgSwift — Netlify/Cloudflare Pages redirects
+
+# ── Hub ──────────────────────────────────────────────────────
+/hub                           /hub/                          301
+
+# ── Tool Pages: Conversion ───────────────────────────────────
+/jpg-to-png                    /jpg-to-png/                   301
+/png-to-jpg                    /png-to-jpg/                   301
+/jpg-to-webp                   /jpg-to-webp/                  301
+/png-to-webp                   /png-to-webp/                  301
+/webp-to-jpg                   /webp-to-jpg/                  301
+/webp-to-png                   /webp-to-png/                  301
+
+# ── Tool Pages: AVIF ─────────────────────────────────────────
+/jpg-to-avif                   /jpg-to-avif/                  301
+/png-to-avif                   /png-to-avif/                  301
+/webp-to-avif                  /webp-to-avif/                 301
+/avif-to-jpg                   /avif-to-jpg/                  301
+/avif-to-png                   /avif-to-png/                  301
+/avif-to-webp                  /avif-to-webp/                 301
+
+# ── Tool Pages: PDF ──────────────────────────────────────────
+/jpg-to-pdf                    /jpg-to-pdf/                   301
+/png-to-pdf                    /png-to-pdf/                   301
+/pdf-to-image                  /pdf-to-image/                 301
+
+# ── Tool Pages: Editing ──────────────────────────────────────
+/compress-image                /compress-image/               301
+/resize-image                  /resize-image/                 301
+/crop-image                    /crop-image/                   301
+/rotate-image                  /rotate-image/                 301
+/flip-image                    /flip-image/                   301
+/watermark-image               /watermark-image/              301
+
+# ── Tool Pages: Metadata & Privacy ───────────────────────────
+/remove-exif-data              /remove-exif-data/             301
+/view-image-metadata           /view-image-metadata/          301
+
+# ── Tool Pages: Hub & Image Converter ────────────────────────
+/image-converter               /image-converter/              301
+
+# ── SEO Articles: Format Comparisons ─────────────────────────
+/jpg-vs-png                    /jpg-vs-png/                   301
+/png-vs-webp                   /png-vs-webp/                  301
+/webp-vs-avif                  /webp-vs-avif/                 301
+/avif-vs-jpeg                  /avif-vs-jpeg/                 301
+
+# ── SEO Articles: Guides ─────────────────────────────────────
+/best-image-format                              /best-image-format/                              301
+/best-image-format-for-websites                 /best-image-format-for-websites/                 301
+/how-image-compression-works                    /how-image-compression-works/                    301
+/lossless-vs-lossy                              /lossless-vs-lossy/                              301
+/reduce-image-size-without-losing-quality       /reduce-image-size-without-losing-quality/       301
+/image-optimization-checklist-for-websites      /image-optimization-checklist-for-websites/      301
+/image-seo-checklist                            /image-seo-checklist/                            301
+/how-to-optimize-images-for-google-pagespeed    /how-to-optimize-images-for-google-pagespeed/    301
+/how-to-optimize-images-for-core-web-vitals     /how-to-optimize-images-for-core-web-vitals/     301
+/how-to-convert-jpg-to-png-online               /how-to-convert-jpg-to-png-online/               301
+/how-to-remove-exif-metadata                    /how-to-remove-exif-metadata/                    301
+/best-free-image-converter-online               /best-free-image-converter-online/               301
+
+# ── Static Pages ─────────────────────────────────────────────
+/about                         /about/                        301
+/authors                       /authors/                      301
+/contact                       /contact/                      301
+/editorial-policy              /editorial-policy/             301
+/privacy-policy                /privacy-policy/               301
+/terms-of-use                  /terms-of-use/                 301
+
+# ── Arabic Pages ─────────────────────────────────────────────
+/ar                            /ar/                           301
+/ar/jpg-to-png                 /ar/jpg-to-png/                301
+/ar/png-to-jpg                 /ar/png-to-jpg/                301
+/ar/compress-image             /ar/compress-image/            301
+/ar/jpg-to-webp                /ar/jpg-to-webp/               301
+/ar/resize-image               /ar/resize-image/              301
+/ar/png-to-webp                /ar/png-to-webp/               301
+
+# ── Alternate slugs: Conversion ──────────────────────────────
+/convert-jpg-to-avif           /jpg-to-avif/                  301
+/convert-avif-to-jpg           /avif-to-jpg/                  301
+/image-to-pdf                  /jpg-to-pdf/                   301
+/pdf-to-img                    /pdf-to-image/                 301
+
+# ── Alternate slugs: Compress ────────────────────────────────
+/compress                      /compress-image/               301
+/compress-images               /compress-image/               301
+
+# ── Alternate slugs: Resize ──────────────────────────────────
+/resize                        /resize-image/                 301
+/image-resize                  /resize-image/                 301
+/resize-photo                  /resize-image/                 301
+/scale-image                   /resize-image/                 301
+
+# ── Alternate slugs: Crop ────────────────────────────────────
+/crop                          /crop-image/                   301
+/image-crop                    /crop-image/                   301
+/crop-photo                    /crop-image/                   301
+
+# ── Alternate slugs: Rotate ──────────────────────────────────
+/rotate                        /rotate-image/                 301
+/mirror-image                  /rotate-image/                 301
+/image-rotator                 /rotate-image/                 301
+/rotate-photo                  /rotate-image/                 301
+
+# ── Alternate slugs: Flip ────────────────────────────────────
+/flip                          /flip-image/                   301
+/mirror-photo                  /flip-image/                   301
+/flip-photo                    /flip-image/                   301
+/image-mirror                  /flip-image/                   301
+
+# ── Alternate slugs: Watermark ───────────────────────────────
+/watermark                     /watermark-image/              301
+/add-watermark                 /watermark-image/              301
+/image-watermark               /watermark-image/              301
+
+# ── Alternate slugs: EXIF / Metadata ─────────────────────────
+/remove-exif                   /remove-exif-data/             301
+/exif-remover                  /remove-exif-data/             301
+/strip-exif                    /remove-exif-data/             301
+/delete-exif                   /remove-exif-data/             301
+/image-metadata                /view-image-metadata/          301
+/exif-viewer                   /view-image-metadata/          301
+/read-exif                     /view-image-metadata/          301
+/photo-metadata                /view-image-metadata/          301
+/check-exif                    /view-image-metadata/          301
+
+# ── Alternate slugs: Articles ────────────────────────────────
+/best-image-format-2026        /best-image-format/            301
+/image-compression-explained   /how-image-compression-works/  301
+
+
+# ── Malformed URLs: redirect /slug/https://... back to /slug/ ──────────────
+/jpg-to-png/http*    /jpg-to-png/    301
+/jpg-to-png/https*   /jpg-to-png/    301
+/png-to-jpg/http*    /png-to-jpg/    301
+/png-to-jpg/https*   /png-to-jpg/    301
+/jpg-to-webp/http*    /jpg-to-webp/    301
+/jpg-to-webp/https*   /jpg-to-webp/    301
+/png-to-webp/http*    /png-to-webp/    301
+/png-to-webp/https*   /png-to-webp/    301
+/webp-to-jpg/http*    /webp-to-jpg/    301
+/webp-to-jpg/https*   /webp-to-jpg/    301
+/webp-to-png/http*    /webp-to-png/    301
+/webp-to-png/https*   /webp-to-png/    301
+/jpg-to-avif/http*    /jpg-to-avif/    301
+/jpg-to-avif/https*   /jpg-to-avif/    301
+/png-to-avif/http*    /png-to-avif/    301
+/png-to-avif/https*   /png-to-avif/    301
+/webp-to-avif/http*    /webp-to-avif/    301
+/webp-to-avif/https*   /webp-to-avif/    301
+/avif-to-jpg/http*    /avif-to-jpg/    301
+/avif-to-jpg/https*   /avif-to-jpg/    301
+/avif-to-png/http*    /avif-to-png/    301
+/avif-to-png/https*   /avif-to-png/    301
+/avif-to-webp/http*    /avif-to-webp/    301
+/avif-to-webp/https*   /avif-to-webp/    301
+/jpg-to-pdf/http*    /jpg-to-pdf/    301
+/jpg-to-pdf/https*   /jpg-to-pdf/    301
+/png-to-pdf/http*    /png-to-pdf/    301
+/png-to-pdf/https*   /png-to-pdf/    301
+/pdf-to-image/http*    /pdf-to-image/    301
+/pdf-to-image/https*   /pdf-to-image/    301
+/compress-image/http*    /compress-image/    301
+/compress-image/https*   /compress-image/    301
+/resize-image/http*    /resize-image/    301
+/resize-image/https*   /resize-image/    301
+/crop-image/http*    /crop-image/    301
+/crop-image/https*   /crop-image/    301
+/rotate-image/http*    /rotate-image/    301
+/rotate-image/https*   /rotate-image/    301
+/flip-image/http*    /flip-image/    301
+/flip-image/https*   /flip-image/    301
+/watermark-image/http*    /watermark-image/    301
+/watermark-image/https*   /watermark-image/    301
+/remove-exif-data/http*    /remove-exif-data/    301
+/remove-exif-data/https*   /remove-exif-data/    301
+/view-image-metadata/http*    /view-image-metadata/    301
+/view-image-metadata/https*   /view-image-metadata/    301
+/jpg-vs-png/http*    /jpg-vs-png/    301
+/jpg-vs-png/https*   /jpg-vs-png/    301
+/png-vs-webp/http*    /png-vs-webp/    301
+/png-vs-webp/https*   /png-vs-webp/    301
+/webp-vs-avif/http*    /webp-vs-avif/    301
+/webp-vs-avif/https*   /webp-vs-avif/    301
+/avif-vs-jpeg/http*    /avif-vs-jpeg/    301
+/avif-vs-jpeg/https*   /avif-vs-jpeg/    301
+/best-image-format/http*    /best-image-format/    301
+/best-image-format/https*   /best-image-format/    301
+/best-image-format-for-websites/http*    /best-image-format-for-websites/    301
+/best-image-format-for-websites/https*   /best-image-format-for-websites/    301
+/how-image-compression-works/http*    /how-image-compression-works/    301
+/how-image-compression-works/https*   /how-image-compression-works/    301
+/lossless-vs-lossy/http*    /lossless-vs-lossy/    301
+/lossless-vs-lossy/https*   /lossless-vs-lossy/    301
+/reduce-image-size-without-losing-quality/http*    /reduce-image-size-without-losing-quality/    301
+/reduce-image-size-without-losing-quality/https*   /reduce-image-size-without-losing-quality/    301
+/image-optimization-checklist-for-websites/http*    /image-optimization-checklist-for-websites/    301
+/image-optimization-checklist-for-websites/https*   /image-optimization-checklist-for-websites/    301
+/image-seo-checklist/http*    /image-seo-checklist/    301
+/image-seo-checklist/https*   /image-seo-checklist/    301
+/how-to-optimize-images-for-google-pagespeed/http*    /how-to-optimize-images-for-google-pagespeed/    301
+/how-to-optimize-images-for-google-pagespeed/https*   /how-to-optimize-images-for-google-pagespeed/    301
+/how-to-optimize-images-for-core-web-vitals/http*    /how-to-optimize-images-for-core-web-vitals/    301
+/how-to-optimize-images-for-core-web-vitals/https*   /how-to-optimize-images-for-core-web-vitals/    301
+/how-to-convert-jpg-to-png-online/http*    /how-to-convert-jpg-to-png-online/    301
+/how-to-convert-jpg-to-png-online/https*   /how-to-convert-jpg-to-png-online/    301
+/how-to-remove-exif-metadata/http*    /how-to-remove-exif-metadata/    301
+/how-to-remove-exif-metadata/https*   /how-to-remove-exif-metadata/    301
+/best-free-image-converter-online/http*    /best-free-image-converter-online/    301
+/best-free-image-converter-online/https*   /best-free-image-converter-online/    301
+/about/http*    /about/    301
+/about/https*   /about/    301
+/contact/http*    /contact/    301
+/contact/https*   /contact/    301
+/hub/http*    /hub/    301
+/hub/https*   /hub/    301
+/authors/http*    /authors/    301
+/authors/https*   /authors/    301
+/editorial-policy/http*    /editorial-policy/    301
+/editorial-policy/https*   /editorial-policy/    301
+/privacy-policy/http*    /privacy-policy/    301
+/privacy-policy/https*   /privacy-policy/    301
+/terms-of-use/http*    /terms-of-use/    301
+/terms-of-use/http*    /terms-of-use/    301
+/terms-of-use/https*   /terms-of-use/    301
+
+# ── 404 Custom Error Page ───────────────────────────────────
+/404                           /404.html                      200
+/* /404.html 404
+/heic-to-jpg                   /heic-to-jpg/                  301
+/heic-to-png                   /heic-to-png/                  301
+/heic-to-webp                  /heic-to-webp/                 301
+/heic-to-avif                  /heic-to-avif/                 301
+/gif-to-webp                   /gif-to-webp/                  301

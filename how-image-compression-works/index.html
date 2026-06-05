@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Image Compression Works — Lossy vs Lossless | ImgSwift</title>
+  <meta name="description" content="How does image compression work? Learn lossy vs lossless compression, DCT, and how to reduce image file size without losing quality. Clear, practical guide.">
+  <meta name="keywords" content="how image compression works,lossy vs lossless compression,jpg compression explained,png compression,reduce image file size,image compression algorithm">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="https://imgswift.xyz/how-image-compression-works/">
+  <link rel="alternate" hreflang="en" href="https://imgswift.xyz/how-image-compression-works/">
+<link rel="alternate" hreflang="x-default" href="https://imgswift.xyz/how-image-compression-works/">
+
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://imgswift.xyz/how-image-compression-works/">
+  <meta property="og:title" content="How Image Compression Works — Lossy vs Lossless Explained">
+  <meta property="og:description" content="Learn how JPG, PNG, and WebP compression works — and how to reduce file sizes without losing quality.">
+  <meta property="og:image" content="https://imgswift.xyz/og/how-image-compression-works-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="How Image Compression Works">
+  <meta property="og:site_name" content="ImgSwift">
+
+  <meta name="twitter:site" content="@imgswift">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How Image Compression Works — Lossy vs Lossless Explained">
+  <meta name="twitter:description" content="Learn the difference between lossy and lossless image compression with practical tips.">
+  <meta name="twitter:image" content="https://imgswift.xyz/og/how-image-compression-works-og.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How Image Compression Works — Lossy vs Lossless Explained",
+    "description": "A clear explanation of how lossy (JPG, WebP) and lossless (PNG) image compression work, including DCT blocks, color subsampling, and practical tips for reducing file size.",
+    "author": {"@type": "Person", "name": "ImgSwift Team", "url": "https://imgswift.xyz/about/"},
+    "publisher": {"@type": "Organization", "name": "ImgSwift", "url": "https://imgswift.xyz"},
+    "url": "https://imgswift.xyz/how-image-compression-works/",
+    "datePublished": "2026-05-30",
+    "dateModified": "2026-05-31"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://imgswift.xyz/"},
+      {"@type":"ListItem","position":2,"name":"How Image Compression Works","item":"https://imgswift.xyz/how-image-compression-works/"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"What is the difference between lossy and lossless compression?","acceptedAnswer":{"@type":"Answer","text":"Lossy compression permanently discards some image data to achieve smaller file sizes — JPG and WebP (in lossy mode) use this approach. Lossless compression reduces file size without discarding any data, so the image can be perfectly reconstructed — PNG uses lossless compression. Lossy files are smaller but cannot be restored to the original; lossless files are larger but preserve every pixel exactly."}},
+      {"@type":"Question","name":"Does compressing an image reduce quality?","acceptedAnswer":{"@type":"Answer","text":"It depends on the method. Lossy compression (JPG, lossy WebP) permanently removes some image data, which reduces quality — the degree of quality loss depends on the compression level. Lossless compression (PNG, lossless WebP) reduces file size without any quality loss at all. ImgSwift lets you adjust the quality level when compressing, so you can find the right balance for your needs."}},
+      {"@type":"Question","name":"What is the best way to compress images without losing quality?","acceptedAnswer":{"@type":"Answer","text":"To reduce file size without visible quality loss, use WebP format at quality 80–85 for photos, or PNG with lossless compression for graphics. For JPG images, quality settings of 75–85 typically cut file size by 60–70% with no perceptible difference. ImgSwift's browser-based compression lets you preview results before downloading."}},
+      {"@type":"Question","name":"Why do JPG files get worse quality each time you save them?","acceptedAnswer":{"@type":"Answer","text":"JPG uses lossy compression, which discards some data every time the file is saved. Each save applies another round of compression on top of the already-compressed data, causing cumulative quality degradation. This is called generation loss. To avoid it, keep master files in PNG format and only convert to JPG as a final export step — never edit and re-save the same JPG repeatedly."}},
+      {"@type":"Question","name":"How much can I compress an image before quality suffers?","acceptedAnswer":{"@type":"Answer","text":"For JPG, quality settings of 75–85% produce files 60–70% smaller than uncompressed with no visible quality difference to most viewers. Below 60% quality, compression artifacts become clearly visible. For WebP, quality 75–80 is typically the sweet spot. For lossless PNG, all compression levels produce identical image quality — only file size varies."}}
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080c12; --surface: #0f1620; --card: #141c28; --card2: #1a2236;
+      --border: #1e2d42; --accent: #4f8ef7; --accent-g: linear-gradient(135deg, #4f8ef7, #7b5bf6);
+      --text: #e2eaf6; --text-2: #b0bdd0; --muted: #607080;
+      --radius: 18px; --radius-sm: 10px;
+      --green: #22c55e; --red: #f87171; --yellow: #fbbf24;
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg: #f0f4fa; --surface: #fff; --card: #fff; --border: #dde3f0; --text: #0f172a; --text-2: #475569; --muted: #94a3b8; }
+    }
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-size: 1.25rem; font-weight: 800; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
+    .nav-logo span { background: var(--accent-g); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-back { font-size: 0.875rem; color: var(--muted); text-decoration: none; padding: 6px 12px; border: 1px solid var(--border); border-radius: 8px; transition: all 0.2s; }
+    .nav-back:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+    .page-hero { max-width: 860px; margin: 0 auto; padding: 52px 24px 32px; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; letter-spacing: -1px; margin-bottom: 14px; }
+    .page-hero p { font-size: 1.05rem; color: var(--text-2); max-width: 640px; margin: 0 auto 28px; }
+    .hero-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 32px; }
+    .hero-badge { background: rgba(79,142,247,0.1); border: 1px solid rgba(79,142,247,0.25); color: var(--accent); padding: 5px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; }
+    .cta-btn { display: inline-block; background: var(--accent-g); color: #fff; font-weight: 700; font-size: 1.05rem; padding: 14px 36px; border-radius: 14px; text-decoration: none; transition: opacity 0.2s, transform 0.2s; }
+    .cta-btn:hover { opacity: 0.9; transform: translateY(-2px); text-decoration: none; }
+    .page-section { max-width: 860px; margin: 0 auto 48px; padding: 0 24px; }
+    .section-title { font-size: 1.3rem; font-weight: 800; color: var(--text); margin-bottom: 16px; }
+    .prose { font-size: 0.97rem; color: var(--text-2); line-height: 1.75; }
+    .prose + .prose { margin-top: 12px; }
+
+    /* CONCEPT CARDS */
+    .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .concept-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
+    .concept-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 10px; }
+    .concept-card p { font-size: 0.875rem; color: var(--text-2); line-height: 1.7; }
+    .concept-card.lossy { border-color: rgba(248,113,113,0.3); }
+    .concept-card.lossless { border-color: rgba(34,197,94,0.3); }
+
+    /* STEPS */
+    .how-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .how-step { display: flex; align-items: flex-start; gap: 16px; background: var(--card); border: 1px solid var(--border); padding: 18px 20px; border-radius: 14px; }
+    .how-step-num { min-width: 34px; height: 34px; border-radius: 50%; background: var(--accent-g); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; color: #fff; flex-shrink: 0; }
+    .how-step strong { display: block; font-size: 0.97rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .how-step p { font-size: 0.875rem; color: var(--text-2); margin: 0; }
+
+    /* TIPS */
+    .tip-list { display: flex; flex-direction: column; gap: 12px; }
+    .tip { display: flex; gap: 12px; align-items: flex-start; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+    .tip-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+    .tip-text strong { display: block; font-size: 0.92rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .tip-text p { font-size: 0.875rem; color: var(--text-2); margin: 0; }
+
+    .verdict-box { background: linear-gradient(135deg, rgba(79,142,247,0.08), rgba(123,91,246,0.08)); border: 1px solid rgba(79,142,247,0.3); border-radius: 16px; padding: 24px 28px; }
+    .verdict-box h3 { font-size: 1.05rem; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+    .verdict-box p { font-size: 0.93rem; color: var(--text-2); line-height: 1.75; }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .faq-q { padding: 16px 20px; font-size: 0.97rem; font-weight: 700; color: var(--text); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-q::after { content: "+"; font-size: 1.2rem; color: var(--accent); flex-shrink: 0; }
+    .faq-item[open] .faq-q::after { content: "−"; }
+    .faq-a { padding: 0 20px 16px; font-size: 0.9rem; color: var(--text-2); line-height: 1.7; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
+    .related-tool-link { display: block; padding: 12px 16px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 10px; color: var(--accent); font-size: 0.875rem; font-weight: 600; text-align: center; transition: all 0.2s; }
+    .related-tool-link:hover { background: rgba(79,142,247,0.1); border-color: rgba(79,142,247,0.4); text-decoration: none; }
+    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 28px 24px; text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 48px; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent); }
+    .footer-logo { font-weight: 800; font-size: 1.1rem; color: var(--text); }
+    .footer-logo span { background: var(--accent-g); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    @media (max-width: 600px) {
+      .page-hero { padding: 36px 16px 24px; }
+      .page-section { padding: 0 16px; }
+      .concept-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="/results-ux.css">
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Img<span>Swift</span></a>
+  <a href="/" class="nav-back">← All Tools</a>
+</nav>
+
+<nav aria-label="Breadcrumb" style="max-width:860px;margin:16px auto 0;padding:0 24px;">
+  <ol style="list-style:none;display:flex;gap:8px;font-size:0.82rem;color:var(--muted);">
+    <li><a href="/" style="color:var(--muted);">Home</a></li>
+    <li style="color:var(--border);">/</li>
+    <li style="color:var(--text-2);">How Image Compression Works</li>
+  </ol>
+</nav>
+
+<header class="page-hero">
+  <h1>How Image Compression Works</h1>
+  <p>The clear explanation of lossy vs lossless compression, JPG's DCT blocks, PNG's DEFLATE, and how to reduce image file size without visible quality loss.</p>
+  <div class="hero-badges">
+    <span class="hero-badge">🔬 Technical + Practical</span>
+    <span class="hero-badge">📸 Lossy vs Lossless</span>
+    <span class="hero-badge">💡 Pro Tips</span>
+    <span class="hero-badge">⚡ Compress Free</span>
+  </div>
+  <a href="/compress-image/" class="cta-btn">⚡ Compress Images Free</a>
+</header>
+
+<!-- CORE CONCEPTS -->
+<section class="page-section">
+  <h2 class="section-title">The Two Types of Image Compression</h2>
+  <div class="concept-grid">
+    <div class="concept-card lossy">
+      <h3>❌ Lossy Compression</h3>
+      <p>Permanently discards image data that the algorithm determines is imperceptible to human vision. Produces much smaller files. Quality cannot be fully recovered. Used by JPG and lossy WebP. Best for photographs where small file size matters most.</p>
+    </div>
+    <div class="concept-card lossless">
+      <h3>✅ Lossless Compression</h3>
+      <p>Reduces file size by encoding data more efficiently — without discarding any information. The original image can be reconstructed perfectly. Used by PNG and lossless WebP. Best for graphics, logos, and images that will be edited further.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW JPG WORKS -->
+<section class="page-section">
+  <h2 class="section-title">How JPG Compression Works (Step by Step)</h2>
+  <ol class="how-list">
+    <li class="how-step">
+      <div class="how-step-num">1</div>
+      <div>
+        <strong>Color space conversion</strong>
+        <p>The image is converted from RGB (red, green, blue) to YCbCr — a format that separates brightness (luma) from color information (chroma). The human eye is far more sensitive to brightness than to color, so this separation allows color data to be compressed more aggressively than brightness data.</p>
+      </div>
+    </li>
+    <li class="how-step">
+      <div class="how-step-num">2</div>
+      <div>
+        <strong>Chroma subsampling</strong>
+        <p>The color channels (Cb and Cr) are reduced in resolution — typically to half size — while the brightness channel is kept at full resolution. Since our eyes don't notice color detail as sharply as brightness detail, this step alone typically reduces data by 50% with negligible visible impact on photographic content.</p>
+      </div>
+    </li>
+    <li class="how-step">
+      <div class="how-step-num">3</div>
+      <div>
+        <strong>Block division (8×8 DCT)</strong>
+        <p>Each channel is divided into 8×8 pixel blocks. Each block is then processed by a Discrete Cosine Transform (DCT) — a mathematical operation that converts the spatial pixel values into frequency components. Low-frequency components describe broad color areas; high-frequency components describe fine detail and sharp edges.</p>
+      </div>
+    </li>
+    <li class="how-step">
+      <div class="how-step-num">4</div>
+      <div>
+        <strong>Quantization (where data is lost)</strong>
+        <p>This is the step that actually loses information. The DCT coefficients — especially the high-frequency ones — are divided by a quantization table and rounded to integers. The higher the compression level, the more aggressively coefficients are rounded, discarding fine detail. This step is irreversible. This is why JPG degrades with every re-save and why JPG compression causes blurring around sharp edges.</p>
+      </div>
+    </li>
+    <li class="how-step">
+      <div class="how-step-num">5</div>
+      <div>
+        <strong>Entropy encoding</strong>
+        <p>The quantized values are compressed further using Huffman coding — a lossless step that assigns shorter binary codes to more common values. This final step squeezes out remaining redundancy without any additional quality loss. The result is the final JPG file.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- HOW PNG WORKS -->
+<section class="page-section">
+  <h2 class="section-title">How PNG Compression Works</h2>
+  <p class="prose">PNG uses an entirely different approach: lossless compression. No data is ever discarded. The PNG algorithm works in two stages. First, a filter is applied to each row of pixels to make the data more compressible. The filter predicts the value of each pixel based on its neighbors and stores only the difference (the "delta") rather than the absolute value. Images with smooth gradients and flat areas produce very small delta values that compress well.</p>
+  <p class="prose">Second, the filtered pixel data is compressed using DEFLATE — the same algorithm used in ZIP files. DEFLATE finds repeated patterns in the data and replaces them with shorter references. For images with large flat areas of the same color (logos, icons, screenshots), this produces dramatic size reductions. For photographs with complex natural variation in every pixel, DEFLATE finds few repeated patterns, producing large files.</p>
+  <p class="prose">Because no data is discarded, a PNG can always be decompressed back to the exact original pixel values. You can save, open, edit, and re-save a PNG file an unlimited number of times with zero quality degradation — unlike JPG.</p>
+</section>
+
+<!-- HOW WEBP WORKS -->
+<section class="page-section">
+  <h2 class="section-title">How WebP Compression Works</h2>
+  <p class="prose">WebP offers both lossy and lossless modes. Lossy WebP is based on the VP8 video codec's intra-frame compression — it uses a similar block-based DCT approach to JPG but with more sophisticated prediction and entropy coding, achieving roughly 25–35% smaller files than JPG at equivalent quality. The visual quality profile of lossy WebP also tends to be better than JPG — fewer ringing artifacts around sharp edges.</p>
+  <p class="prose">Lossless WebP uses a different algorithm called WebP Lossless, which applies more sophisticated spatial prediction than PNG's row-filter approach, plus a transform-based compression stage. The result is files approximately 26% smaller than equivalent PNG while perfectly preserving every pixel. WebP also supports animation (animated WebP) and alpha transparency in both lossy and lossless modes.</p>
+</section>
+
+<!-- PRACTICAL TIPS -->
+<section class="page-section">
+  <h2 class="section-title">Practical Tips to Reduce Image File Size</h2>
+  <div class="tip-list">
+    <div class="tip">
+      <div class="tip-icon">📸</div>
+      <div class="tip-text">
+        <strong>Use JPG quality 75–85 for photos</strong>
+        <p>Quality 80 typically cuts a photo's file size by 60–70% versus quality 100 with no visible difference. Going below 70 starts to introduce noticeable artifacts. The sweet spot is 75–85 for most use cases.</p>
+      </div>
+    </div>
+    <div class="tip">
+      <div class="tip-icon">🌐</div>
+      <div class="tip-text">
+        <strong>Switch web images to WebP</strong>
+        <p>WebP at quality 80 produces files 25–35% smaller than JPG at the same quality. Since all modern browsers support WebP, switching your web images to WebP is one of the highest-impact performance improvements you can make.</p>
+      </div>
+    </div>
+    <div class="tip">
+      <div class="tip-icon">📐</div>
+      <div class="tip-text">
+        <strong>Resize before compressing</strong>
+        <p>A 4000×3000px image displayed at 800×600px on screen wastes bandwidth. Resize the image to the maximum display size before compressing. This is often the single biggest file size reduction available — dimensions matter more than compression settings.</p>
+      </div>
+    </div>
+    <div class="tip">
+      <div class="tip-icon">🔄</div>
+      <div class="tip-text">
+        <strong>Never re-save JPGs repeatedly</strong>
+        <p>Each time you open and re-save a JPG, another round of lossy compression is applied on top of existing compression — causing cumulative generation loss. Always keep master files in PNG format and export to JPG only as a final delivery step.</p>
+      </div>
+    </div>
+    <div class="tip">
+      <div class="tip-icon">🖼️</div>
+      <div class="tip-text">
+        <strong>Use PNG for graphics, not photos</strong>
+        <p>PNG's lossless compression works well for graphics with flat colors but compresses photos poorly. A photograph saved as PNG is typically 3–5x larger than the same photo as JPG. Only use PNG for photos when you need to preserve absolute quality for further editing.</p>
+      </div>
+    </div>
+    <div class="tip">
+      <div class="tip-icon">📊</div>
+      <div class="tip-text">
+        <strong>Strip metadata from production images</strong>
+        <p>Photos contain EXIF metadata — camera settings, GPS coordinates, timestamps — that can add 30–100KB to a file. Removing metadata before publishing web images is a free size reduction with no visual impact. ImgSwift removes metadata automatically when you compress.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="page-section">
+  <h2 class="section-title">How AVIF Compression Works</h2>
+  <p class="prose">AVIF (AV1 Image File Format) is the newest major image format and uses the most advanced compression available today. It's based on the AV1 video codec developed by the Alliance for Open Media — a coalition including Google, Netflix, Apple, and Amazon.</p>
+  <p class="prose" style="margin-top:12px;">AVIF uses several advanced techniques that older formats lack: it can analyze larger blocks of pixels at once (up to 128×128 vs JPG's 8×8), uses more sophisticated prediction models, supports HDR and wide color gamut natively, and handles film grain efficiently without needing to encode every grain separately.</p>
+  <p class="prose" style="margin-top:12px;">The result: AVIF is typically 50% smaller than JPG and 20–30% smaller than WebP at the same visual quality. The trade-off is encoding speed — AVIF takes significantly more CPU to compress than JPG or WebP, though decoding (what browsers do to display it) is fast.</p>
+</section>
+
+<section class="page-section">
+  <h2 class="section-title">Image Compression vs Image Resizing — What's the Difference?</h2>
+  <p class="prose">These are two different techniques that both reduce file size:</p>
+  <div style="overflow-x:auto;border-radius:12px;border:1px solid var(--border);margin-top:14px;">
+    <table class="compare-table">
+      <thead>
+        <tr><th>Technique</th><th>How it works</th><th>Affects dimensions?</th><th>Quality impact</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="label">Compression</td><td>Reduces data per pixel</td><td>No — same pixel dimensions</td><td>Possible (lossy) or none (lossless)</td></tr>
+        <tr><td class="label">Resizing</td><td>Reduces total pixel count</td><td>Yes — smaller width × height</td><td>Yes — detail is permanently lost</td></tr>
+        <tr><td class="label">Format change</td><td>Uses better algorithm</td><td>No</td><td>None (or less than old format)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">For web images, the ideal workflow combines all three: resize to the display dimensions, convert to WebP, and compress at 80–85% quality. This typically reduces file size by 80–95% compared to the original unoptimized image.</p>
+</section>
+
+<section class="page-section">
+  <h2 class="section-title">Compression Cheat Sheet — Recommended Settings</h2>
+  <div style="overflow-x:auto;border-radius:12px;border:1px solid var(--border);">
+    <table class="compare-table">
+      <thead>
+        <tr><th>Format</th><th>Use Case</th><th>Recommended Quality</th><th>Expected File Size*</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="label">WebP</td><td>Web photos</td><td>75–80%</td><td style="color:var(--green)">150–250 KB</td></tr>
+        <tr><td class="label">WebP</td><td>Web graphics / logos</td><td>Lossless</td><td style="color:var(--green)">15–40 KB</td></tr>
+        <tr><td class="label">JPG</td><td>Social media photos</td><td>80–85%</td><td>200–350 KB</td></tr>
+        <tr><td class="label">JPG</td><td>Email newsletters</td><td>70–80%</td><td>100–200 KB</td></tr>
+        <tr><td class="label">PNG</td><td>Screenshots with text</td><td>Lossless</td><td>300–700 KB</td></tr>
+        <tr><td class="label">PNG</td><td>Logos with transparency</td><td>Lossless</td><td>10–40 KB</td></tr>
+        <tr><td class="label">AVIF</td><td>Hero images, performance-critical</td><td>60–70%</td><td style="color:var(--green)">80–160 KB</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:12px;font-size:0.88rem;color:var(--muted);">*Estimated for a typical 1920×1080 photograph. Actual sizes vary by image content.</p>
+</section>
+
+<section class="page-section">
+  <h2 class="section-title">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary class="faq-q">What is the difference between lossy and lossless compression?</summary>
+      <div class="faq-a"><p>Lossy compression permanently discards some image data to achieve smaller file sizes — JPG and WebP (in lossy mode) use this approach. Lossless compression reduces file size without discarding any data, so the image can be perfectly reconstructed — PNG uses lossless compression. Lossy files are smaller but cannot be restored to the original; lossless files are larger but preserve every pixel exactly.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Does compressing an image reduce quality?</summary>
+      <div class="faq-a"><p>It depends on the method. Lossy compression (JPG, lossy WebP) permanently removes some image data, which reduces quality — the degree of quality loss depends on the compression level. Lossless compression (PNG, lossless WebP) reduces file size without any quality loss at all. ImgSwift lets you adjust the quality level when compressing, so you can find the right balance for your needs.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">What is the best way to compress images without losing quality?</summary>
+      <div class="faq-a"><p>To reduce file size without visible quality loss, use WebP format at quality 80–85 for photos, or PNG with lossless compression for graphics. For JPG images, quality settings of 75–85 typically cut file size by 60–70% with no perceptible difference. ImgSwift's browser-based compression lets you preview results before downloading.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Why do JPG files get worse quality each time you save them?</summary>
+      <div class="faq-a"><p>JPG uses lossy compression, which discards some data every time the file is saved. Each save applies another round of compression on top of the already-compressed data, causing cumulative quality degradation — called generation loss. To avoid it, keep master files in PNG format and only convert to JPG as a final export step — never edit and re-save the same JPG repeatedly.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">How much can I compress an image before quality suffers?</summary>
+      <div class="faq-a"><p>For JPG, quality settings of 75–85% produce files 60–70% smaller than uncompressed with no visible quality difference to most viewers. Below 60% quality, compression artifacts become clearly visible. For WebP, quality 75–80 is typically the sweet spot. For lossless PNG, all compression levels produce identical image quality — only file size varies.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">How does image compression affect Google PageSpeed scores?</summary>
+      <div class="faq-a"><p>Image compression directly impacts your Largest Contentful Paint (LCP) score — Google's primary metric for page load speed. Uncompressed or oversized images are one of the top reasons for PageSpeed failures. Google Lighthouse specifically flags images larger than necessary and recommends serving them in WebP or AVIF format. Compressing images to under 100 KB each and using next-gen formats typically improves PageSpeed by 10–30 points.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Can I decompress a compressed image back to the original?</summary>
+      <div class="faq-a"><p>Only with lossless formats. PNG, lossless WebP, and TIFF can be decompressed to the exact original pixels. JPG, lossy WebP, and AVIF (in lossy mode) permanently discard data — the original cannot be recovered. This is why it's important to keep master copies in lossless formats and export to lossy formats only when needed.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">What is chroma subsampling in JPG compression?</summary>
+      <div class="faq-a"><p>Chroma subsampling is a technique used in JPG (and other formats) based on the fact that the human eye is more sensitive to brightness changes than color changes. The compression algorithm stores full brightness information for every pixel but averages the color information across groups of 2 or 4 pixels. The most common setting is 4:2:0, which reduces color data by 75% while being nearly invisible to viewers. This is a major contributor to JPG's ability to achieve small file sizes without obvious quality loss.</p></div>
+    </details>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="page-section">
+  <div class="verdict-box">
+    <h3>⚡ Try it yourself — compress an image for free</h3>
+    <p>ImgSwift compresses JPG, PNG, and WebP images directly in your browser. No file uploads, no server, no signup. Your images stay on your device.</p>
+    <div style="margin-top:18px;">
+      <a href="/compress-image/" class="cta-btn" style="font-size:0.95rem;padding:12px 28px;">Open Image Compressor</a>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="page-section">
+  <h2 class="section-title">Related Tools & Articles</h2>
+  <div class="related-grid">
+    <a href="/compress-image/" class="related-tool-link">Compress Images Free</a>
+    <a href="/jpg-vs-png/" class="related-tool-link">JPG vs PNG Guide</a>
+    <a href="/png-vs-webp/" class="related-tool-link">PNG vs WebP Guide</a>
+    <a href="/best-image-format/" class="related-tool-link">Best Image Format</a>
+    <a href="/jpg-to-webp/" class="related-tool-link">JPG to WebP</a>
+    <a href="/jpg-to-png/" class="related-tool-link">JPG to PNG</a>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-logo">⚡ Img<span>Swift</span></p>
+  <p style="margin-top:8px;">Free online image tools · 100% browser-based · No uploads · No signup</p>
+  <p style="margin-top:8px;">
+    <a href="/">Home</a> ·
+    <a href="/jpg-to-png/">JPG to PNG</a> ·
+    <a href="/png-to-jpg/">PNG to JPG</a> ·
+    <a href="/jpg-to-webp/">JPG to WebP</a> ·
+    <a href="/compress-image/">Compress</a> ·
+    <a href="/pdf-to-image/">PDF to Image</a>
+  </p>
+  <p style="margin-top:14px;font-size:0.8rem;">© 2026 ImgSwift · <a href="/">Privacy: zero data sent to servers</a></p>
+</footer>
+
+<script src="/results-ux.js"></script>
+
+<script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
+</body>
+</html>
