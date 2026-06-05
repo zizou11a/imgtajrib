@@ -71,8 +71,8 @@
   }
   </script>
 
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="icon" href="/icon-192.png" type="image/png">
+  <link rel="stylesheet" href="/imgtajrib/styles.css">
+  <link rel="icon" href="/imgtajrib/icon-192.png" type="image/png">
 
   <style>
     .article-hero { max-width: 800px; margin: 0 auto 40px; padding: 0 20px; }
@@ -116,20 +116,20 @@
     .related-tool-link { display: block; padding: 12px 16px; background: var(--card, rgba(255,255,255,0.04)); border: 1px solid var(--border, rgba(255,255,255,0.1)); border-radius: 10px; text-decoration: none; color: var(--text, #f1f5f9); font-size: 0.9rem; font-weight: 600; transition: border-color .2s; }
     .related-tool-link:hover { border-color: var(--accent, #6366f1); }
   </style>
-  <link rel="stylesheet" href="/results-ux.css">
+  <link rel="stylesheet" href="/imgtajrib/results-ux.css">
 <meta name="twitter:site" content="@imgswift">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="manifest" href="/imgtajrib/manifest.json">
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to main content</a>
 
 <nav class="nav-bar" aria-label="Site navigation">
-  <a href="/" class="nav-logo" aria-label="ImgSwift home">
+  <a href="/imgtajrib/" class="nav-logo" aria-label="ImgSwift home">
     <span class="nav-logo-icon" aria-hidden="true">⚡</span>
     <span class="nav-logo-text">ImgSwift</span>
   </a>
-  <a href="/" class="nav-back">← All Tools</a>
+  <a href="/imgtajrib/" class="nav-back">← All Tools</a>
 </nav>
 
 <main id="main">
@@ -208,20 +208,20 @@
 
       <div class="tip-box">
         <strong>✓ Use for LCP image:</strong>
-        <pre><code>&lt;img src="/hero.webp" alt="Hero image" 
+        <pre><code>&lt;img src="/imgtajrib/hero.webp" alt="Hero image" 
      width="1200" height="600"
      fetchpriority="high"&gt;</code></pre>
       </div>
 
       <h3>Step 3: Convert to WebP or AVIF</h3>
-      <p>The single highest-impact change for LCP is converting your hero image from JPG to <a href="/jpg-to-webp/">WebP</a>. A typical 400KB JPG hero image becomes 130–180KB as WebP at equivalent visual quality. That's 55–65% less data the browser needs to download before it can render your LCP element.</p>
+      <p>The single highest-impact change for LCP is converting your hero image from JPG to <a href="/imgtajrib/jpg-to-webp/">WebP</a>. A typical 400KB JPG hero image becomes 130–180KB as WebP at equivalent visual quality. That's 55–65% less data the browser needs to download before it can render your LCP element.</p>
 
-      <p>For maximum compression, <a href="/jpg-to-avif/">AVIF</a> goes further — typically 50% smaller than JPG. Use the <code>&lt;picture&gt;</code> element to serve AVIF with WebP fallback:</p>
+      <p>For maximum compression, <a href="/imgtajrib/jpg-to-avif/">AVIF</a> goes further — typically 50% smaller than JPG. Use the <code>&lt;picture&gt;</code> element to serve AVIF with WebP fallback:</p>
 
       <pre><code>&lt;picture&gt;
   &lt;source srcset="/hero.avif" type="image/avif"&gt;
   &lt;source srcset="/hero.webp" type="image/webp"&gt;
-  &lt;img src="/hero.jpg" alt="Hero" width="1200" height="600" fetchpriority="high"&gt;
+  &lt;img src="/imgtajrib/hero.jpg" alt="Hero" width="1200" height="600" fetchpriority="high"&gt;
 &lt;/picture&gt;</code></pre>
 
       <h3>Step 4: Set fetchpriority="high"</h3>
@@ -236,10 +236,10 @@
       <p>Every <code>&lt;img&gt;</code> element should have explicit <code>width</code> and <code>height</code> attributes matching the image's intrinsic dimensions. Modern browsers use these to reserve the correct space before the image loads:</p>
 
       <pre><code>&lt;!-- ❌ Causes layout shift --&gt;
-&lt;img src="/photo.webp" alt="Product photo"&gt;
+&lt;img src="/imgtajrib/photo.webp" alt="Product photo"&gt;
 
 &lt;!-- ✓ Reserves space, no layout shift --&gt;
-&lt;img src="/photo.webp" alt="Product photo" width="800" height="600"&gt;</code></pre>
+&lt;img src="/imgtajrib/photo.webp" alt="Product photo" width="800" height="600"&gt;</code></pre>
 
       <p>You don't need to set explicit CSS width/height — just the HTML attributes. The browser calculates the aspect ratio and reserves the appropriate space regardless of the rendered size.</p>
 
@@ -248,7 +248,7 @@
       <pre><code>img { aspect-ratio: 16 / 9; width: 100%; height: auto; }</code></pre>
 
       <div class="tip-box">
-        <strong>💡 Tip:</strong> If you don't know an image's dimensions, use <a href="/view-image-metadata/">ImgSwift's metadata viewer</a> to check width and height instantly without any upload.
+        <strong>💡 Tip:</strong> If you don't know an image's dimensions, use <a href="/imgtajrib/view-image-metadata/">ImgSwift's metadata viewer</a> to check width and height instantly without any upload.
       </div>
     </div>
 
@@ -257,15 +257,15 @@
       <p>Format choice is the most impactful single decision for image file size. Here's what to use for Core Web Vitals performance:</p>
 
       <h3>Photos and Complex Images → WebP or AVIF</h3>
-      <p><a href="/best-image-format/">WebP</a> should be your default for all photographic content on the web. It achieves 25–35% better compression than JPG at equivalent quality. Browser support is 97%+ as of 2026. <a href="/avif-vs-jpeg/">AVIF</a> delivers 40–55% better compression than JPG — use it with a WebP fallback via <code>&lt;picture&gt;</code> for maximum impact.</p>
+      <p><a href="/imgtajrib/best-image-format/">WebP</a> should be your default for all photographic content on the web. It achieves 25–35% better compression than JPG at equivalent quality. Browser support is 97%+ as of 2026. <a href="/imgtajrib/avif-vs-jpeg/">AVIF</a> delivers 40–55% better compression than JPG — use it with a WebP fallback via <code>&lt;picture&gt;</code> for maximum impact.</p>
 
       <h3>Screenshots and UI Graphics → PNG</h3>
-      <p>PNG's lossless compression preserves sharp text and pixel-perfect UI elements that JPG blurs. While PNG files are larger, they're appropriate when quality cannot be compromised. For web delivery of UI screenshots, <a href="/png-to-webp/">converting PNG to WebP</a> (lossless mode) can reduce size by 20–30% with no quality loss.</p>
+      <p>PNG's lossless compression preserves sharp text and pixel-perfect UI elements that JPG blurs. While PNG files are larger, they're appropriate when quality cannot be compromised. For web delivery of UI screenshots, <a href="/imgtajrib/png-to-webp/">converting PNG to WebP</a> (lossless mode) can reduce size by 20–30% with no quality loss.</p>
 
       <h3>The JPG to WebP Conversion Impact</h3>
       <p>Consider a page with five 100KB JPG images. Converting all to WebP saves roughly 170KB. At a median mobile connection of 10 Mbps, that's 140ms of loading time saved — potentially the difference between "Good" and "Needs Improvement" LCP.</p>
 
-      <p>Use <a href="/compress-image/">ImgSwift's free image compressor</a> or <a href="/jpg-to-webp/">JPG to WebP converter</a> to convert your images without any server upload.</p>
+      <p>Use <a href="/imgtajrib/compress-image/">ImgSwift's free image compressor</a> or <a href="/imgtajrib/jpg-to-webp/">JPG to WebP converter</a> to convert your images without any server upload.</p>
     </div>
 
     <div class="article-section" id="sizing">
@@ -276,7 +276,7 @@
       <p>The <code>srcset</code> attribute lets you specify multiple image versions at different widths. The browser picks the most appropriate size based on the user's screen and pixel density:</p>
 
       <pre><code>&lt;img
-  src="/hero-800.webp"
+  src="/imgtajrib/hero-800.webp"
   srcset="/hero-400.webp 400w, /hero-800.webp 800w, /hero-1200.webp 1200w"
   sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
   alt="Hero image"
@@ -287,7 +287,7 @@
       <p>Mobile users receive the 400px version (much smaller file) while desktop users get the 1200px version. This can save 60–80% of image bytes on mobile — the platform where LCP failures are most common.</p>
 
       <h3>Resize Before You Upload</h3>
-      <p>The simplest approach: before uploading any image, <a href="/resize-image/">resize it to its display dimensions</a>. A hero image displayed at 1200px wide should be 1200px wide (2400px for retina). Never upload a 4000px image for a 400px thumbnail.</p>
+      <p>The simplest approach: before uploading any image, <a href="/imgtajrib/resize-image/">resize it to its display dimensions</a>. A hero image displayed at 1200px wide should be 1200px wide (2400px for retina). Never upload a 4000px image for a 400px thumbnail.</p>
     </div>
 
     <div class="article-section" id="lazy-loading">
@@ -296,7 +296,7 @@
 
       <h3>✓ DO: Lazy load below-the-fold images</h3>
       <pre><code>&lt;!-- Images that appear below the visible screen --&gt;
-&lt;img src="/product-2.webp" alt="Product" width="400" height="400" loading="lazy"&gt;</code></pre>
+&lt;img src="/imgtajrib/product-2.webp" alt="Product" width="400" height="400" loading="lazy"&gt;</code></pre>
 
       <h3>❌ DON'T: Lazy load the LCP image</h3>
       <div class="warning-box">
@@ -304,10 +304,10 @@
       </div>
 
       <pre><code>&lt;!-- ❌ This will hurt your LCP score --&gt;
-&lt;img src="/hero.webp" alt="Hero" loading="lazy" fetchpriority="high"&gt;
+&lt;img src="/imgtajrib/hero.webp" alt="Hero" loading="lazy" fetchpriority="high"&gt;
 
 &lt;!-- ✓ Correct: no lazy loading on LCP image --&gt;
-&lt;img src="/hero.webp" alt="Hero" fetchpriority="high" width="1200" height="600"&gt;</code></pre>
+&lt;img src="/imgtajrib/hero.webp" alt="Hero" fetchpriority="high" width="1200" height="600"&gt;</code></pre>
 
       <h3>Rule of Thumb</h3>
       <p>Apply <code>loading="lazy"</code> to all images except the first 2–3 visible on page load. A quick estimate: if an image appears below 700px from the top of the page on mobile, lazy load it.</p>
@@ -319,11 +319,11 @@
 
       <h3>Basic Preload</h3>
       <pre><code>&lt;!-- Add in &lt;head&gt; --&gt;
-&lt;link rel="preload" as="image" href="/hero.webp"&gt;</code></pre>
+&lt;link rel="preload" as="image" href="/imgtajrib/hero.webp"&gt;</code></pre>
 
       <h3>Preload for Responsive Images</h3>
       <pre><code>&lt;link rel="preload" as="image"
-  href="/hero-1200.webp"
+  href="/imgtajrib/hero-1200.webp"
   imagesrcset="/hero-400.webp 400w, /hero-800.webp 800w, /hero-1200.webp 1200w"
   imagesizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
 &gt;</code></pre>
@@ -345,27 +345,27 @@
         <li><strong>PNG:</strong> Compression level 7–9 (lossless — level only affects encode speed vs file size trade-off).</li>
       </ul>
 
-      <p>Use <a href="/compress-image/">ImgSwift's compressor</a> to find the right quality level visually — it shows a before/after preview with file size savings before you download.</p>
+      <p>Use <a href="/imgtajrib/compress-image/">ImgSwift's compressor</a> to find the right quality level visually — it shows a before/after preview with file size savings before you download.</p>
 
       <h3>Strip EXIF Metadata</h3>
-      <p>EXIF metadata (GPS location, camera info, date/time) adds bytes to every image file — typically 5–30KB for photos from smartphones. <a href="/remove-exif-data/">Stripping EXIF data</a> before publishing reduces file size and protects user privacy if images contain GPS coordinates.</p>
+      <p>EXIF metadata (GPS location, camera info, date/time) adds bytes to every image file — typically 5–30KB for photos from smartphones. <a href="/imgtajrib/remove-exif-data/">Stripping EXIF data</a> before publishing reduces file size and protects user privacy if images contain GPS coordinates.</p>
 
-      <p>For a detailed overview of how compression works under the hood, see <a href="/how-image-compression-works/">How Image Compression Works</a>. For the trade-offs between lossless and lossy approaches, see <a href="/lossless-vs-lossy/">Lossless vs Lossy Compression</a>.</p>
+      <p>For a detailed overview of how compression works under the hood, see <a href="/imgtajrib/how-image-compression-works/">How Image Compression Works</a>. For the trade-offs between lossless and lossy approaches, see <a href="/imgtajrib/lossless-vs-lossy/">Lossless vs Lossy Compression</a>.</p>
     </div>
 
     <div class="article-section" id="checklist">
       <h2>Core Web Vitals Image Checklist</h2>
       <ul class="checklist">
-        <li>Convert all photos to <a href="/jpg-to-webp/">WebP</a> (or <a href="/jpg-to-avif/">AVIF</a> with WebP fallback)</li>
+        <li>Convert all photos to <a href="/imgtajrib/jpg-to-webp/">WebP</a> (or <a href="/imgtajrib/jpg-to-avif/">AVIF</a> with WebP fallback)</li>
         <li>Add <code>width</code> and <code>height</code> attributes to every <code>&lt;img&gt;</code> element</li>
         <li>Use <code>fetchpriority="high"</code> on the LCP image only</li>
         <li>Never use <code>loading="lazy"</code> on the LCP image or any above-the-fold image</li>
         <li>Add <code>loading="lazy"</code> to all below-the-fold images</li>
         <li>Preload the LCP image using <code>&lt;link rel="preload"&gt;</code> in <code>&lt;head&gt;</code></li>
-        <li><a href="/resize-image/">Resize images</a> to their display dimensions before uploading</li>
+        <li><a href="/imgtajrib/resize-image/">Resize images</a> to their display dimensions before uploading</li>
         <li>Use <code>srcset</code> and <code>sizes</code> to serve different sizes to different screen widths</li>
         <li>Use <code>&lt;img&gt;</code> not CSS <code>background-image</code> for the LCP element</li>
-        <li><a href="/remove-exif-data/">Strip EXIF metadata</a> to reduce file size and protect privacy</li>
+        <li><a href="/imgtajrib/remove-exif-data/">Strip EXIF metadata</a> to reduce file size and protect privacy</li>
         <li>Set WebP quality to 75–85 for a balance of size and quality</li>
         <li>Run Google PageSpeed Insights after changes to verify improvement</li>
       </ul>
@@ -380,7 +380,7 @@
         </details>
         <details class="faq-item">
           <summary class="faq-q">What image format is best for Core Web Vitals?</summary>
-          <div class="faq-a"><p>WebP and AVIF are the best formats for Core Web Vitals. WebP files are ~30% smaller than JPG at equivalent quality; AVIF files are ~50% smaller. Smaller files load faster, directly improving LCP scores. Use <a href="/jpg-to-webp/">ImgSwift to convert JPG to WebP</a> for free.</p></div>
+          <div class="faq-a"><p>WebP and AVIF are the best formats for Core Web Vitals. WebP files are ~30% smaller than JPG at equivalent quality; AVIF files are ~50% smaller. Smaller files load faster, directly improving LCP scores. Use <a href="/imgtajrib/jpg-to-webp/">ImgSwift to convert JPG to WebP</a> for free.</p></div>
         </details>
         <details class="faq-item">
           <summary class="faq-q">Does lazy loading images help Core Web Vitals?</summary>
@@ -396,7 +396,7 @@
         </details>
         <details class="faq-item">
           <summary class="faq-q">How do I preload the LCP image?</summary>
-          <div class="faq-a"><p>Add this in your <code>&lt;head&gt;</code>: <code>&lt;link rel="preload" as="image" href="/hero.webp"&gt;</code>. For responsive images with srcset, add <code>imagesrcset</code> and <code>imagesizes</code> attributes. Preloading the LCP image is one of the highest-impact LCP optimizations available.</p></div>
+          <div class="faq-a"><p>Add this in your <code>&lt;head&gt;</code>: <code>&lt;link rel="preload" as="image" href="/imgtajrib/hero.webp"&gt;</code>. For responsive images with srcset, add <code>imagesrcset</code> and <code>imagesizes</code> attributes. Preloading the LCP image is one of the highest-impact LCP optimizations available.</p></div>
         </details>
         <details class="faq-item">
           <summary class="faq-q">Should I use fetchpriority=high on images?</summary>
@@ -412,21 +412,21 @@
     <div class="article-section">
       <h2>Related Tools & Articles</h2>
       <div class="related-grid">
-        <a href="/best-image-format/" class="related-tool-link">Best Image Format Guide</a>
-        <a href="/jpg-vs-png/" class="related-tool-link">JPG vs PNG</a>
-        <a href="/webp-vs-avif/" class="related-tool-link">WebP vs AVIF</a>
-        <a href="/avif-vs-jpeg/" class="related-tool-link">AVIF vs JPEG</a>
-        <a href="/lossless-vs-lossy/" class="related-tool-link">Lossless vs Lossy</a>
-        <a href="/how-image-compression-works/" class="related-tool-link">How Compression Works</a>
-        <a href="/image-seo-checklist/" class="related-tool-link">Image SEO Checklist</a>
-        <a href="/reduce-image-size-without-losing-quality/" class="related-tool-link">Reduce Image Size</a>
-        <a href="/jpg-to-webp/" class="related-tool-link">JPG to WebP Converter</a>
-        <a href="/jpg-to-avif/" class="related-tool-link">JPG to AVIF Converter</a>
-        <a href="/compress-image/" class="related-tool-link">Compress Images</a>
-        <a href="/resize-image/" class="related-tool-link">Resize Images</a>
-        <a href="/remove-exif-data/" class="related-tool-link">Remove EXIF Data</a>
-        <a href="/view-image-metadata/" class="related-tool-link">View Image Metadata</a>
-        <a href="/png-to-webp/" class="related-tool-link">PNG to WebP</a>
+        <a href="/imgtajrib/best-image-format/" class="related-tool-link">Best Image Format Guide</a>
+        <a href="/imgtajrib/jpg-vs-png/" class="related-tool-link">JPG vs PNG</a>
+        <a href="/imgtajrib/webp-vs-avif/" class="related-tool-link">WebP vs AVIF</a>
+        <a href="/imgtajrib/avif-vs-jpeg/" class="related-tool-link">AVIF vs JPEG</a>
+        <a href="/imgtajrib/lossless-vs-lossy/" class="related-tool-link">Lossless vs Lossy</a>
+        <a href="/imgtajrib/how-image-compression-works/" class="related-tool-link">How Compression Works</a>
+        <a href="/imgtajrib/image-seo-checklist/" class="related-tool-link">Image SEO Checklist</a>
+        <a href="/imgtajrib/reduce-image-size-without-losing-quality/" class="related-tool-link">Reduce Image Size</a>
+        <a href="/imgtajrib/jpg-to-webp/" class="related-tool-link">JPG to WebP Converter</a>
+        <a href="/imgtajrib/jpg-to-avif/" class="related-tool-link">JPG to AVIF Converter</a>
+        <a href="/imgtajrib/compress-image/" class="related-tool-link">Compress Images</a>
+        <a href="/imgtajrib/resize-image/" class="related-tool-link">Resize Images</a>
+        <a href="/imgtajrib/remove-exif-data/" class="related-tool-link">Remove EXIF Data</a>
+        <a href="/imgtajrib/view-image-metadata/" class="related-tool-link">View Image Metadata</a>
+        <a href="/imgtajrib/png-to-webp/" class="related-tool-link">PNG to WebP</a>
       </div>
     </div>
 
@@ -438,16 +438,16 @@
   <p class="footer-logo">⚡ Img<span>Swift</span></p>
   <p style="margin-top:8px;">Free online image tools · 100% browser-based · No uploads · No signup</p>
   <p style="margin-top:8px;">
-    <a href="/">Home</a> ·
-    <a href="/jpg-to-webp/">JPG to WebP</a> ·
-    <a href="/compress-image/">Compress</a> ·
-    <a href="/best-image-format/">Format Guide</a> ·
-    <a href="/remove-exif-data/">Remove EXIF</a>
+    <a href="/imgtajrib/">Home</a> ·
+    <a href="/imgtajrib/jpg-to-webp/">JPG to WebP</a> ·
+    <a href="/imgtajrib/compress-image/">Compress</a> ·
+    <a href="/imgtajrib/best-image-format/">Format Guide</a> ·
+    <a href="/imgtajrib/remove-exif-data/">Remove EXIF</a>
   </p>
-  <p style="margin-top:14px;font-size:0.8rem;">© 2026 ImgSwift · <a href="/">Privacy: zero data sent to servers</a></p>
+  <p style="margin-top:14px;font-size:0.8rem;">© 2026 ImgSwift · <a href="/imgtajrib/">Privacy: zero data sent to servers</a></p>
 </footer>
 
-<script src="/results-ux.js"></script>
+<script src="/imgtajrib/results-ux.js"></script>
 
 <script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
 </body>

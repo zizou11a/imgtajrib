@@ -67,8 +67,8 @@
   }
   </script>
 
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="icon" href="/icon-192.png" type="image/png">
+  <link rel="stylesheet" href="/imgtajrib/styles.css">
+  <link rel="icon" href="/imgtajrib/icon-192.png" type="image/png">
 
   <style>
     .article-hero { max-width: 800px; margin: 0 auto 40px; padding: 48px 20px 0; }
@@ -121,18 +121,18 @@
     .related-link { display: block; padding: 12px 14px; background: rgba(255,255,255,0.04); border: 1px solid var(--border, rgba(255,255,255,0.1)); border-radius: 10px; color: var(--accent, #6366f1); font-size: 0.875rem; font-weight: 600; text-align: center; transition: all 0.2s; }
     .related-link:hover { background: rgba(79,142,247,0.1); text-decoration: none; }
   </style>
-  <link rel="manifest" href="/manifest.json">
+  <link rel="manifest" href="/imgtajrib/manifest.json">
 </head>
 <body>
 
 <nav>
-  <a href="/" style="font-size:1.2rem;font-weight:800;text-decoration:none;color:var(--text);">Img<span style="background:linear-gradient(135deg,#4f8ef7,#7b5bf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Swift</span></a>
-  <a href="/" style="font-size:0.875rem;color:var(--muted,#607080);text-decoration:none;padding:6px 12px;border:1px solid var(--border);border-radius:8px;">← All Tools</a>
+  <a href="/imgtajrib/" style="font-size:1.2rem;font-weight:800;text-decoration:none;color:var(--text);">Img<span style="background:linear-gradient(135deg,#4f8ef7,#7b5bf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Swift</span></a>
+  <a href="/imgtajrib/" style="font-size:0.875rem;color:var(--muted,#607080);text-decoration:none;padding:6px 12px;border:1px solid var(--border);border-radius:8px;">← All Tools</a>
 </nav>
 
 <nav aria-label="Breadcrumb" style="max-width:800px;margin:16px auto 0;padding:0 20px;">
   <ol style="list-style:none;display:flex;gap:8px;font-size:0.82rem;color:var(--muted,#607080);">
-    <li><a href="/" style="color:var(--muted,#607080);">Home</a></li>
+    <li><a href="/imgtajrib/" style="color:var(--muted,#607080);">Home</a></li>
     <li style="color:var(--border);">/</li>
     <li style="color:var(--text-2);">How to Optimize Images for Google PageSpeed</li>
   </ol>
@@ -184,7 +184,7 @@
       <span class="audit-label">Audit: Serve images in next-gen formats</span>
       <h3>Why it fires</h3>
       <p>Your page serves JPG or PNG images. WebP achieves the same perceptual quality at ~30% smaller file size; AVIF achieves ~50% smaller. Google flags this because smaller images = less bandwidth = faster LCP and lower total page weight.</p>
-      <div class="fix"><strong>Fix:</strong> Convert your JPG/PNG images to WebP using <a href="/jpg-to-webp/">ImgSwift's JPG→WebP converter</a>, then serve them with a <code>&lt;picture&gt;</code> element fallback.</div>
+      <div class="fix"><strong>Fix:</strong> Convert your JPG/PNG images to WebP using <a href="/imgtajrib/jpg-to-webp/">ImgSwift's JPG→WebP converter</a>, then serve them with a <code>&lt;picture&gt;</code> element fallback.</div>
     </div>
 
     <h3>HTML implementation</h3>
@@ -215,14 +215,14 @@
       <span class="audit-label">Audit: Properly size images</span>
       <h3>Why it fires</h3>
       <p>You're serving a 4000×3000 image in a 800×600 display slot. The browser downloads 25x more pixels than it renders, wasting bandwidth and slowing the page load.</p>
-      <div class="fix"><strong>Fix:</strong> Resize your images to match their display dimensions before uploading. Use the <a href="/resize-image/">ImgSwift resize tool</a> to set exact pixel dimensions.</div>
+      <div class="fix"><strong>Fix:</strong> Resize your images to match their display dimensions before uploading. Use the <a href="/imgtajrib/resize-image/">ImgSwift resize tool</a> to set exact pixel dimensions.</div>
     </div>
 
     <h3>How to find the correct dimensions</h3>
     <ol>
       <li>Open Chrome DevTools (F12) and go to the Elements panel</li>
       <li>Hover over the <code>&lt;img&gt;</code> element — the tooltip shows rendered size vs intrinsic size</li>
-      <li>Export the image at rendered size × 2 (for retina/HiDPI displays) using <a href="/resize-image/">ImgSwift Resize</a></li>
+      <li>Export the image at rendered size × 2 (for retina/HiDPI displays) using <a href="/imgtajrib/resize-image/">ImgSwift Resize</a></li>
     </ol>
 
     <h3>Use srcset for responsive images</h3>
@@ -263,13 +263,13 @@
 
     <h3>Preload the LCP image</h3>
     <p>Add a <code>&lt;link rel="preload"&gt;</code> in the <code>&lt;head&gt;</code> to tell the browser to start downloading the LCP image immediately, before it parses the rest of the page:</p>
-    <pre>&lt;link rel="preload" as="image" href="/hero.webp"
+    <pre>&lt;link rel="preload" as="image" href="/imgtajrib/hero.webp"
   imagesrcset="/hero-400.webp 400w, /hero-800.webp 800w, /hero-1600.webp 1600w"
   imagesizes="(max-width:600px) 400px, (max-width:1200px) 800px, 1600px"
 &gt;</pre>
 
     <h3>Add fetchpriority="high"</h3>
-    <pre>&lt;img src="/hero.webp" alt="Hero" width="1200" height="630" fetchpriority="high"&gt;</pre>
+    <pre>&lt;img src="/imgtajrib/hero.webp" alt="Hero" width="1200" height="630" fetchpriority="high"&gt;</pre>
     <p>This signals to the browser that this image is the most important resource on the page. Use it on the LCP image only — applying it to multiple images reduces its effect.</p>
 
     <div class="tip-box">
@@ -313,7 +313,7 @@
   <div class="cta-banner">
     <h3>Start Optimizing Your Images</h3>
     <p>Convert to WebP, resize to display dimensions, and compress — all free in your browser.</p>
-    <a href="/" class="cta-btn">Open ImgSwift →</a>
+    <a href="/imgtajrib/" class="cta-btn">Open ImgSwift →</a>
   </div>
 
   <section class="article-section" id="faq">
@@ -345,13 +345,13 @@
   <section class="article-section">
     <h2>Related Tools &amp; Guides</h2>
     <div class="related-grid">
-      <a href="/jpg-to-webp/" class="related-link">JPG → WebP</a>
-      <a href="/png-to-webp/" class="related-link">PNG → WebP</a>
-      <a href="/jpg-to-avif/" class="related-link">JPG → AVIF</a>
-      <a href="/resize-image/" class="related-link">Resize Image</a>
-      <a href="/compress-image/" class="related-link">Compress Image</a>
-      <a href="/how-to-optimize-images-for-core-web-vitals/" class="related-link">Core Web Vitals Guide</a>
-      <a href="/image-seo-checklist/" class="related-link">Image SEO Checklist</a>
+      <a href="/imgtajrib/jpg-to-webp/" class="related-link">JPG → WebP</a>
+      <a href="/imgtajrib/png-to-webp/" class="related-link">PNG → WebP</a>
+      <a href="/imgtajrib/jpg-to-avif/" class="related-link">JPG → AVIF</a>
+      <a href="/imgtajrib/resize-image/" class="related-link">Resize Image</a>
+      <a href="/imgtajrib/compress-image/" class="related-link">Compress Image</a>
+      <a href="/imgtajrib/how-to-optimize-images-for-core-web-vitals/" class="related-link">Core Web Vitals Guide</a>
+      <a href="/imgtajrib/image-seo-checklist/" class="related-link">Image SEO Checklist</a>
     </div>
   </section>
 
@@ -361,10 +361,10 @@
   <div style="font-weight:800;font-size:1.1rem;color:var(--text);margin-bottom:10px;">Img<span style="background:linear-gradient(135deg,#4f8ef7,#7b5bf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Swift</span></div>
   <p style="margin-bottom:8px;">Free image tools — all processing happens in your browser.</p>
   <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-    <a href="/" style="color:var(--muted);">Home</a>
-    <a href="/compress-image/" style="color:var(--muted);">Compress</a>
-    <a href="/jpg-to-webp/" style="color:var(--muted);">JPG→WebP</a>
-    <a href="/resize-image/" style="color:var(--muted);">Resize</a>
+    <a href="/imgtajrib/" style="color:var(--muted);">Home</a>
+    <a href="/imgtajrib/compress-image/" style="color:var(--muted);">Compress</a>
+    <a href="/imgtajrib/jpg-to-webp/" style="color:var(--muted);">JPG→WebP</a>
+    <a href="/imgtajrib/resize-image/" style="color:var(--muted);">Resize</a>
   </div>
 </footer>
 
