@@ -1302,7 +1302,35 @@ const tools = [
     ],
     relatedTools: ["jpg-to-webp", "png-to-webp", "webp-to-jpg", "webp-to-png", "compress-image", "resize-image"]
   }
-
+,
+  {
+      slug: "heic-to-bmp",
+          title: "HEIC to BMP Converter — Free Online | ImgSwift",
+              metaDesc: "Convert HEIC to BMP free online. No upload, instant, 100% private. Supports iPhone HEIC photos.",
+                  ogDesc: "Free HEIC to BMP converter. Browser-based, no upload, no signup.",
+                      h1: "HEIC to BMP Converter",
+                          introParagraph: "Convert iPhone HEIC photos to BMP format instantly in your browser. No upload, no signup, completely free.",
+                              whyHeading: "Why convert HEIC to BMP?",
+                                  whyContent: "BMP is an uncompressed format compatible with older Windows software and applications that don't support HEIC. Converting lets you open iPhone photos anywhere.",
+                                      howToSteps: [
+                                            { title: "Upload your HEIC", desc: "Drop your HEIC file or tap to browse from your phone." },
+                                                  { title: "Convert instantly", desc: "ImgSwift converts HEIC to BMP directly in your browser." },
+                                                        { title: "Download", desc: "Save your BMP file to your device." }
+                                                            ],
+                                                                benefits: [
+                                                                      "100% private — image never leaves your device",
+                                                                            "Supports HEIC and HEIF formats",
+                                                                                  "Works on Android and iPhone",
+                                                                                        "No upload, no signup",
+                                                                                              "Free with no limits"
+                                                                                                  ],
+                                                                                                      faqs: [
+                                                                                                            { q: "Is HEIC to BMP conversion free?", a: "Yes, completely free with no limits." },
+                                                                                                                  { q: "Is my photo uploaded?", a: "No. Everything runs in your browser. Your photo never leaves your device." },
+                                                                                                                        { q: "What is HEIC?", a: "HEIC is the default photo format on iPhone. It's smaller than JPG but not supported everywhere." }
+                                                                                                                            ],
+                                                                                                                                relatedTools: ["heic-to-jpg", "heic-to-png", "heic-to-webp", "heic-to-avif"]
+                                                                                                                                  }
 ];
 
 // تصدير للاستخدام في build.js
